@@ -1,4 +1,4 @@
-]
+
 package model;
 
 public class QuestionSquare extends Square{
