@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Random;
+
 public class Dice {
 	
 	private static int idCounter = 1;
@@ -7,12 +9,27 @@ public class Dice {
 	private int minValue;
 	private int maxValue;
 	private int result ;
-	public Dice(int minValue, int maxValue, int result) {
+	public Dice(int minValue, int maxValue) {
 		super();
 		this.id=idCounter++;
-		this.minValue = minValue;
-		this.maxValue = maxValue;
-		this.result = result;
+		if(minValue<0)
+		{
+			this.minValue=0;
+		}
+		else
+		{
+			this.minValue = minValue;
+		}
+		if(maxValue>10)
+		{
+			this.maxValue=10;
+		}
+		else
+		{
+			this.maxValue = maxValue;
+		}
+
+		
 	}
 	public Integer getId() {
 		return id;
@@ -33,7 +50,10 @@ public class Dice {
 		this.maxValue = maxValue;
 	}
 	public int getResult() {
-		return result;
+		
+		Random random = new Random();
+		return random.nextInt((this.maxValue - this.minValue) + 1) + this.minValue;
+		
 	}
 	public void setResult(int result) {
 		this.result = result;

@@ -2,16 +2,17 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Question {
+public class Question implements  java.io.Serializable{
 	private static int questionNumber=1;
+	private int number;
 	private String questionContent;
 	private int level;
     private ArrayList<String> answers;
 	private int correctAnswerNumber;
 	
 	public Question(String questionContent, int level, int correctAnswerNumber) {
-		this.questionNumber = questionNumber ;
-		questionNumber++;
+		
+		this.number=questionNumber++;
 		this.questionContent = questionContent;
 		if(level >3|| level<1){
             throw new IllegalArgumentException("Easy 1 , Medium 2 , Hard 3 ");
