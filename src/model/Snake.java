@@ -40,7 +40,7 @@ public class Snake {
 	public String toString() {
 		return "Snake [squareStart=" + squareStart + ", squareEnd=" + squareEnd + ", snakeColor=" + snakeColor + "]";
 	}
-	
+
 	
 	
 	

@@ -11,6 +11,7 @@ public class ladder {
 		this.squareStart = squareStart;
 		this.squareEnd = squareEnd;
 		this.squareLenght = squareLenght;
+	
 	}
 	public static int getLadderId() {
 		return ladderId;
