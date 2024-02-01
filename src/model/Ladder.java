@@ -1,13 +1,13 @@
 package model;
 
-public class ladder {
-	private static  int ladderId;
+public class Ladder {
+	private static  int ladderId=0;
 	private Square squareStart;
 	private Square squareEnd;
 	private int squareLenght;
-	public ladder(int ladderId,Square squareStart, Square squareEnd,int squareLenght) {
+	public Ladder(int ladderId,Square squareStart, Square squareEnd,int squareLenght) {
 		super();
-		ladder.ladderId = ladderId;
+		ladderId++;
 		this.squareStart = squareStart;
 		this.squareEnd = squareEnd;
 		this.squareLenght = squareLenght;
@@ -17,7 +17,7 @@ public class ladder {
 		return ladderId;
 	}
 	public static void setLadderId(int ladderId) {
-		ladder.ladderId = ladderId;
+		Ladder.ladderId = ladderId;
 	}
 	public Square getSquareStart() {
 		return squareStart;
@@ -40,7 +40,7 @@ public class ladder {
 	}
 	@Override
 	public String toString() {
-		return "ladder [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+		return "Ladder [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
 	}
 	
