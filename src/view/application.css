@@ -40,21 +40,21 @@
     -fx-effect: dropshadow(three-pass-box, #9F0A9D, 30, 0.5, 0, 0); 
 }
 #pane3{
-    -fx-background-image: url("../Images/foodnumber2.jpg");
+    -fx-background-image: url("");
     -fx-background-repeat: stretch;   
     -fx-background-size: 1109 592;
     -fx-background-position: center center;
     -fx-effect: dropshadow(three-pass-box, #8B70B7, 30, 0.5, 0, 0); 
 }
 #pane9{
-    -fx-background-image: url("../Images/foood.jpg");
+    -fx-background-image: url("");
     -fx-background-repeat: stretch;   
     -fx-background-size: 1109 592;
     -fx-background-position: center center;
      
 }
 #pane2{
-    -fx-background-image: url("../Images/foood.jpg");
+    -fx-background-image: url("");
     -fx-background-repeat: stretch;   
     -fx-background-size: 841 527;
     -fx-background-position: center center;

@@ -73,6 +73,7 @@ public class SysData  implements  java.io.Serializable{
     			Question q1=new Question(q_content,q_level,right_answ);
     			q1.setAnswers(all_answers);
     			allQuestions.add(q1);
+    			return allQuestions;
     		}
     		
 			System.out.println(" data imported successfully!"); 
@@ -80,6 +81,7 @@ public class SysData  implements  java.io.Serializable{
     	} catch (IOException | DeserializationException e) {
     		e.printStackTrace();
     	}
+		return allQuestions;
 		
 	}
 	

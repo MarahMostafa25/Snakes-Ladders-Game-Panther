@@ -1,4 +1,4 @@
-package application;
+package controller;
 	
 import java.io.EOFException;
 import java.io.FileInputStream;
