@@ -130,6 +130,17 @@ public class Question implements  java.io.Serializable{
 	}
 
 
+	public int getCorrectAnswerNumber() {
+		return correctAnswerNumber;
+	}
+
+
+
+	public void setAnswer4(String answer4) {
+		this.answer4 = answer4;
+	}
+
+
 
 	@Override
 	public String toString() {

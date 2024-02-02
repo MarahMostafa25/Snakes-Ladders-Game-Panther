@@ -68,13 +68,7 @@ public class SysData  implements  java.io.Serializable{
     			String q_answ3=(obj.get("answ3").toString());
     			String q_answ4=(obj.get("answ4").toString());
     			Integer right_answ =Integer.valueOf(obj.get("right").toString());
-    			ArrayList<String> all_answers=new ArrayList<String>();
-    			all_answers.add(q_answ1);
-    			all_answers.add(q_answ2);
-    			all_answers.add(q_answ3);
-    			all_answers.add(q_answ4);
-    			Question q1=new Question(q_content,level,right_answ);
-    			q1.setAnswers(all_answers);
+    			Question q1=new Question(q_content,level,q_answ1,q_answ2,q_answ3,q_answ4,right_answ);
     			allQuestions.add(q1);
     			return allQuestions;
     		}
@@ -98,10 +92,10 @@ public class SysData  implements  java.io.Serializable{
 		JsonObject questionObject = new JsonObject();
 		questionObject.put("content", question.getQuestionContent());
 		questionObject.put("level", question.getLevel());
-		questionObject.put("answ1", question.getAnswers().get(0));
-		questionObject.put("answ2", question.getAnswers().get(1));
-		questionObject.put("answ3", question.getAnswers().get(2));
-		questionObject.put("answ4", question.getAnswers().get(3));
+		questionObject.put("answ1", question.getAnswer1());
+		questionObject.put("answ2", question.getAnswer2());
+		questionObject.put("answ3", question.getAnswer3());
+		questionObject.put("answ4", question.getAnswer4());
 		questionObject.put("right", question.getCorrectAnswerNumber());
 
 		questionsArray.add(questionObject);
