@@ -91,7 +91,7 @@ public class SysData  implements  java.io.Serializable{
 
 		JsonObject questionObject = new JsonObject();
 		questionObject.put("content", question.getQuestionContent());
-		questionObject.put("level", question.getLevel());
+		questionObject.put("level", question.getLevel().toString());
 		questionObject.put("answ1", question.getAnswer1());
 		questionObject.put("answ2", question.getAnswer2());
 		questionObject.put("answ3", question.getAnswer3());

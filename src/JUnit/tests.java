@@ -29,6 +29,15 @@ public class tests {
  
 
     }
+    @Test
+    public void testloadingallQuestion() throws IOException {
+    	System.out.print(SysData.getInstance().loadQ("Questions.json"));
+
+        assertTrue(SysData.getInstance().loadQ("Questions.json") != null);
+
+ 
+
+    }
 
 	 
 }
