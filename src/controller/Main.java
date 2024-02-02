@@ -44,6 +44,7 @@ public class Main extends Application {
 			serialize();
 		}
 		launch(args);
+		System.out.print(SysData.getInstance().getAllQuestions());
 	}
 	
 	public static void serialize()

@@ -4,7 +4,7 @@ import java.util.List;
 
 import utils.Level;
 
-public class Question implements  java.io.Serializable{
+public class Question implements  java.io.Serializable,Comparable<Question>{
 	private static int questionNumber=1;
 	private int questionId;
 	private String questionContent;
@@ -30,6 +30,13 @@ public class Question implements  java.io.Serializable{
 	}
 
 	
+
+	public Question(String questionContent) {
+		super();
+		this.questionContent = questionContent;
+	}
+
+
 
 	public static int getQuestionNumber() {
 		return questionNumber;
@@ -148,6 +155,49 @@ public class Question implements  java.io.Serializable{
 				+ ", answer1=" + answer1 + ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4=" + answer4
 				+ ", correctAnswerNumber=" + correctAnswerNumber + "]";
 	}
+
+
+
+	
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((questionContent == null) ? 0 : questionContent.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Question other = (Question) obj;
+		if (questionContent == null) {
+			if (other.questionContent != null)
+				return false;
+		} else if (!questionContent.equals(other.questionContent))
+			return false;
+		return true;
+	}
+
+
+
+	@Override
+	public int compareTo(Question o) {
+		// TODO Auto-generated method stub
+		return this.questionContent.compareToIgnoreCase(o.getQuestionContent());
+
+	}
+	
+	
 
 
 }
