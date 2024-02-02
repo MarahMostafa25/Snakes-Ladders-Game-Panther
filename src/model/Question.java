@@ -1,7 +1,8 @@
 package model;
-import java.lang.System.Logger.Level;
 import java.util.ArrayList;
 import java.util.List;
+
+import utils.Level;
 
 public class Question implements  java.io.Serializable{
 	private static int questionNumber=1;

@@ -14,6 +14,8 @@ import org.json.simple.JsonArray;
 import org.json.simple.JsonObject;
 import org.json.simple.Jsoner;
 
+import utils.Level;
+
 public class SysData  implements  java.io.Serializable{ 
 
 	private static SysData sys = null;
@@ -59,7 +61,8 @@ public class SysData  implements  java.io.Serializable{
     		while (iterator.hasNext()) {
     			JsonObject obj = (JsonObject) iterator.next();
     			String q_content=(obj.get("content").toString());
-    			Integer q_level =Integer.valueOf(obj.get("level").toString());
+    			// Assuming EnumType is the type of your enum
+    			Level level = Level.valueOf(obj.get("level").toString());
     			String q_answ1=(obj.get("answ1").toString());
     			String q_answ2=(obj.get("answ2").toString());
     			String q_answ3=(obj.get("answ3").toString());
@@ -70,7 +73,7 @@ public class SysData  implements  java.io.Serializable{
     			all_answers.add(q_answ2);
     			all_answers.add(q_answ3);
     			all_answers.add(q_answ4);
-    			Question q1=new Question(q_content,q_level,right_answ);
+    			Question q1=new Question(q_content,level,right_answ);
     			q1.setAnswers(all_answers);
     			allQuestions.add(q1);
     			return allQuestions;
@@ -214,12 +217,12 @@ public class SysData  implements  java.io.Serializable{
 		this.allQuestions = allQuestions;
 	}
 	
-	public Question popQuestion(int level)
+	public Question popQuestion(Level level)
 	{
 		ArrayList<Question> ar=new ArrayList<Question>();
 		for (Question a:allQuestions)
 		{
-			if(a.getLevel()==level)
+			if(a.getLevel().equals(level))
 			{
 				ar.add(a);
 				
