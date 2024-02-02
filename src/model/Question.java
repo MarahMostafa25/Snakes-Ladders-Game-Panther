@@ -1,4 +1,5 @@
 package model;
+import java.lang.System.Logger.Level;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,20 +7,15 @@ public class Question implements  java.io.Serializable{
 	private static int questionNumber=1;
 	private int number;
 	private String questionContent;
-	private int level;
+	private Level level;
     private ArrayList<String> answers;
 	private int correctAnswerNumber;
 	
-	public Question(String questionContent, int level, int correctAnswerNumber) {
+	public Question(String questionContent, Level level, int correctAnswerNumber) {
 		
 		this.number=questionNumber++;
 		this.questionContent = questionContent;
-		if(level >3|| level<1){
-            throw new IllegalArgumentException("Easy 1 , Medium 2 , Hard 3 ");
-		}
-		else {
-			this.level = level;
-		}
+		this.level=level;
         this.answers = new ArrayList<String>();
         if (correctAnswerNumber < 0 || correctAnswerNumber >= answers.size()) {
             throw new IllegalArgumentException("Invalid Index number like this");
@@ -44,11 +40,11 @@ public class Question implements  java.io.Serializable{
 		this.questionContent = questionContent;
 	}
 
-	public int getLevel() {
+	public Level getLevel() {
 		return level;
 	}
 
-	public void setLevel(int level) {
+	public void setLevel(Level level) {
 		this.level = level;
 	}
 
