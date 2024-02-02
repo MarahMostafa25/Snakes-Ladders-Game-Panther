@@ -13,9 +13,9 @@
    <children>
       <AnchorPane id="pane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="1109.0" style="-fx-background-color: linear-gradient(to right, rgba(251,201,79,1) 0%, rgba(231,140,8,1) 35%, rgba(226,199,134,1) 100%);">
          <children>
-            <AnchorPane id="pane" layoutX="116.0" layoutY="78.0" prefHeight="467.0" prefWidth="858.0" style="-fx-background-color: white; -fx-background-radius: 1em;" stylesheets="@../view/application.css" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="116.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="78.0">
+            <AnchorPane id="pane" layoutX="28.0" layoutY="35.0" prefHeight="542.0" prefWidth="1037.0" style="-fx-background-color: white; -fx-background-radius: 1em;" stylesheets="@../view/application.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="35.0">
                <children>
-                  <Button layoutX="373.0" layoutY="222.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="133.0" stylesheets="@../view/application.css" text="Start The Game">
+                  <Button layoutX="411.0" layoutY="207.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css" text="Start The Game">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -36,7 +36,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="373.0" layoutY="283.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="133.0" stylesheets="@../view/application.css" text="Game's History">
+                  <Button layoutX="411.0" layoutY="278.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css" text="Game's History">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -57,7 +57,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="373.0" layoutY="342.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="133.0" stylesheets="@../view/application.css" text="Manage Questions">
+                  <Button layoutX="411.0" layoutY="355.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css" text="Manage Questions">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -78,9 +78,9 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="150.0" fitWidth="324.0" layoutX="290.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="193.0" fitWidth="267.0" layoutX="386.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/firstGif.gif" />
+                        <Image url="@../Images/Logo.png" />
                      </image>
                   </ImageView>
                </children>

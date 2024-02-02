@@ -14,7 +14,6 @@
  #button7{
     -fx-border-color: #AA0087;
     -fx-background-color:linear-gradient(to right top, #efd7ef, #eebdf1, #eba2f3, #e686f6, #df68f9);
-    
 }
 
 
@@ -31,9 +30,9 @@
 #pane{
     -fx-background-image: url("../Images/back.jpg");
     -fx-background-repeat: stretch;   
-    -fx-background-size: 879 501;
+    -fx-background-size: 1037 542;
     -fx-background-position: center center;
-    -fx-effect: dropshadow(three-pass-box, #563302, 30, 0.5, 0, 0); 
+    -fx-effect: dropshadow(three-pass-box,#086003, 30, 0.5, 0, 0); 
 }
 #pane5{
     
