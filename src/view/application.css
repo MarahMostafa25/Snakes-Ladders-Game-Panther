@@ -18,7 +18,7 @@
 
 
 #button7:hover {
-    -fx-background-color: #FFF3FF;
+    -fx-background-color: #f2da89;
     -fx-border-color: #AA0087;
     -fx-scale-x: 1.2;
     -fx-scale-y: 1.2;
@@ -178,7 +178,7 @@
     }
 
 .button:hover {
-    -fx-background-color: white;
+    -fx-background-color: #f2da89;
     -fx-border-color: #AA0087;
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;

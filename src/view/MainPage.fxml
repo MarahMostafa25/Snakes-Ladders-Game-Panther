@@ -15,7 +15,7 @@
          <children>
             <AnchorPane id="pane" layoutX="28.0" layoutY="35.0" prefHeight="542.0" prefWidth="1037.0" style="-fx-background-color: white; -fx-background-radius: 1em;" stylesheets="@../view/application.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="35.0">
                <children>
-                  <Button layoutX="411.0" layoutY="207.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css" text="Start The Game">
+                  <Button layoutX="411.0" layoutY="207.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -36,7 +36,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="411.0" layoutY="278.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css" text="Game's History">
+                  <Button layoutX="411.0" layoutY="278.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -57,7 +57,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="411.0" layoutY="355.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css" text="Manage Questions">
+                  <Button layoutX="411.0" layoutY="355.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -81,6 +81,21 @@
                   <ImageView fitHeight="193.0" fitWidth="267.0" layoutX="386.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/Logo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="96.0" fitWidth="171.0" layoutX="449.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/StartGame.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="96.0" fitWidth="171.0" layoutX="449.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/History.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="96.0" fitWidth="171.0" layoutX="449.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/ManageQ.gif" />
                      </image>
                   </ImageView>
                </children>
