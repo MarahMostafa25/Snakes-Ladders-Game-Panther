@@ -2,6 +2,8 @@ package model;
 
 import java.util.Random;
 
+import utils.Level;
+
 public class Dice {
 	
 	private static int idCounter = 1;
@@ -9,8 +11,9 @@ public class Dice {
 	private int minValue;
 	private int maxValue;
 	private int result ;
-	public Dice(int minValue, int maxValue) {
-		super();
+	private Level levelGame;
+	public Dice(int minValue, int maxValue , Level levelGame) {
+		this.levelGame=levelGame;
 		this.id=idCounter++;
 		if(minValue<0)
 		{
@@ -20,13 +23,13 @@ public class Dice {
 		{
 			this.minValue = minValue;
 		}
-		if(maxValue>10)
+		if(levelGame.equals(Level.Easy))
 		{
-			this.maxValue=10;
+			this.maxValue=8;
 		}
 		else
 		{
-			this.maxValue = maxValue;
+			this.maxValue = 10;
 		}
 
 		
@@ -58,6 +61,21 @@ public class Dice {
 	public void setResult(int result) {
 		this.result = result;
 	}
+	
+	
+	public static int getIdCounter() {
+		return idCounter;
+	}
+	public static void setIdCounter(int idCounter) {
+		Dice.idCounter = idCounter;
+	}
+	public Level getLevelGame() {
+		return levelGame;
+	}
+	public void setLevelGame(Level levelGame) {
+		this.levelGame = levelGame;
+	}
+	
 	@Override
 	public String toString() {
 		return "Dice [id=" + id + ", minValue=" + minValue + ", maxValue=" + maxValue + ", result=" + result + "]";

@@ -1,6 +1,7 @@
 package model;
 
 public class Player {
+	private int PlayerId;
 	private String nickName;
 	private int Xposition;
 	private int Yposition;
@@ -8,11 +9,11 @@ public class Player {
 	private static int id=0;
 
 	public Player(String nickName, int Xposition, int Yposition, String AvatarPath) {
+		this.PlayerId=id++;
 		this.nickName = nickName;
 		this.Xposition = Xposition;
 		this.Yposition = Yposition;
 		this.AvatarPath = AvatarPath;
-		id++;
 	}
 
 	public String getNickName() {
@@ -61,5 +62,16 @@ public class Player {
 		Player.id = id;
 	}
 
+	public int getPlayerId() {
+		return PlayerId;
+	}
+
+	public void setPlayerId(int playerId) {
+		PlayerId = playerId;
+	}
+	
+	
+
+	
 	
 }
