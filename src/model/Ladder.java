@@ -72,9 +72,7 @@ public class Ladder {
 	public int getSquareLenght() {
 		return squareLenght;
 	}
-	public void setSquareLenght(int squareLenght) {
-		this.squareLenght = squareLenght;
-	}
+	
 	public void setSquareStart(Square squareStart) {
 		this.squareStart = squareStart;
 	}

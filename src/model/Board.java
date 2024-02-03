@@ -1,17 +1,29 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import utils.Level;
 
 public class Board {
 	private int boardId;
 	private int size;
-	private ArrayList<Square> squares;
-	
-	public Board(int boardId, int size) {
+	private Square[][] boardMatrix;	
+	private Level levelgame;
+	public Board(int boardId, Level levelgame) {
 		super();
 		this.boardId = boardId;
-		this.size = size;
-		this.squares = new ArrayList<Square>(); ;
+		if(levelgame.equals(Level.Easy)) {
+			this.size=7;
+		}
+		if(levelgame.equals(Level.Medium)) {
+			this.size=10;
+		}
+		if(levelgame.equals(Level.Hard)) {
+			this.size=13;
+		}
+
+        this.boardMatrix = new Square[size][size];
 	}
 
 	public int getBoardId() {
@@ -26,23 +38,28 @@ public class Board {
 		return size;
 	}
 
-	public void setSize(int size) {
-		this.size = size;
-	}
-
-	public ArrayList<Square> getSquares() {
-		return squares;
-	}
-
-	public void setSquares(ArrayList<Square> squares) {
-		this.squares = squares;
-	}
-
 	
+	public Square[][] getBoardMatrix() {
+		return boardMatrix;
+	}
+
+	public void setBoardMatrix(Square[][] boardMatrix) {
+		this.boardMatrix = boardMatrix;
+	}
+
+	public Level getLevelgame() {
+		return levelgame;
+	}
+
+	public void setLevelgame(Level levelgame) {
+		this.levelgame = levelgame;
+	}
+
 	@Override
 	public String toString() {
-		return "Board [boardId=" + boardId + ", size=" + size + ", squares=" + squares + "]";
+		return "Board [boardId=" + boardId + ", size=" + size + ", boardMatrix=" + Arrays.toString(boardMatrix)
+				+ ", levelgame=" + levelgame + "]";
 	}
-	
+
 	
 }

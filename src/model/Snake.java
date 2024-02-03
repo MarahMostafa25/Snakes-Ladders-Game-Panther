@@ -7,10 +7,14 @@ public class Snake {
 	private Square squareStart;
 	private Square squareEnd;
 	private SnakeColor snakeColor;
+	private int snakeId;
+	
 	public Snake(Square squareStart, Square squareEnd,SnakeColor snakeColor) {
 		this.squareStart = squareStart;
 		this.squareEnd = squareEnd;
 		this.snakeColor=snakeColor;
+		this.snakeId=snakeNumber++;
+	
 	}
 	public static int getSnakeNumber() {
 		return snakeNumber;
