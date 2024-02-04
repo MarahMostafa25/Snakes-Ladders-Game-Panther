@@ -85,7 +85,7 @@
                   </ImageView>
                   <ImageView fitHeight="96.0" fitWidth="171.0" layoutX="449.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/StartGame.gif" />
+                        <Image url="@../Images/startGame.gif" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="96.0" fitWidth="171.0" layoutX="449.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
