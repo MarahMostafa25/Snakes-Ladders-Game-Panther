@@ -1,19 +1,12 @@
 package JUnit;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import model.Game;
+
 import model.Question;
 import model.SysData;
 import utils.Level;
