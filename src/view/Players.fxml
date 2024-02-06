@@ -97,6 +97,32 @@
                         <Image url="@../Images/letsStart.gif" />
                      </image>
                   </ImageView>
+                  <Button id="button7" fx:id="backbutton" layoutX="220.0" layoutY="7.0" minHeight="44.0" minWidth="45.0" mnemonicParsing="false" onAction="#backB" prefHeight="42.0" prefWidth="45.0" style="-fx-border-radius: 100;" stylesheets="@application.css">
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.28947368264198303" green="0.23159383237361908" blue="0.022335931658744812" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.44736841320991516" green="0.30560970306396484" blue="0.022092267870903015" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="229.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/back.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>

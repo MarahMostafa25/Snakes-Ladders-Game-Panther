@@ -17,6 +17,8 @@ import javafx.scene.layout.BorderPane;
 
 public class Main extends Application {
 	public static SysData res;
+	public static Stage mainS=null;
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -27,8 +29,9 @@ public class Main extends Application {
 			{
 				media.stop();
 			});*/
-			Parent root = FXMLLoader.load(getClass().getResource("/view/players.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
 			Scene scene = new Scene(root);
+			mainS=primaryStage;
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
