@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlayerController">
+   <children>
+      <AnchorPane id="pane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="1109.0" style="-fx-background-color: linear-gradient(to right, rgba(251,201,79,1) 0%, rgba(231,140,8,1) 35%, rgba(226,199,134,1) 100%);">
+         <children>
+            <AnchorPane id="pane5" layoutX="3.0" layoutY="3.0" prefHeight="586.0" prefWidth="1103.0" style="-fx-background-color: linear-gradient(to right, rgba(251,201,79,1) 0%, rgba(231,140,8,1) 35%, rgba(226,199,134,1) 100%); -fx-background-radius: 1em;" stylesheets="@application.css" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="301.0" layoutY="303.0" text="Label" />
+                  <TextField fx:id="name1" layoutX="371.0" layoutY="294.0" prefHeight="36.0" prefWidth="77.0" />
+                  <ImageView fitHeight="126.0" fitWidth="134.0" layoutX="343.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/image.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="124.0" fitWidth="142.0" layoutX="573.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/image2.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="name2" layoutX="605.0" layoutY="294.0" prefHeight="36.0" prefWidth="77.0" />
+                  <Label layoutX="701.0" layoutY="303.0" text="Label" />
+                  <ImageView fitHeight="74.0" fitWidth="225.0" layoutX="443.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/playersTitle.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="startButton" layoutX="937.0" layoutY="465.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="159.0" stylesheets="@application.css">
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.28947368264198303" green="0.23159383237361908" blue="0.022335931658744812" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.44736841320991516" green="0.30560970306396484" blue="0.022092267870903015" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button id="button7" fx:id="add" layoutX="503.0" layoutY="330.0" minHeight="44.0" minWidth="45.0" mnemonicParsing="false" onAction="#addPLayer" prefHeight="42.0" prefWidth="45.0" style="-fx-border-radius: 100;" stylesheets="@application.css">
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.28947368264198303" green="0.23159383237361908" blue="0.022335931658744812" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.44736841320991516" green="0.30560970306396484" blue="0.022092267870903015" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="512.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/icon1.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="image3" fitHeight="124.0" fitWidth="142.0" layoutX="343.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="image4" fitHeight="124.0" fitWidth="142.0" layoutX="573.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true" />
+                  <TextField fx:id="name3" layoutX="365.0" layoutY="454.0" prefHeight="36.0" prefWidth="77.0" style="-fx-background-color: transparent;" />
+                  <TextField fx:id="name4" layoutX="605.0" layoutY="454.0" prefHeight="36.0" prefWidth="77.0" style="-fx-background-color: transparent;" />
+                  <ImageView fitHeight="85.0" fitWidth="134.0" layoutX="950.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/letsStart.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

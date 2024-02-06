@@ -9,13 +9,13 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPageController">
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPageController">
    <children>
       <AnchorPane id="pane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="1109.0" style="-fx-background-color: linear-gradient(to right, rgba(251,201,79,1) 0%, rgba(231,140,8,1) 35%, rgba(226,199,134,1) 100%);">
          <children>
             <AnchorPane id="pane" layoutX="28.0" layoutY="35.0" prefHeight="542.0" prefWidth="1037.0" style="-fx-background-color: white; -fx-background-radius: 1em;" stylesheets="@../view/application.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="35.0">
                <children>
-                  <Button layoutX="411.0" layoutY="207.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css">
+                  <Button fx:id="startbutton" layoutX="411.0" layoutY="207.0" mnemonicParsing="false" onAction="#start" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -36,7 +36,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="411.0" layoutY="278.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css">
+                  <Button fx:id="historybutton" layoutX="411.0" layoutY="278.0" mnemonicParsing="false" onAction="#history" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -57,7 +57,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="411.0" layoutY="355.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css">
+                  <Button fx:id="questionsbutton" layoutX="411.0" layoutY="355.0" mnemonicParsing="false" onAction="#questions" prefHeight="51.0" prefWidth="247.0" stylesheets="@../view/application.css">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>

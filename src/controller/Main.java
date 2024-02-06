@@ -27,7 +27,7 @@ public class Main extends Application {
 			{
 				media.stop();
 			});*/
-			Parent root = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/view/players.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
