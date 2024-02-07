@@ -12,9 +12,9 @@
     -fx-font-family:verdana;
 }
  #button7{
-    -fx-border-color: #AA0087;
+    -fx-border-color: gold;
     -fx-background-radius: 30; -fx-min-width: 30px; -fx-min-height: 30px;
-    -fx-background-color:white;
+    -fx-background-color:gold;
 }
 
 
@@ -28,17 +28,25 @@
  
 
 #pane{
-    -fx-background-image: url("../Images/back.jpg");
+    -fx-background-image: url("../Images/backgame.jpeg");
     -fx-background-repeat: stretch;   
-    -fx-background-size: 1037 542;
+    -fx-background-size: 1119 610;
     -fx-background-position: center center;
     -fx-effect: dropshadow(three-pass-box,#086003, 30, 0.5, 0, 0); 
 }
 
 #pane5{
+    -fx-background-image: url("../Images/old.jpg");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 1103 586;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box,#086003, 30, 0.5, 0, 0); 
+}
+
+#pane314{
     -fx-background-image: url("../Images/playersBack.png");
     -fx-background-repeat: stretch;   
-    -fx-background-size: 1037 542;
+    -fx-background-size: 1103 586;
     -fx-background-position: center center;
     -fx-effect: dropshadow(three-pass-box,#086003, 30, 0.5, 0, 0); 
 }
@@ -183,7 +191,7 @@
 
 .button:hover {
     -fx-background-color: #f2da89;
-    -fx-border-color: #AA0087;
+
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
     -fx-scale-z: 1.1;

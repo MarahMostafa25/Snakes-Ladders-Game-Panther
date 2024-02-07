@@ -38,6 +38,11 @@ public class PlayerController {
 	@FXML
 	ImageView image4;
 	@FXML
+	ImageView image41;
+	@FXML
+	ImageView image31;
+	
+	@FXML
 	Button backbutton;
 	
     private int isFirstTimeClicked =1;
@@ -50,6 +55,8 @@ public class PlayerController {
 			Image newImage = new Image("/Images/image3.png");
 
 			image3.setImage(newImage);
+			image31.setImage(newImage);
+
 	        name3.setStyle("-fx-text-fill: white;");
 	        isFirstTimeClicked=2;
 
@@ -62,6 +69,8 @@ public class PlayerController {
 				Image newImage2 = new Image("/Images/image4.png");
 
 				image4.setImage(newImage2);
+				image41.setImage(newImage2);
+
 		        name4.setStyle("-fx-text-fill: white;");
 		        isFirstTimeClicked=3;
 

@@ -13,14 +13,9 @@
    <children>
       <AnchorPane id="pane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="1109.0" style="-fx-background-color: linear-gradient(to right, rgba(251,201,79,1) 0%, rgba(231,140,8,1) 35%, rgba(226,199,134,1) 100%);">
          <children>
-            <AnchorPane id="pane5" layoutX="29.0" layoutY="18.0" prefHeight="571.0" prefWidth="1063.0" style="-fx-background-color: linear-gradient(to right, rgba(251,201,79,1) 0%, rgba(231,140,8,1) 35%, rgba(226,199,134,1) 100%); -fx-background-radius: 1em;" stylesheets="@application.css" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="18.0">
+            <AnchorPane id="pane314" layoutX="-5.0" layoutY="3.0" prefHeight="586.0" prefWidth="1109.0" style="-fx-background-color: linear-gradient(to right, rgba(251,201,79,1) 0%, rgba(231,140,8,1) 35%, rgba(226,199,134,1) 100%); -fx-background-radius: 1em;" stylesheets="@application.css" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="3.0">
                <children>
-                  <ImageView fitHeight="98.0" fitWidth="134.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/Logo.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="conti" layoutX="920.0" layoutY="465.0" mnemonicParsing="false" onAction="#contiPlayer" prefHeight="49.0" prefWidth="134.0" stylesheets="@application.css">
+                  <Button fx:id="conti" layoutX="961.0" layoutY="462.0" mnemonicParsing="false" onAction="#contiPlayer" prefHeight="49.0" prefWidth="134.0" style="-fx-background-radius: 60; -fx-border-color: none; -fx-background-color: gold;" stylesheets="@application.css">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -41,7 +36,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="60.0" fitWidth="108.0" layoutX="936.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="108.0" layoutX="974.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/conti.gif" />
                      </image>
@@ -51,7 +46,7 @@
                         <Image url="@../Images/levelG.gif" />
                      </image>
                   </ImageView>
-                  <Button fx:id="easy" layoutX="471.0" layoutY="240.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="159.0" stylesheets="@application.css">
+                  <Button fx:id="easy" layoutX="471.0" layoutY="240.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="159.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@application.css">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -72,7 +67,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="medium" layoutX="472.0" layoutY="310.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="159.0" stylesheets="@application.css">
+                  <Button fx:id="medium" layoutX="472.0" layoutY="310.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="159.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@application.css">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -93,7 +88,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="hard" layoutX="471.0" layoutY="378.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="159.0" stylesheets="@application.css">
+                  <Button fx:id="hard" layoutX="471.0" layoutY="378.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="159.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@application.css">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -129,7 +124,7 @@
                         <Image url="@../Images/Hard.png" />
                      </image>
                   </ImageView>
-                  <Button id="button7" fx:id="backbutton" layoutX="183.0" layoutY="7.0" minHeight="44.0" minWidth="45.0" mnemonicParsing="false" onAction="#backB" prefHeight="37.0" prefWidth="36.0" style="-fx-border-radius: 100;" stylesheets="@application.css">
+                  <Button id="button7" fx:id="backbutton" layoutX="152.0" layoutY="7.0" minHeight="44.0" minWidth="45.0" mnemonicParsing="false" onAction="#backB" prefHeight="37.0" prefWidth="57.0" style="-fx-border-radius: 100;" stylesheets="@application.css" text="back">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -150,11 +145,6 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="21.0" fitWidth="22.0" layoutX="190.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/back.png" />
-                     </image>
-                  </ImageView>
                </children>
             </AnchorPane>
          </children>
