@@ -36,7 +36,7 @@
 }
 
 #pane5{
-    -fx-background-image: url("../Images/old.jpg");
+    -fx-background-image: url("../Images/cartoon.jpg");
     -fx-background-repeat: stretch;   
     -fx-background-size: 1103 586;
     -fx-background-position: center center;
@@ -51,7 +51,7 @@
 
 
 #pane314{
-    -fx-background-image: url("../Images/playersBack.png");
+    -fx-background-image: url("../Images/forLevel.jpeg");
     -fx-background-repeat: stretch;   
     -fx-background-size: 1103 586;
     -fx-background-position: center center;
