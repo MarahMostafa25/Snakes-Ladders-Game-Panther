@@ -20,7 +20,7 @@
                      <image>
                         <Image url="@../Images/playersBack.png" />
                      </image></ImageView>
-                  <ImageView fitHeight="452.0" fitWidth="608.0" layoutX="482.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="image5" fitHeight="452.0" fitWidth="608.0" layoutX="482.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" styleClass="application.css">
                      <image>
                         <Image url="@../Images/playerf.jpeg" />
                      </image>
@@ -37,7 +37,7 @@
                         <Image url="@../Images/playersTitle.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="startButton" layoutX="840.0" layoutY="504.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="159.0" stylesheets="@application.css">
+                  <Button fx:id="startButton" layoutX="840.0" layoutY="504.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="159.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@application.css">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
