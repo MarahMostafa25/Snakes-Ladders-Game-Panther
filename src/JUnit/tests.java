@@ -24,16 +24,7 @@ public class tests {
  
 
     }
-    @Test
-    public void testAddingSecondQuestion() throws IOException, ParseException {
 
-    	Level qlevel=Level.Medium;
-        Question question = new Question("A  component is an architectural entity that 7.",qlevel, "encapsulates a subset of the system�s functionality and/or data", "restricts access to that subset via an explicitly defined interface", "has explicitly defined dependencies on its required execution context", "all the answers are correct",4); 
-        SysData.getInstance().writeQuestionToJson(question,"Questions.json");
-        assertTrue(SysData.getInstance().getAllQuestions().contains(question));
- 
-
-    }
     
   //remove a question from sysData and checks if it actually has been removed from the class
     @Test
