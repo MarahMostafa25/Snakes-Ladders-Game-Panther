@@ -132,5 +132,23 @@ public class QuestionController implements Initializable {
 			}
 			return true;
 	    }
+	 
+	 
+	 
+	 
+	 
+	 public void deleteQuestion(ActionEvent event) throws Exception {
+
+			Question q = tablee.getSelectionModel().getSelectedItem();
+			if(q == null) {
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setContentText("You have to select Question to delete!");
+				alert.show();
+			}
+			else {
+				tablee.getItems().remove(q);
+				SysData.getInstance().RemoveFromJson(q);
+			}
+		}
 
 }
