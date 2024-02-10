@@ -7,9 +7,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="734.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="734.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateQ">
    <children>
       <ImageView fitHeight="525.0" fitWidth="734.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,46 +24,72 @@
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="317.0" layoutY="47.0" prefHeight="320.0" prefWidth="341.0" style="-fx-background-color: #FAF9F6; -fx-opacity: 0.7; -fx-background-radius: 20;">
+      <AnchorPane layoutX="317.0" layoutY="47.0" prefHeight="320.0" prefWidth="403.0" style="-fx-background-color: #FAF9F6; -fx-opacity: 0.7; -fx-background-radius: 20;">
          <children>
-            <TextField fx:id="question_text" layoutX="38.0" layoutY="42.0" prefHeight="25.0" prefWidth="255.0" promptText="Question Text" style="-fx-background-radius: 20;">
+            <TextField fx:id="question_text" layoutX="38.0" layoutY="42.0" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="255.0" promptText="Question Text" style="-fx-background-radius: 20;">
                <font>
                   <Font name="Arial Bold Italic" size="13.0" />
                </font>
             </TextField>
-            <TextField fx:id="answer1_text" layoutX="38.0" layoutY="72.0" prefHeight="25.0" prefWidth="255.0" promptText="Answer 1" style="-fx-background-radius: 20;">
+            <TextField fx:id="answer1_text" layoutX="38.0" layoutY="72.0" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="255.0" promptText="Answer 1" style="-fx-background-radius: 20;">
                <font>
                   <Font name="Arial Bold Italic" size="13.0" />
                </font>
             </TextField>
-            <TextField fx:id="answer2_text" layoutX="38.0" layoutY="102.0" prefHeight="25.0" prefWidth="255.0" promptText="Answer 2" style="-fx-background-radius: 20;">
+            <TextField fx:id="answer2_text" layoutX="38.0" layoutY="102.0" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="255.0" promptText="Answer 2" style="-fx-background-radius: 20;">
                <font>
                   <Font name="Arial Bold Italic" size="13.0" />
                </font>
             </TextField>
-            <TextField fx:id="answer3_text" layoutX="38.0" layoutY="132.0" prefHeight="25.0" prefWidth="255.0" promptText="Answer 3" style="-fx-background-radius: 20;">
+            <TextField fx:id="answer3_text" layoutX="38.0" layoutY="132.0" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="255.0" promptText="Answer 3" style="-fx-background-radius: 20;">
                <font>
                   <Font name="Arial Bold Italic" size="13.0" />
                </font>
             </TextField>
-            <TextField fx:id="answer4_text" layoutX="38.0" layoutY="162.0" prefHeight="25.0" prefWidth="255.0" promptText="Answer 4" style="-fx-background-radius: 20;">
+            <TextField fx:id="answer4_text" layoutX="38.0" layoutY="162.0" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="255.0" promptText="Answer 4" style="-fx-background-radius: 20;">
                <font>
                   <Font name="Arial Bold Italic" size="13.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="level" layoutX="38.0" layoutY="219.0" prefHeight="28.0" prefWidth="255.0" promptText="Level" style="-fx-background-color: orawhitenge; -fx-border-color: orange;" />
+            <ComboBox fx:id="level" layoutX="38.0" layoutY="219.0" prefHeight="28.0" prefWidth="255.0" promptText="Level" style="-fx-background-color: white; -fx-border-color: orange;" />
             <Button fx:id="updateButton" layoutX="76.0" layoutY="270.0" mnemonicParsing="false" onAction="#updateQuestion" prefHeight="35.0" prefWidth="163.0" style="-fx-background-radius: 20; -fx-border-color: none;" stylesheets="@application.css" text="Update" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
             <ComboBox fx:id="correct" layoutX="38.0" layoutY="189.0" prefHeight="28.0" prefWidth="255.0" promptText="Correct" style="-fx-background-color: white; -fx-border-color: orange;" />
+            <Label fx:id="coerror" layoutX="299.0" layoutY="46.0" prefHeight="17.0" prefWidth="95.0" textFill="RED" />
+            <Label fx:id="a1" layoutX="299.0" layoutY="76.0" prefHeight="17.0" prefWidth="95.0" textFill="RED" />
+            <Label fx:id="a2" layoutX="299.0" layoutY="106.0" prefHeight="17.0" prefWidth="95.0" textFill="RED" />
+            <Label fx:id="a3" layoutX="299.0" layoutY="136.0" prefHeight="17.0" prefWidth="95.0" textFill="RED" />
+            <Label fx:id="a4" layoutX="299.0" layoutY="166.0" prefHeight="17.0" prefWidth="95.0" textFill="RED" />
          </children>
       </AnchorPane>
-      <Label layoutX="14.0" layoutY="-6.0" prefHeight="71.0" prefWidth="283.0" text="Update Question">
+      <Label layoutX="83.0" layoutY="14.0" prefHeight="71.0" prefWidth="283.0" text="Update Question">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
+      <Button id="button7" fx:id="backbutton" minHeight="44.0" minWidth="45.0" mnemonicParsing="false" onAction="#backB" prefHeight="37.0" prefWidth="65.0" style="-fx-border-radius: 100;" stylesheets="@application.css" text="back">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.28947368264198303" green="0.23159383237361908" blue="0.022335931658744812" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.44736841320991516" green="0.30560970306396484" blue="0.022092267870903015" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

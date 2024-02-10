@@ -28,11 +28,11 @@
          <font>
             <Font name="Arial Bold Italic" size="12.0" />
          </font></Button>
-      <Button fx:id="remove" layoutX="560.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@application.css" text="Remove" textFill="#312702">
+      <Button fx:id="remove" layoutX="560.0" layoutY="196.0" mnemonicParsing="false" onAction="#deleteQuestion" prefHeight="25.0" prefWidth="91.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@application.css" text="Remove" textFill="#312702">
          <font>
             <Font name="Arial Bold Italic" size="12.0" />
          </font></Button>
-      <Button fx:id="update" layoutX="559.0" layoutY="250.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@application.css" text="Update" textFill="#482f04">
+      <Button fx:id="update" layoutX="559.0" layoutY="250.0" mnemonicParsing="false" onAction="#UpdateScene" prefHeight="25.0" prefWidth="91.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@application.css" text="Update" textFill="#482f04">
          <font>
             <Font name="Arial Bold Italic" size="11.0" />
          </font></Button>

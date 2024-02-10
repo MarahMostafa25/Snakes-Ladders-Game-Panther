@@ -85,7 +85,7 @@ public class AddQ implements Initializable{
 	{
 		if (e.getSource() == ContentQuestion) {
 		    if (!ContentQuestion.getText().chars().anyMatch(Character::isLetter)) {
-		        coerror.setText("*ContentQuestion must contain at least one letter!");
+		        coerror.setText("*with letters!");
 		        ContentQuestion.setStyle("-fx-border-color:red;");
 		    } else {
 		        coerror.setText("");
@@ -96,7 +96,7 @@ public class AddQ implements Initializable{
 		
 		if (e.getSource() == Answer1) {
 		    if (!Answer1.getText().chars().anyMatch(Character::isLetter)) {
-		    	a1.setText("*Answer1 must contain at least one letter!");
+		    	a1.setText("*with letters!");
 		        Answer1.setStyle("-fx-border-color:red;");
 		    } else {
 		    	a1.setText("");
@@ -106,7 +106,7 @@ public class AddQ implements Initializable{
 		
 		if (e.getSource() == Answer2) {
 		    if (!Answer1.getText().chars().anyMatch(Character::isLetter)) {
-		    	a2.setText("*Answer2 must contain at least one letter!");
+		    	a2.setText("*with letters!");
 		        Answer2.setStyle("-fx-border-color:red;");
 		    } else {
 		    	a2.setText("");
@@ -116,7 +116,7 @@ public class AddQ implements Initializable{
 		
 		if (e.getSource() == Answer3) {
 		    if (!Answer3.getText().chars().anyMatch(Character::isLetter)) {
-		    	a3.setText("*Answer3 must contain at least one letter!");
+		    	a3.setText("*with letters!");
 		        Answer3.setStyle("-fx-border-color:red;");
 		    } else {
 		    	a3.setText("");
@@ -126,7 +126,7 @@ public class AddQ implements Initializable{
 		
 		if (e.getSource() == Answer4) {
 		    if (!Answer4.getText().chars().anyMatch(Character::isLetter)) {
-		    	a4.setText("*Answer4 must contain at least one letter!");
+		    	a4.setText("*with letters!");
 		        Answer4.setStyle("-fx-border-color:red;");
 		    } else {
 		    	a4.setText("");
