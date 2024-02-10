@@ -16,19 +16,14 @@
          <children>
             <AnchorPane id="pane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="1109.0" style="-fx-background-color: linear-gradient(to right, rgba(251,201,79,1) 0%, rgba(231,140,8,1) 35%, rgba(226,199,134,1) 100%);">
                <children>
-                  <AnchorPane id="pane" layoutX="-5.0" layoutY="-10.0" prefHeight="613.0" prefWidth="1119.0" style="-fx-background-color: white; -fx-background-radius: 1em;" stylesheets="@../view/application.css" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="-10.0">
+                  <AnchorPane id="pane" layoutX="-5.0" layoutY="-10.0" prefHeight="613.0" prefWidth="1119.0" style="-fx-background-color: white; -fx-background-radius: 1em;" stylesheets="@application.css" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="-10.0">
                      <children>
-                        <ImageView fitHeight="127.0" fitWidth="229.0" layoutX="469.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="533.0" fitWidth="704.0" layoutX="269.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Images/frame4.png" />
+                              <Image url="@../Images/framered.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="379.0" fitWidth="496.0" layoutX="335.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/frame4.png" />
-                           </image>
-                        </ImageView>
-                        <Button fx:id="startbutton" layoutX="421.0" layoutY="254.0" mnemonicParsing="false" onAction="#start" prefHeight="51.0" prefWidth="95.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@../view/application.css" text="Start">
+                        <Button fx:id="startbutton" layoutX="445.0" layoutY="113.0" mnemonicParsing="false" onAction="#start" prefHeight="51.0" prefWidth="185.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@../view/application.css" text="Start">
                            <textFill>
                               <LinearGradient endX="1.0" endY="1.0">
                                  <stops>
@@ -49,33 +44,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="127.0" fitWidth="239.0" layoutX="469.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/frame4.png" />
-                           </image>
-                        </ImageView>
-                        <Button fx:id="historybutton" layoutX="535.0" layoutY="254.0" mnemonicParsing="false" onAction="#history" prefHeight="51.0" prefWidth="95.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@../view/application.css" text="History">
-                           <textFill>
-                              <LinearGradient endX="1.0" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color red="0.3947368562221527" green="0.008528265170753002" blue="0.24025341868400574" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color red="0.2982456088066101" green="0.20759060978889465" blue="0.011966644786298275" />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                           <font>
-                              <Font name="System Bold Italic" size="13.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="questionsbutton" layoutX="652.0" layoutY="254.0" mnemonicParsing="false" onAction="#questions" prefHeight="51.0" prefWidth="112.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@../view/application.css" text="Questions">
+                        <Button fx:id="questionsbutton" layoutX="441.0" layoutY="321.0" mnemonicParsing="false" onAction="#questions" prefHeight="51.0" prefWidth="185.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@../view/application.css" text="Questions">
                            <textFill>
                               <LinearGradient endX="1.0" endY="1.0">
                                  <stops>
@@ -96,11 +65,27 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="72.0" fitWidth="126.0" layoutX="524.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/icon99.png" />
-                           </image>
-                        </ImageView>
+                        <Button fx:id="historybutton" layoutX="442.0" layoutY="212.0" mnemonicParsing="false" onAction="#history" prefHeight="51.0" prefWidth="185.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@../view/application.css" text="History">
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.3947368562221527" green="0.008528265170753002" blue="0.24025341868400574" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.2982456088066101" green="0.20759060978889465" blue="0.011966644786298275" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>
