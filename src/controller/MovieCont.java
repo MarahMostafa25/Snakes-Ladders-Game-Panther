@@ -30,13 +30,13 @@ public class MovieCont implements Initializable{
 		
 		
 	        
-		   Media media = new Media(getClass().getResource("/Images/backVid1.mp4").toString());		
+		   Media media = new Media(getClass().getResource("/Images/Vid2.mp4").toString());		
 		   MediaPlayer player=new MediaPlayer(media);
 	       player.setMute(true);
 		   player.setCycleCount(MediaPlayer.INDEFINITE);
 		   vm.setMediaPlayer(player);
 		   player.play();
-		   Duration duration = Duration.seconds(4);
+		   Duration duration = Duration.seconds(3.5);
 	        Timeline timeline = new Timeline(new KeyFrame(duration, event -> {
 	        	try {
 	    			Parent root = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
