@@ -24,29 +24,29 @@
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="317.0" layoutY="47.0" prefHeight="320.0" prefWidth="341.0" style="-fx-background-color: #FAF9F6; -fx-opacity: 0.7; -fx-background-radius: 20;">
+      <AnchorPane layoutX="317.0" layoutY="47.0" prefHeight="320.0" prefWidth="403.0" style="-fx-background-color: #FAF9F6; -fx-opacity: 0.7; -fx-background-radius: 20;">
          <children>
-            <TextField fx:id="question_text" layoutX="38.0" layoutY="42.0" prefHeight="25.0" prefWidth="255.0" promptText="Question Text" style="-fx-background-radius: 20;">
+            <TextField fx:id="question_text" layoutX="38.0" layoutY="42.0" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="255.0" promptText="Question Text" style="-fx-background-radius: 20;">
                <font>
                   <Font name="Arial Bold Italic" size="13.0" />
                </font>
             </TextField>
-            <TextField fx:id="answer1_text" layoutX="38.0" layoutY="72.0" prefHeight="25.0" prefWidth="255.0" promptText="Answer 1" style="-fx-background-radius: 20;">
+            <TextField fx:id="answer1_text" layoutX="38.0" layoutY="72.0" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="255.0" promptText="Answer 1" style="-fx-background-radius: 20;">
                <font>
                   <Font name="Arial Bold Italic" size="13.0" />
                </font>
             </TextField>
-            <TextField fx:id="answer2_text" layoutX="38.0" layoutY="102.0" prefHeight="25.0" prefWidth="255.0" promptText="Answer 2" style="-fx-background-radius: 20;">
+            <TextField fx:id="answer2_text" layoutX="38.0" layoutY="102.0" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="255.0" promptText="Answer 2" style="-fx-background-radius: 20;">
                <font>
                   <Font name="Arial Bold Italic" size="13.0" />
                </font>
             </TextField>
-            <TextField fx:id="answer3_text" layoutX="38.0" layoutY="132.0" prefHeight="25.0" prefWidth="255.0" promptText="Answer 3" style="-fx-background-radius: 20;">
+            <TextField fx:id="answer3_text" layoutX="38.0" layoutY="132.0" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="255.0" promptText="Answer 3" style="-fx-background-radius: 20;">
                <font>
                   <Font name="Arial Bold Italic" size="13.0" />
                </font>
             </TextField>
-            <TextField fx:id="answer4_text" layoutX="38.0" layoutY="162.0" prefHeight="25.0" prefWidth="255.0" promptText="Answer 4" style="-fx-background-radius: 20;">
+            <TextField fx:id="answer4_text" layoutX="38.0" layoutY="162.0" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="255.0" promptText="Answer 4" style="-fx-background-radius: 20;">
                <font>
                   <Font name="Arial Bold Italic" size="13.0" />
                </font>
@@ -58,11 +58,11 @@
                </font>
             </Button>
             <ComboBox fx:id="correct" layoutX="38.0" layoutY="189.0" prefHeight="28.0" prefWidth="255.0" promptText="Correct" style="-fx-background-color: white; -fx-border-color: orange;" />
-            <Label fx:id="coerror" layoutX="299.0" layoutY="46.0" prefHeight="17.0" prefWidth="49.0" textFill="RED" />
-            <Label fx:id="a1" layoutX="299.0" layoutY="76.0" prefHeight="17.0" prefWidth="49.0" textFill="RED" />
-            <Label fx:id="a1" layoutX="299.0" layoutY="106.0" prefHeight="17.0" prefWidth="55.0" textFill="RED" />
-            <Label fx:id="a1" layoutX="299.0" layoutY="136.0" prefHeight="17.0" prefWidth="55.0" textFill="RED" />
-            <Label fx:id="a1" layoutX="299.0" layoutY="166.0" prefHeight="17.0" prefWidth="49.0" textFill="RED" />
+            <Label fx:id="coerror" layoutX="299.0" layoutY="46.0" prefHeight="17.0" prefWidth="95.0" textFill="RED" />
+            <Label fx:id="a1" layoutX="299.0" layoutY="76.0" prefHeight="17.0" prefWidth="95.0" textFill="RED" />
+            <Label fx:id="a2" layoutX="299.0" layoutY="106.0" prefHeight="17.0" prefWidth="95.0" textFill="RED" />
+            <Label fx:id="a3" layoutX="299.0" layoutY="136.0" prefHeight="17.0" prefWidth="95.0" textFill="RED" />
+            <Label fx:id="a4" layoutX="299.0" layoutY="166.0" prefHeight="17.0" prefWidth="95.0" textFill="RED" />
          </children>
       </AnchorPane>
       <Label layoutX="83.0" layoutY="14.0" prefHeight="71.0" prefWidth="283.0" text="Update Question">

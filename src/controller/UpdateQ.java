@@ -18,8 +18,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyEvent;
 import model.Question;
 import model.SysData;
 import utils.Level;
@@ -52,6 +54,16 @@ public class UpdateQ  implements Initializable{
     private Button updateButton;
     @FXML
     private Button backbutton;
+    @FXML
+	Label coerror;
+	@FXML
+	Label a1;
+	@FXML
+	Label a2;
+	@FXML
+	Label a3;
+	@FXML
+	Label a4;
 
 
 	
@@ -147,5 +159,64 @@ public class UpdateQ  implements Initializable{
 		level.valueProperty().set(null);
 		
 		}
+	
+	@FXML
+	public void keyPressed(KeyEvent e)
+	{
+		if (e.getSource() == question_text) {
+		    if (!question_text.getText().chars().anyMatch(Character::isLetter)) {
+		        coerror.setText("*with letters!");
+		        question_text.setStyle("-fx-border-color:red;");
+		    } else {
+		        coerror.setText("");
+		        question_text.setStyle("-fx-border-color:green;");
+		    }
+		}
+
+		
+		if (e.getSource() == answer1_text) {
+		    if (!answer1_text.getText().chars().anyMatch(Character::isLetter)) {
+		    	a1.setText("*with letters!");
+		    	answer1_text.setStyle("-fx-border-color:red;");
+		    } else {
+		    	a1.setText("");
+		    	answer1_text.setStyle("-fx-border-color:green;");
+		    }
+		}
+		
+		if (e.getSource() == answer2_text) {
+		    if (!answer2_text.getText().chars().anyMatch(Character::isLetter)) {
+		    	a2.setText("*with letters!");
+		    	answer2_text.setStyle("-fx-border-color:red;");
+		    } else {
+		    	a2.setText("");
+		    	answer2_text.setStyle("-fx-border-color:green;");
+		    }
+		}
+		
+		if (e.getSource() == answer3_text) {
+		    if (!answer3_text.getText().chars().anyMatch(Character::isLetter)) {
+		    	a3.setText("*with letters!");
+		    	answer3_text.setStyle("-fx-border-color:red;");
+		    } else {
+		    	a3.setText("");
+		    	answer3_text.setStyle("-fx-border-color:green;");
+		    }
+		}
+		
+		if (e.getSource() == answer4_text) {
+		    if (!answer4_text.getText().chars().anyMatch(Character::isLetter)) {
+		    	a4.setText("*with letters!");
+		    	answer4_text.setStyle("-fx-border-color:red;");
+		    } else {
+		    	a4.setText("");
+		    	answer4_text.setStyle("-fx-border-color:green;");
+		    }
+		}
+		
+			
+		
+	}
+	
 
 }
