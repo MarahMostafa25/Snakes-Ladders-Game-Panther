@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import org.json.simple.parser.ParseException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -57,7 +59,7 @@ public class UpdateQ  implements Initializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public void updateQuestion(ActionEvent e) throws IOException {
+	public void updateQuestion(ActionEvent e) throws IOException, ParseException {
 		if(question_text.getText().length() == 0 || answer1_text.getText().length() == 0 ||
 				answer2_text.getText().length() == 0 || answer3_text.getText().length() == 0 ||
 						answer4_text.getText().length() == 0 ) {
@@ -81,9 +83,9 @@ public class UpdateQ  implements Initializable{
 		String ans3_text = answer3_text.getText();
 		String ans4_text = answer4_text.getText();
 		Level levell = level.getSelectionModel().getSelectedItem();
-		int correct= (int)correct.getSelectionModel().getSelectedItem();
+		int correct4= (int) correct.getSelectionModel().getSelectedItem();
 		Question q = new Question(ques_text, levell, 
-				ans1_text, ans2_text, ans3_text, ans4_text,correct);
+				ans1_text, ans2_text, ans3_text, ans4_text,correct4);
 		SysData.getInstance().RemoveFromJson(questionT);
     	SysData.getInstance().writeQuestionToJson(q,"Questions.json");;
 		//clear fields

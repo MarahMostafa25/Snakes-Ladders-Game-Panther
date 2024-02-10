@@ -24,7 +24,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Question;
 import model.SysData;
-import view.MainMenu;
+
 
 
 
@@ -148,6 +148,9 @@ public class QuestionController implements Initializable {
 			else {
 				tablee.getItems().remove(q);
 				SysData.getInstance().RemoveFromJson(q);
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setContentText("Deleted Successfully!");
+				alert.show();
 			}
 		}
 
