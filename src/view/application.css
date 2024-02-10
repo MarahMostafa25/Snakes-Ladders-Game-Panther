@@ -1,20 +1,20 @@
 .table-view .column-header,
 .table-view .column-header-background .filler {
     -fx-cell-size : 20;
-    -fx-background-color:rgb(234,188,220);
+    -fx-background-color:#e88504;
 }
 .table-view .column-header .label{
 
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-alignment: CENTER_LEFT;
-    -fx-background-color:rgb(234,188,220);
+    -fx-background-color:#e88504;
     -fx-font-family:verdana;
 }
  #button7{
     -fx-border-color: gold;
     -fx-background-radius: 30; -fx-min-width: 30px; -fx-min-height: 30px;
-    -fx-background-color:gold;
+    -fx-background-color:#e88504;
 }
 
 
@@ -28,7 +28,7 @@
  
 
 #pane{
-    -fx-background-image: url("../Images/backgame.jpeg");
+    -fx-background-image: url("../Images/bbb.png");
     -fx-background-repeat: stretch;   
     -fx-background-size: 1119 610;
     -fx-background-position: center center;
@@ -51,7 +51,7 @@
 
 
 #pane314{
-    -fx-background-image: url("../Images/forLevel.jpeg");
+    -fx-background-image: url("../Images/playersBack.png");
     -fx-background-repeat: stretch;   
     -fx-background-size: 1103 586;
     -fx-background-position: center center;
@@ -84,14 +84,14 @@
     -fx-border-color:transparent;
      -fx-cell-size: 30;
     -fx-alignment: center-left;
-     -fx-text-fill: #C01D8D;
+     -fx-text-fill: #e88504;
      -fx-font-family:verdana;
     
    
 }
 
 .table-row-cell:selected{
-    -fx-background-color: #EBC1DE;
+    -fx-background-color:#e88504;
 }
 
 
@@ -100,7 +100,7 @@
 
 /* The increment and decrement button CSS class of scrollbar */
 .table-view .increment-button ,.table-view .decrement-button {
-    -fx-background-color:#C01D8D;
+    -fx-background-color:#e88504;
     -fx-background-radius: 2em;
 
 }
@@ -109,7 +109,7 @@
 .table-view .scroll-bar:horizontal .track,
 .table-view .scroll-bar:vertical .track{
     -fx-background-color: transparent;
-    -fx-border-color:derive(  #C01D8D,80%);
+    -fx-border-color:derive(  #e88504,80%);
     -fx-background-radius: 2em;
     -fx-border-radius:2em;
 }
@@ -117,7 +117,7 @@
 /* The main scrollbar **thumb** CSS class which we drag every time (movable) */
 .table-view .scroll-bar:horizontal .thumb,
 .table-view .scroll-bar:vertical .thumb {
-    -fx-background-color:derive( #C01D8D,90%);
+    -fx-background-color:derive( #e88504,90%);
     -fx-background-insets: 2, 0, 0;
     -fx-background-radius: 2em;
 
@@ -131,14 +131,14 @@
 #table1.table-view .column-header,
 .table-view .column-header-background .filler {
     -fx-cell-size : 20;
-    -fx-background-color:#D65DAF;
+    -fx-background-color:#e88504;
 }
 #table1.table-view .column-header .label{
 
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-alignment: CENTER_LEFT;
-    -fx-background-color: #D65DAF;
+    -fx-background-color: #e88504;
     -fx-font-family:verdana;
 }
 #table1.table-view .cell{
@@ -146,14 +146,14 @@
     -fx-border-color:transparent;
      -fx-cell-size: 30;
     -fx-alignment: center-left;
-     -fx-text-fill:#711653;
+     -fx-text-fill:#f1b04c;
      -fx-font-family:verdana;
     
    
 }
 
 #table1 .table-row-cell:selected{
-    -fx-background-color: #E37CC3;
+    -fx-background-color: #e88504;
     }
     
 
@@ -164,7 +164,7 @@
 
 /* The increment and decrement button CSS class of scrollbar */
 #table1.table-view .increment-button ,.table-view .decrement-button {
-    -fx-background-color:#D65DAF;
+    -fx-background-color:#e88504;
     -fx-background-radius: 2em;
 
 }
@@ -173,7 +173,7 @@
 #table1.table-view .scroll-bar:horizontal .track,
 .table-view .scroll-bar:vertical .track{
     -fx-background-color: transparent;
-    -fx-border-color:#D65DAF;
+    -fx-border-color:#e88504;
     -fx-background-radius: 2em;
     -fx-border-radius:2em;
 }
@@ -181,7 +181,7 @@
 /* The main scrollbar **thumb** CSS class which we drag every time (movable) */
 #table1.table-view .scroll-bar:horizontal .thumb,
 .table-view .scroll-bar:vertical .thumb {
-    -fx-background-color:#D65DAF;
+    -fx-background-color:#e88504;
     -fx-background-insets: 2, 0, 0;
     -fx-background-radius: 2em;
 

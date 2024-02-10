@@ -52,7 +52,7 @@ public class PlayerController {
 	public void addPLayer(ActionEvent e) throws IOException {
 		if(isFirstTimeClicked==1)
 		{
-			Image newImage = new Image("/Images/image3.png");
+			Image newImage = new Image("/Images/egyy3.png");
 
 			image3.setImage(newImage);
 			image31.setImage(newImage);
@@ -66,7 +66,7 @@ public class PlayerController {
 		{
 			if(isFirstTimeClicked==2)
 			{
-				Image newImage2 = new Image("/Images/image4.png");
+				Image newImage2 = new Image("/Images/egyy4.png");
 
 				image4.setImage(newImage2);
 				image41.setImage(newImage2);
