@@ -1,14 +1,29 @@
 package controller;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import model.Question;
+import model.SysData;
 import utils.Level;
 
 
-public class UpdateQ {
+public class UpdateQ  implements Initializable{
 
 	public static Question questionT = null;
     @FXML
@@ -41,5 +56,94 @@ public class UpdateQ {
 	public UpdateQ() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public void updateQuestion(ActionEvent e) throws IOException {
+		if(question_text.getText().length() == 0 || answer1_text.getText().length() == 0 ||
+				answer2_text.getText().length() == 0 || answer3_text.getText().length() == 0 ||
+						answer4_text.getText().length() == 0 ) {
+		     //if there's one field empty the user gets a note : add is not applied!
+			Alert a=new Alert(AlertType.CONFIRMATION);
+			a.setHeaderText("FILL ALL FIELDS PLEASE");
+			a.showAndWait();
+		}
+		
+		//check if the combo box selected (filled)
+		if(correct.getSelectionModel().getSelectedIndex() == -1 || correct.getSelectionModel().getSelectedIndex() == -1) {
+			Alert a=new Alert(AlertType.CONFIRMATION);
+			a.setHeaderText("FILL ALL FIELDS PLEASE");
+			a.showAndWait();
+		}
+		
+		//get the fields the user filled
+		String ques_text = question_text.getText();
+		String ans1_text = answer1_text.getText();
+		String ans2_text = answer2_text.getText();
+		String ans3_text = answer3_text.getText();
+		String ans4_text = answer4_text.getText();
+		Level levell = level.getSelectionModel().getSelectedItem();
+		int correct= (int)correct.getSelectionModel().getSelectedItem();
+		Question q = new Question(ques_text, levell, 
+				ans1_text, ans2_text, ans3_text, ans4_text,correct);
+		SysData.getInstance().RemoveFromJson(questionT);
+    	SysData.getInstance().writeQuestionToJson(q,"Questions.json");;
+		//clear fields
+		clearFields();
+		Alert a=new Alert(AlertType.CONFIRMATION);
+		a.setHeaderText("ADDED SUCCESSFULLY");
+		a.showAndWait();
+
+	}
+	
+
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+		// TODO Auto-generated method stub
+		ObservableList<Level> list=FXCollections.observableArrayList(Level.values());
+		level.setItems(list);
+		level.setVisibleRowCount(5);
+		ArrayList<Integer> ar=new ArrayList<Integer>();
+		for( int i=1;i<5;i++)
+		{
+			ar.add(i);
+		}
+		ObservableList<Integer> list2=FXCollections.observableArrayList(ar);
+		correct.setItems(list2);
+		correct.setVisibleRowCount(5);
+		question_text.setText(questionT.getQuestionContent());
+		answer1_text.setText(questionT.getAnswer1());
+		answer2_text.setText(questionT.getAnswer2());
+		answer3_text.setText(questionT.getAnswer3());
+		answer4_text.setText(questionT.getAnswer4());
+		level.setValue(questionT.getLevel());
+		correct.setValue(questionT.getCorrectAnswerNumber());
+		
+		
+		
+	}
+	
+	@FXML
+	public void backB(ActionEvent e) throws IOException {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/view/Questions.fxml"));
+			Scene scene = new Scene(root);
+			Main.mainS.setScene(scene);
+
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+	}
+	
+	private void clearFields() {
+		question_text.clear();
+		answer1_text.clear();
+		answer2_text.clear();
+		answer3_text.clear();
+		answer4_text.clear();
+		correct.valueProperty().set(null);
+		level.valueProperty().set(null);
+		
+		}
 
 }
