@@ -1,72 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="734.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="734.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="525.0" fitWidth="734.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/backgroundQuestions.jpg.jpeg" />
          </image>
       </ImageView>
-      <Label layoutX="277.0" layoutY="6.0" prefHeight="48.0" prefWidth="272.0" text="Update Question">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="29.0" />
-         </font>
-      </Label>
-      <Label layoutX="82.0" layoutY="131.0" prefHeight="28.0" prefWidth="95.0" text="Answers">
+      <Label layoutX="21.0" layoutY="12.0" prefHeight="31.0" prefWidth="180.0">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="ContentQuestionUpdate" layoutX="182.0" layoutY="60.0" prefHeight="59.0" prefWidth="499.0" />
-      <TextField fx:id="Answer1Update" layoutX="265.0" layoutY="128.0" prefHeight="41.0" prefWidth="375.0" />
-      <TextField fx:id="Answer2Update" layoutX="265.0" layoutY="180.0" prefHeight="41.0" prefWidth="375.0" />
-      <TextField fx:id="Answer3Update" layoutX="265.0" layoutY="232.0" prefHeight="41.0" prefWidth="375.0" />
-      <TextField fx:id="Answer4Update" layoutX="265.0" layoutY="286.0" prefHeight="41.0" prefWidth="375.0" />
-      <Button fx:id="UpdateQuesion" layoutX="375.0" layoutY="399.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="114.0" text="Update" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
-         <effect>
-            <DropShadow />
-         </effect>
+      <AnchorPane layoutX="317.0" layoutY="47.0" prefHeight="320.0" prefWidth="341.0" style="-fx-background-color: #FAF9F6; -fx-opacity: 0.7; -fx-background-radius: 20;">
+         <children>
+            <TextField fx:id="question_text" layoutX="38.0" layoutY="42.0" prefHeight="25.0" prefWidth="255.0" promptText="Question Text" style="-fx-background-radius: 20;">
+               <font>
+                  <Font name="Arial Bold Italic" size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="answer1_text" layoutX="38.0" layoutY="72.0" prefHeight="25.0" prefWidth="255.0" promptText="Answer 1" style="-fx-background-radius: 20;">
+               <font>
+                  <Font name="Arial Bold Italic" size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="answer2_text" layoutX="38.0" layoutY="102.0" prefHeight="25.0" prefWidth="255.0" promptText="Answer 2" style="-fx-background-radius: 20;">
+               <font>
+                  <Font name="Arial Bold Italic" size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="answer3_text" layoutX="38.0" layoutY="132.0" prefHeight="25.0" prefWidth="255.0" promptText="Answer 3" style="-fx-background-radius: 20;">
+               <font>
+                  <Font name="Arial Bold Italic" size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="answer4_text" layoutX="38.0" layoutY="162.0" prefHeight="25.0" prefWidth="255.0" promptText="Answer 4" style="-fx-background-radius: 20;">
+               <font>
+                  <Font name="Arial Bold Italic" size="13.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="level" layoutX="38.0" layoutY="219.0" prefHeight="28.0" prefWidth="255.0" promptText="Level" style="-fx-background-color: orawhitenge; -fx-border-color: orange;" />
+            <Button fx:id="updateButton" layoutX="76.0" layoutY="270.0" mnemonicParsing="false" onAction="#updateQuestion" prefHeight="35.0" prefWidth="163.0" style="-fx-background-radius: 20; -fx-border-color: none;" stylesheets="@application.css" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <ComboBox fx:id="correct" layoutX="38.0" layoutY="189.0" prefHeight="28.0" prefWidth="255.0" promptText="Correct" style="-fx-background-color: white; -fx-border-color: orange;" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="14.0" layoutY="-6.0" prefHeight="71.0" prefWidth="283.0" text="Update Question">
          <font>
-            <Font name="Baskerville Old Face" size="24.0" />
-         </font>
-      </Button>
-      <Label layoutX="228.0" layoutY="131.0" text="1.">
-         <font>
-            <Font size="24.0" />
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="228.0" layoutY="183.0" text="2.">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="228.0" layoutY="235.0" text="3.">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="219.0" layoutY="289.0" text="4.">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="60.0" layoutY="348.0" prefHeight="31.0" prefWidth="168.0" text="Correct Answer">
-         <font>
-            <Font name="System Bold Italic" size="21.0" />
-         </font>
-      </Label>
-      <MenuButton fx:id="CorrectAnswerUpdate" layoutX="265.0" layoutY="343.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="375.0" text="MenuButton">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
-            <MenuItem mnemonicParsing="false" text="Action 2" />
-         </items>
-      </MenuButton>
    </children>
 </AnchorPane>
