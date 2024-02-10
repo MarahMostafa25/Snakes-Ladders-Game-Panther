@@ -16,12 +16,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Question;
 import model.SysData;
+import view.MainMenu;
 
 
 
@@ -106,5 +109,28 @@ public class QuestionController implements Initializable {
 			e1.printStackTrace();
 		}
 	}
+	
+	 @FXML
+	   public boolean UpdateScene(ActionEvent event) {
+	    	try {
+	    		if(tablee.getSelectionModel().getSelectedIndex() == -1) {
+	    			Alert a=new Alert(AlertType.CONFIRMATION);
+	    			a.setHeaderText("FILL ALL FIELDS PLEASE");
+	    			a.showAndWait();
+	    			return false;
+	    		}
+	    		//question to update is question selected
+	    		UpdateQ.questionT = tablee.getSelectionModel().getSelectedItem();
+				Parent root = FXMLLoader.load(getClass().getResource("/view/UpdateQuesion.fxml"));
+				Scene scene = new Scene(root);
+				Main.mainS.setScene(scene);
+				return true;
+
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			return true;
+	    }
 
 }
