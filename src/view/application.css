@@ -42,6 +42,14 @@
     -fx-background-position: center center;
     -fx-effect: dropshadow(three-pass-box,#086003, 30, 0.5, 0, 0); 
 }
+#pane7{
+    -fx-background-image: url("../Images/cartoon.jpg");
+    -fx-background-repeat: stretch;  
+    -fx-background-size: 1279 768;
+     
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box,white, 30, 0.5, 0, 0); 
+}
 
 #image5 {
     -fx-effect: dropshadow(gaussian, gold, 100, 0, 0, 0);
