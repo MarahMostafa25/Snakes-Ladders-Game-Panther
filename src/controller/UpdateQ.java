@@ -80,31 +80,35 @@ public class UpdateQ  implements Initializable{
 			a.setHeaderText("FILL ALL FIELDS PLEASE");
 			a.showAndWait();
 		}
+		else {
 		
-		//check if the combo box selected (filled)
-		if(correct.getSelectionModel().getSelectedIndex() == -1 || correct.getSelectionModel().getSelectedIndex() == -1) {
-			Alert a=new Alert(AlertType.CONFIRMATION);
-			a.setHeaderText("FILL ALL FIELDS PLEASE");
-			a.showAndWait();
+			//check if the combo box selected (filled)
+			if(correct.getSelectionModel().getSelectedIndex() == -1 || correct.getSelectionModel().getSelectedIndex() == -1) {
+				Alert a=new Alert(AlertType.CONFIRMATION);
+				a.setHeaderText("FILL ALL FIELDS PLEASE");
+				a.showAndWait();
+			}
+			else {
+			
+				//get the fields the user filled
+				String ques_text = question_text.getText();
+				String ans1_text = answer1_text.getText();
+				String ans2_text = answer2_text.getText();
+				String ans3_text = answer3_text.getText();
+				String ans4_text = answer4_text.getText();
+				Level levell = level.getSelectionModel().getSelectedItem();
+				int correct4= (int) correct.getSelectionModel().getSelectedItem();
+				Question q = new Question(ques_text, levell, 
+						ans1_text, ans2_text, ans3_text, ans4_text,correct4);
+				SysData.getInstance().RemoveFromJson(questionT);
+		    	SysData.getInstance().writeQuestionToJson(q,"Questions.json");;
+				//clear fields
+				clearFields();
+				Alert a=new Alert(AlertType.CONFIRMATION);
+				a.setHeaderText("ADDED SUCCESSFULLY");
+				a.showAndWait();
+			}
 		}
-		
-		//get the fields the user filled
-		String ques_text = question_text.getText();
-		String ans1_text = answer1_text.getText();
-		String ans2_text = answer2_text.getText();
-		String ans3_text = answer3_text.getText();
-		String ans4_text = answer4_text.getText();
-		Level levell = level.getSelectionModel().getSelectedItem();
-		int correct4= (int) correct.getSelectionModel().getSelectedItem();
-		Question q = new Question(ques_text, levell, 
-				ans1_text, ans2_text, ans3_text, ans4_text,correct4);
-		SysData.getInstance().RemoveFromJson(questionT);
-    	SysData.getInstance().writeQuestionToJson(q,"Questions.json");;
-		//clear fields
-		clearFields();
-		Alert a=new Alert(AlertType.CONFIRMATION);
-		a.setHeaderText("ADDED SUCCESSFULLY");
-		a.showAndWait();
 
 	}
 	
@@ -149,6 +153,7 @@ public class UpdateQ  implements Initializable{
 		}
 	}
 	
+	//clear all fields
 	private void clearFields() {
 		question_text.clear();
 		answer1_text.clear();
@@ -160,6 +165,9 @@ public class UpdateQ  implements Initializable{
 		
 		}
 	
+	
+	
+	//i used this method to make sure that the player will input something which make sense (not only numbers)
 	@FXML
 	public void keyPressed(KeyEvent e)
 	{

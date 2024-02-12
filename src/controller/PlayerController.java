@@ -7,16 +7,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import model.HelpClass;
+import model.Player;
 
 public class PlayerController {
 	@FXML
 	Button add;
+	@FXML
+	Button del;
 	@FXML
 	Button startButton;
 	@FXML
@@ -46,8 +52,11 @@ public class PlayerController {
 	Button backbutton;
 	
     private int isFirstTimeClicked =1;
-
+    private int isFirstTimeClickedDel =1;
+    private int numPlayer=2;
 	
+    
+    //add player
 	@FXML
 	public void addPLayer(ActionEvent e) throws IOException {
 		if(isFirstTimeClicked==1)
@@ -57,8 +66,10 @@ public class PlayerController {
 			image3.setImage(newImage);
 			image31.setImage(newImage);
 
-	        name3.setStyle("-fx-text-fill: white;");
+	        name3.setStyle("-fx-background-color: white;");
 	        isFirstTimeClicked=2;
+	        isFirstTimeClickedDel=1;
+	        numPlayer++;
 
 			
 		}
@@ -71,8 +82,10 @@ public class PlayerController {
 				image4.setImage(newImage2);
 				image41.setImage(newImage2);
 
-		        name4.setStyle("-fx-text-fill: white;");
+		        name4.setStyle("-fx-background-color: white;");
 		        isFirstTimeClicked=3;
+		        isFirstTimeClickedDel=2;
+		        numPlayer++;
 
 				
 			}
@@ -81,6 +94,7 @@ public class PlayerController {
 
 	}
 	
+	//get back to previous page
 	@FXML
 	public void backB(ActionEvent e) throws IOException {
 		try {
@@ -101,6 +115,128 @@ public class PlayerController {
 
 	public PlayerController() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	//remove players 
+	@FXML
+	public void delPLayer(ActionEvent e) throws IOException {
+		if(isFirstTimeClickedDel==1)
+		{
+			
+     
+			image3.setImage(null);
+			image31.setImage(null);
+			name3.setText("");
+			name3.setStyle("-fx-background-color: transparent;");
+	        isFirstTimeClicked=1;
+	        numPlayer--;
+
+			
+		}
+		else
+		{
+			if(isFirstTimeClickedDel==2)
+			{
+				
+
+				image4.setImage(null);
+				image41.setImage(null);
+				name4.setText("");
+				name4.setStyle("-fx-background-color: transparent;");
+		        isFirstTimeClicked=2;
+		        isFirstTimeClickedDel=1;
+		        numPlayer--;
+		        
+
+				
+			}
+		}
+		
+
+	}
+	//here i saved the players in the helping class instance so i could use it in the real game
+	@FXML
+	public void start2(ActionEvent e) throws IOException {
+		
+		HelpClass.getInstance().setNumOfPlayer(numPlayer);
+		if(numPlayer==2) {
+			if(!name1.getText().chars().allMatch(Character::isLetter)||!name2.getText().chars().allMatch(Character::isLetter)||name1.getText().length()==0||name2.getText().length()==0)
+			{
+				Alert a=new Alert(AlertType.CONFIRMATION);
+				a.setHeaderText("Choose character names please");
+				a.showAndWait();
+			}
+			else
+			{
+				Player p1=new Player(name1.getText(),0,0,"Images\\egy1.png");
+				Player p2=new Player(name2.getText(),0,0,"Images\\egyy2.png");
+				HelpClass.getInstance().setP1(p1);
+				HelpClass.getInstance().setP2(p2);
+				//here navigate to other screen
+
+
+			}
+			
+		}
+		else
+		{
+			if(numPlayer==3)
+			{
+				if(!name3.getText().chars().allMatch(Character::isLetter)||name3.getText().length()==0)
+				{
+					Alert a=new Alert(AlertType.CONFIRMATION);
+					a.setHeaderText("Choose character names please");
+					a.showAndWait();
+				}
+				else
+				{
+					Player p1=new Player(name1.getText(),0,0,"Images\\egy1.png");
+					Player p2=new Player(name2.getText(),0,0,"Images\\egyy2.png");
+					Player p3=new Player(name3.getText(),0,0,"Images\\egyy3.png");
+
+					HelpClass.getInstance().setP1(p1);
+					HelpClass.getInstance().setP2(p2);
+					HelpClass.getInstance().setP3(p3);
+
+				}
+			}
+			else
+			{
+				if(numPlayer==4)
+				{
+					if(!name3.getText().chars().allMatch(Character::isLetter)|| !name4.getText().chars().allMatch(Character::isLetter)||name3.getText().length()==0||name4.getText().length()==0)
+					{
+						Alert a=new Alert(AlertType.CONFIRMATION);
+						a.setHeaderText("Choose character names please");
+						a.showAndWait();
+					}
+					else
+					{
+						Player p1=new Player(name1.getText(),0,0,"Images\\egy1.png");
+						Player p2=new Player(name2.getText(),0,0,"Images\\egyy2.png");
+						Player p3=new Player(name3.getText(),0,0,"Images\\egyy3.png");
+						Player p4=new Player(name3.getText(),0,0,"Images\\egyy4.png");
+
+						HelpClass.getInstance().setP1(p1);
+						HelpClass.getInstance().setP2(p2);
+						HelpClass.getInstance().setP3(p3);
+						HelpClass.getInstance().setP4(p4);
+
+					}
+				}
+			}
+		}
+		
+		
+				
+		
 	}
 
 }

@@ -82,7 +82,7 @@ public void questions(ActionEvent e) throws IOException {
 
 	
 	try {
-		Parent root = FXMLLoader.load(getClass().getResource("/view/Questions.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/view/LogIn.fxml"));
 		Scene scene = new Scene(root);
 		Main.mainS.setScene(scene);
 

@@ -12,6 +12,9 @@ import model.SysData;
 import utils.Level;
 
 public class tests {
+	
+	// we checked before that loadQ is working well (which is used in writeQuestionToJson method)
+	// so this test is only for writing.
     @Test
     public void testAddingNewQuestion() throws IOException, ParseException {
 
