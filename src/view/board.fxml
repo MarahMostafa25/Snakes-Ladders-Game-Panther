@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,56 +9,53 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="477.0" prefWidth="641.0" style="-fx-background-color: F8F8F8; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.boardController">
+
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.boardController">
    <children>
-      <ImageView fitHeight="424.0" fitWidth="789.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/backgroundQuestions.jpg.jpeg" />
-         </image>
-      </ImageView>
-      <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="54.0" prefWidth="651.0" style="-fx-background-color: #D19556;">
+      <AnchorPane id="pane7" layoutX="10.0" layoutY="10.0" style="-fx-background-color: F8F8F8; -fx-background-radius: 20;" stylesheets="@application.css">
          <children>
-            <Text fill="WHITE" layoutX="9.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Name:">
-               <font>
-                  <Font name="Gabriola" size="24.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutX="259.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Left" wrappingWidth="86.33336997032166">
-               <font>
-                  <Font name="Gabriola" size="24.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutX="473.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score">
-               <font>
-                  <Font name="Gabriola" size="24.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutX="471.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level">
-               <font>
-                  <Font name="Gabriola" size="24.0" />
-               </font>
-            </Text>
-            <Text fx:id="playerNameLabel" layoutX="115.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="86.33336997032166" />
-            <Text fx:id="timer" layoutX="276.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <TextField layoutX="525.0" layoutY="14.0" prefHeight="31.0" prefWidth="60.0" />
-            <Text fx:id="levelText" layoutX="520.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="69.36328148469329" />
+            <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="54.0" prefWidth="1277.0" style="-fx-background-color: #D19556;">
+               <children>
+                  <Text fill="WHITE" layoutX="7.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player :">
+                     <font>
+                        <Font name="Arial Bold Italic" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="246.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Left" wrappingWidth="128.99999594688416">
+                     <font>
+                        <Font name="Arial Bold Italic" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="471.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level">
+                     <font>
+                        <Font name="Arial Bold Italic" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <GridPane fx:id="board" layoutX="713.0" layoutY="53.0" prefHeight="516.0" prefWidth="564.0" style="-fx-border-color: #9B5E0F; -fx-border-width: 4;">
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+            </GridPane>
+            <ImageView fitHeight="120.0" fitWidth="61.0" layoutX="181.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/egy1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="77.0" fitWidth="49.0" layoutX="395.0" layoutY="456.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/egyy2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="65.0" fitWidth="38.0" layoutX="560.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="65.0" fitWidth="38.0" layoutX="267.0" layoutY="456.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
-      <GridPane fx:id="board" layoutX="295.0" layoutY="93.0" prefHeight="319.0" prefWidth="330.0" style="-fx-border-color: #9B5E0F; -fx-border-width: 4;">
-       <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-        </rowConstraints>
-        <children>
-            <Rectangle fx:id="board" arcHeight="5.0" arcWidth="5.0" fill="#cccccc" height="200.0" stroke="black" strokeType="INSIDE" strokeWidth="1.0" width="200.0" GridPane.columnSpan="2" GridPane.rowSpan="2" />
-            <!-- Adjust width and height as needed -->
-            
-            <GridPane fx:id="cells" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-           </children>
-      </GridPane>
    </children>
 </AnchorPane>
