@@ -165,7 +165,7 @@ public class UpdateQ  implements Initializable{
 	{
 		if (e.getSource() == question_text) {
 		    if (!question_text.getText().chars().anyMatch(Character::isLetter)) {
-		        coerror.setText("*with letters!");
+		        coerror.setText("*with letters !");
 		        question_text.setStyle("-fx-border-color:red;");
 		    } else {
 		        coerror.setText("");
