@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="602.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LevelController">
+   <children>
+      <AnchorPane id="pane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="1109.0" style="-fx-background-color: linear-gradient(to right, rgba(251,201,79,1) 0%, rgba(231,140,8,1) 35%, rgba(226,199,134,1) 100%);">
+         <children>
+            <ImageView accessibleRole="COMBO_BOX" cache="true" fitHeight="729.0" fitWidth="1115.0" layoutY="-137.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/backgroundQuestions.jpg.jpeg" />
+               </image>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+            </ImageView>
+            <Button id="back" fx:id="backbutton" defaultButton="true" ellipsisString=" g" layoutX="10.0" layoutY="21.0" minHeight="44.0" minWidth="45.0" mnemonicParsing="false" onAction="#backB" prefHeight="37.0" prefWidth="57.0" style="-fx-border-radius: 100;" styleClass="menu-button" stylesheets="@application.css" text="back" underline="true">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.28947368264198303" green="0.23159383237361908" blue="0.022335931658744812" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.44736841320991516" green="0.30560970306396484" blue="0.022092267870903015" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Button>
+            <Button id="Home" fx:id="backbutton1" defaultButton="true" layoutX="103.0" layoutY="21.0" minHeight="44.0" minWidth="45.0" mnemonicParsing="false" onAction="#backB" prefHeight="37.0" prefWidth="57.0" style="-fx-border-radius: 100;" styleClass="menu-button" stylesheets="@application.css" text="Home" underline="true">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.28947368264198303" green="0.23159383237361908" blue="0.022335931658744812" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.44736841320991516" green="0.30560970306396484" blue="0.022092267870903015" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Button>
+            <Label layoutX="585.0" layoutY="21.0" text="WELCOME ADMIN">
+               <font>
+                  <Font size="43.0" />
+               </font>
+            </Label>
+            <Label layoutX="427.0" layoutY="115.0" text="User Name">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="427.0" layoutY="179.0" text="Password">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <PasswordField layoutX="585.0" layoutY="179.0" prefHeight="27.0" prefWidth="178.0" />
+            <TextField layoutX="585.0" layoutY="126.0" prefHeight="46.0" prefWidth="178.0" />
+            <Button layoutX="640.0" layoutY="240.0" mnemonicParsing="false" text="Enter!" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

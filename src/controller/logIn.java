@@ -1,81 +1,129 @@
 package controller;
-import java.awt.Font;
+import java.awt.MultipleGradientPaint.CycleMethod;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
+import javafx.scene.text.Font;
 
-public class logIn  {
+@SuppressWarnings("restriction")
+public class logIn implements Initializable {
 
-    private String adminUsername = "admin";
-    private String adminPassword = "admin";
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("JavaFX Login Example");
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+    @FXML
+    private AnchorPane root;
 
-        Text sceneTitle = new Text("Login");
-        sceneTitle.setTextAlignment(TextAlignment.CENTER);
-       // sceneTitle.setFont();
-        grid.add(sceneTitle, 0, 0, 2, 1);
+    @FXML
+    private Label welcomeLabel;
 
-        Label userName = new Label("Username:");
-        grid.add(userName, 0, 1);
+    @FXML
+    private Label userNameLabel;
 
-        TextField userTextField = new TextField();
-        grid.add(userTextField, 1, 1);
+    @FXML
+    private Label passwordLabel;
 
-        Label pw = new Label("Password:");
-        grid.add(pw, 0, 2);
+    @FXML
+    private TextField userNameField;
 
-        PasswordField passwordBox = new PasswordField();
-        grid.add(passwordBox, 1, 2);
+    @FXML
+    private PasswordField passwordField;
 
-        Button btn = new Button("Sign in");
-        HBox hbBtn = new HBox(10);
-        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
-        hbBtn.getChildren().add(btn);
-        grid.add(hbBtn, 1, 4);
+    @FXML
+    private Button enterButton;
 
-        final Text actiontarget = new Text();
-        grid.add(actiontarget, 1, 6);
+    @FXML
+    private ImageView backgroundImage;
 
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                String username = userTextField.getText().toString();
-                String password = passwordBox.getText().toString();
-                if (userTextField.getText().isEmpty()) {
-                    showAlert(AlertType.ERROR, "Form Error!", "Please enter your email id");
-                }
-            }
-        });
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // Initialize the controller here, if necessary.
+
+        // Set the background image
+        Image background = new Image("file:../Images/backgroundQuestions.jpg.jpeg");
+        backgroundImage.setImage(background);
+
+        // Customize the font
+        Font welcomeFont = Font.loadFont(getClass().getResourceAsStream("/fonts/your-font-file.ttf"), 43);
+        Font labelFont = Font.loadFont(getClass().getResourceAsStream("/fonts/your-font-file.ttf"), 30);
+        Font fieldFont = Font.loadFont(getClass().getResourceAsStream("/fonts/your-font-file.ttf"), 28);
+
+        welcomeLabel.setFont(welcomeFont);
+        userNameLabel.setFont(labelFont);
+        passwordLabel.setFont(labelFont);
+        userNameField.setFont(fieldFont);
+        passwordField.setFont(fieldFont);
+        enterButton.setFont(fieldFont);
+
+        // Customize the background gradient
+        Stop[] stops = new Stop[] {
+                new Stop(0, Color.web("#ffc94f")),
+                new Stop(0.35, Color.web("#e78c08")),
+                new Stop(1, Color.web("#eec786"))
+        };
+
+        LinearGradient linearGradient = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE , stops);
+        root.setBackground(new Background(new BackgroundFill(linearGradient, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        // Customize the button effect
+        ColorAdjust colorAdjust = new ColorAdjust();
+        colorAdjust.setBrightness(-0.1);
+        enterButton.setEffect(colorAdjust);
     }
-    private void showAlert(AlertType type, String title, String message) {
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
 
-    }}
+    @FXML
+    private void enterButtonAction() {
+        // Handle the ENTER button action.
+    }
 
-              
+    @FXML
+    private void backButtonAction() {
+        // Handle the back button action.
+    }
+
+    public AnchorPane getRoot() {
+        return root;
+    }
+
+    public Label getWelcomeLabel() {
+        return welcomeLabel;
+    }
+
+    public Label getUserNameLabel() {
+        return userNameLabel;
+    }
+
+    public Label getPasswordLabel() {
+        return passwordLabel;
+    }
+
+    public TextField getUserNameField() {
+        return userNameField;
+    }
+
+    public PasswordField getPasswordField() {
+        return passwordField;
+    }
+
+    public Button getEnterButton() {
+        return enterButton;
+    }
+
+    public ImageView getBackgroundImage() {
+        return backgroundImage;
+    }
+}
