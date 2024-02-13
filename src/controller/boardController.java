@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Cell;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
@@ -36,28 +37,43 @@ import javafx.scene.shape.Rectangle;
 public class boardController implements Initializable{
 	 @FXML
 	    private GridPane board;
-
-	    private Pane[][] panes = new Pane[10][10];
 	    private int x=10;
+	    private Pane[][] panes = new Pane[x][x];
+	    private  Label label;
+	   
 
 	    private final Color[] allowedColors = {
 	            Color.web("white"),
 	            Color.web("#FDA50F"),
 	            
 	    };
-
 	    @Override
 	    public void initialize(URL location, ResourceBundle resources) {
 	        // Populate the GridPane with Panes using allowed colors
-	        for (int row = 0; row < x; row++) {
-	            for (int col = 0; col < x; col++) {
-	                Pane pane = createColoredPane(row, col);
-	                panes[row][col] = pane;
-	                board.add(pane, col, row);
-	            }
-	        }
+	    	 int rows = 10;
+	    	 int cols = 10;
+	    	 for (int row = 0; row < x; row++) {
+	             for (int col = 0; col < x; col++) {
+	                 Pane pane = createColoredPane(row, col);
+	                 int labelValue;
+
+	                 if (row % 2 == 0) {
+	                     labelValue = ((rows - row) * cols - col);
+	                 } else {
+	                     labelValue = ((rows - row) * cols - (cols - col - 1));
+	                 }
+
+	                 // Add label with labelValue text to the pane
+	                 Label label = new Label("" + labelValue);
+	                 pane.getChildren().add(label);
+
+	                 panes[row][col] = pane;
+	                 board.add(pane, col, row);
+	             }
+	         }
 
 	        configureGridPane();
+	       // fillSnakes();
 	        
 	        
 	    }
