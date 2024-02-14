@@ -4,6 +4,7 @@ package controller;
 
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -46,6 +47,7 @@ public class boardController implements Initializable{
 	private int x=10;
 	private Pane[][] panes = new Pane[x][x];
 	private  Label label;
+	// This hashmap saves what the user see
 	private HashMap<Integer,HashMap<Integer,Integer>> boardCells= new HashMap<Integer, HashMap<Integer, Integer>>();
 	private HashMap<Integer,Snake> snakesOnBoard = new HashMap<Integer,Snake>();
 	private HashMap<Integer,Ladder> laddersOnBoard = new HashMap<Integer,Ladder>();
@@ -66,6 +68,8 @@ public class boardController implements Initializable{
 		}
 		return labelValue;
 	}
+
+
 	// This function converts the row and cols to the numbers on the board 
 	private void setBoardCells(int x) // shows the user board the number of each cell
 	{
@@ -89,12 +93,13 @@ public class boardController implements Initializable{
 		int rows = x;
 		int cols = x;
 		initializeOccupiedCells(x);
+		setBoardCells(x);
 	//	System.out.println(ocuupiedCells.get(50));
 		startBoard(rows,cols,x); //This function starts the board and number the cells
 		setSquare();
 		// setSnakes();
 		configureGridPane(); // This function colors the board
-		setBoardCells(x);
+		
 
 		// fillSnakes();
 
@@ -108,10 +113,8 @@ public class boardController implements Initializable{
 				labelValue = calLabelValue(row, col);
 				// Add label with labelValue text to the pane
 				Label label = new Label("" + labelValue);
-
 				// Set alignment to center
 				label.setAlignment(Pos.CENTER);
-
 				// Make the label bold
 				label.setStyle("-fx-font-weight: bold;");
 				pane.getChildren().add(label);
@@ -135,29 +138,37 @@ public class boardController implements Initializable{
 		 ocuupiedCells.put(labelValue, true);
 		 return labelValue;
 	}
-	public void setSquare() 
+	public void setSquare() // sets surprise and question
 	{
 		int labelValue = setObjCheckOcuupied();
 		ocuupiedCells.put(labelValue, true);
 		ImageView surprise = new ImageView(new Image("/Images/surprise.png"));
 		surprise.setFitWidth(40);
 		surprise.setFitHeight(40);
-		//HashMap<Integer , Integer > map =  boardCells.get(labelValue); 
-		int row = 0;
-		int col = 0;
+		HashMap<Integer , Integer > map =  boardCells.get(labelValue); 
+		int row=0;
+		int col=0;
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+             row = entry.getKey();
+             col = entry.getValue();
+        }
 		GridPane.setConstraints(surprise, col, row,1,1);//first is column , second is row,
 		board.getChildren().add(surprise);
 	for(int i=0;i<3;i++)
 	{
-		Random random2 = new Random();
-		 int randomRow = random2.nextInt(x);
-		int randomCol = random2.nextInt(x);
+		 labelValue = setObjCheckOcuupied();
+		 ocuupiedCells.put(labelValue, true);
 		ImageView question = new ImageView(new Image("/Images/question.jpg"));
 		question.setFitWidth(40);
 		question.setFitHeight(40);
 		//Set constraints to span 2 columns and 1 row
 		//first is column , second is row,
-		GridPane.setConstraints(question, randomCol, randomRow,1,1);
+	 map =  boardCells.get(labelValue); 
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+             row = entry.getKey();
+             col = entry.getValue();
+        }
+		GridPane.setConstraints(question, col, row,1,1);
 		board.getChildren().add(question);
 	}
 	}
