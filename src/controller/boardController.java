@@ -244,15 +244,16 @@ public class boardController implements Initializable{
 		 setSnakeToBoardView(bl,35,200,row,col);
 		 /****************yellow Snake *******************/ 
 		 labelValue = setObjCheckOcuupied();
-			while((labelValue == x*x) || (labelValue < 13)) // Can't be at the end or the start
-				labelValue = setObjCheckOcuupied();
-			map =  boardCells.get(labelValue); 
-			 row = 0;
-			 col = 0;
-			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-	             row = entry.getKey();
-	             col = entry.getValue();
+		 map =  boardCells.get(labelValue);
+		 row = 0;
+		 col = 0;
+		 for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+	           row = entry.getKey();
+	           col = entry.getValue();
 	        }
+			while((labelValue == x*x) || (labelValue < 13)||col==x-1||col==x-2) // Can't be at the end or the start
+				labelValue = setObjCheckOcuupied();
+			
 			 endValue = calLabelValue(row+1, col+2);
 			 snake = new Snake(labelValue,endValue,SnakeColor.blue);
 			 ocuupiedCells.put(labelValue, true);
