@@ -52,6 +52,30 @@ public class boardController implements Initializable{
 	private HashMap<Integer,Snake> snakesOnBoard = new HashMap<Integer,Snake>();
 	private HashMap<Integer,Ladder> laddersOnBoard = new HashMap<Integer,Ladder>();
 	private HashMap<Integer,Boolean> ocuupiedCells = new HashMap<Integer,Boolean>();
+	
+	
+	//60,205
+    private ImageView gr = new ImageView(new Image("/Images/greenSnake.png"));
+    //35,200
+    private ImageView bl = new ImageView(new Image("/Images/blueSnake.png"));
+    //170,96
+    private ImageView yellow = new ImageView(new Image("/Images/yellowSnake.png"));
+    private ImageView red1 = new ImageView(new Image("/Images/redSnake.png"));
+    /*ladders*/
+    
+    //ladder1 , 55,100 
+    //ladder2 , 39,135
+    //ladder3, 61,187
+    //ladder4,87,237
+    //ladder5,87,283
+    //ladder6 103,350
+    private ImageView ladder1 = new ImageView(new Image("/Images/ladder1.png"));
+    private ImageView ladder2 = new ImageView(new Image("/Images/ladder2.png"));
+    private ImageView ladder3= new ImageView(new Image("/Images/ladder3.png"));
+    private ImageView ladder4 = new ImageView(new Image("/Images/ladder41.png"));
+    private ImageView ladder5 = new ImageView(new Image("/Images/ladder5.png"));
+    private ImageView ladder6 = new ImageView(new Image("/Images/ladder6.png"));
+    
 	private void initializeOccupiedCells(int x) {
 	    for (int i = 1; i <= x*x; i++) {
 	    	ocuupiedCells.put(i, false);
@@ -178,6 +202,7 @@ public class boardController implements Initializable{
 		int randomRow = random3.nextInt(11); // Generates random numbers between 0 (inclusive) and 10 (exclusive)
 		int randomCol = random3.nextInt(11);
 		//Snake snake = new Snake();
+		
 
 	}
 	public void setLaddrs()
