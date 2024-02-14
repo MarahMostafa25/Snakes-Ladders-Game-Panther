@@ -4,12 +4,12 @@ import utils.SnakeColor;
 
 public class Snake {
 	private static int snakeNumber=1;
-	private Square squareStart;
-	private Square squareEnd;
+	private int squareStart;
+	private int squareEnd;
 	private SnakeColor snakeColor;
 	private int snakeId;
 	
-	public Snake(Square squareStart, Square squareEnd,SnakeColor snakeColor) {
+	public Snake(int squareStart, int squareEnd,SnakeColor snakeColor) {
 		this.squareStart = squareStart;
 		this.squareEnd = squareEnd;
 		this.snakeColor=snakeColor;
@@ -22,16 +22,16 @@ public class Snake {
 	public static void setSnakeNumber(int snakeNumber) {
 		Snake.snakeNumber = snakeNumber;
 	}
-	public Square getSquareStart() {
+	public int getSquareStart() {
 		return squareStart;
 	}
-	public void setSquareStart(Square squareStart) {
+	public void setSquareStart(int squareStart) {
 		this.squareStart = squareStart;
 	}
-	public Square getSquareEnd() {
+	public int getSquareEnd() {
 		return squareEnd;
 	}
-	public void setSquareEnd(Square squareEnd) {
+	public void setSquareEnd(int squareEnd) {
 		this.squareEnd = squareEnd;
 	}
 	public SnakeColor getSnakeColor() {
