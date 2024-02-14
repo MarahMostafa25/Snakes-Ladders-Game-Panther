@@ -32,6 +32,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import utils.Level;
+import utils.SnakeColor;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -55,12 +56,14 @@ public class boardController implements Initializable{
 	
 	
 	//60,205
-    private ImageView gr = new ImageView(new Image("/Images/greenSnake.png"));
+    private ImageView gr1 = new ImageView(new Image("/Images/greenSnake.png"));
+    private ImageView gr2 = new ImageView(new Image("/Images/greenSnake.png"));
     //35,200
     private ImageView bl = new ImageView(new Image("/Images/blueSnake.png"));
     //170,96
     private ImageView yellow = new ImageView(new Image("/Images/yellowSnake.png"));
     private ImageView red1 = new ImageView(new Image("/Images/redSnake.png"));
+    private ImageView red2 = new ImageView(new Image("/Images/redSnake.png"));
     /*ladders*/
     
     //ladder1 , 55,100 
@@ -73,7 +76,7 @@ public class boardController implements Initializable{
     private ImageView ladder2 = new ImageView(new Image("/Images/ladder2.png"));
     private ImageView ladder3= new ImageView(new Image("/Images/ladder3.png"));
     private ImageView ladder4 = new ImageView(new Image("/Images/ladder41.png"));
-    private ImageView ladder5 = new ImageView(new Image("/Images/ladder5.png"));
+    private ImageView ladder41 = new ImageView(new Image("/Images/ladder41.png"));
     private ImageView ladder6 = new ImageView(new Image("/Images/ladder6.png"));
     
 	private void initializeOccupiedCells(int x) {
@@ -121,6 +124,7 @@ public class boardController implements Initializable{
 	//	System.out.println(ocuupiedCells.get(50));
 		startBoard(rows,cols,x); //This function starts the board and number the cells
 		setSquare();
+		setSnakes();
 		// setSnakes();
 		configureGridPane(); // This function colors the board
 		
@@ -165,6 +169,8 @@ public class boardController implements Initializable{
 	public void setSquare() // sets surprise and question
 	{
 		int labelValue = setObjCheckOcuupied();
+		while(labelValue > ((x*x)-10)) // can't jump over the end 
+			labelValue = setObjCheckOcuupied();
 		ocuupiedCells.put(labelValue, true);
 		ImageView surprise = new ImageView(new Image("/Images/surprise.png"));
 		surprise.setFitWidth(40);
@@ -198,12 +204,93 @@ public class boardController implements Initializable{
 	}
 	public void setSnakes()
 	{
-		Random random3 = new Random();
-		int randomRow = random3.nextInt(11); // Generates random numbers between 0 (inclusive) and 10 (exclusive)
-		int randomCol = random3.nextInt(11);
-		//Snake snake = new Snake();
-		
-
+		Snake snake = null;
+		int labelValue = 0;
+		/*********first Kind red snakes  *********/
+		for(int i=0;i<2;i++) {
+		labelValue = setObjCheckOcuupied();
+		while((labelValue == x*x) ||(labelValue == 1)) // Can't be at the end or the start
+			labelValue = setObjCheckOcuupied();
+		 snake = new Snake(labelValue,labelValue,SnakeColor.red);
+		 ocuupiedCells.put(labelValue, true);
+		 snakesOnBoard.put(labelValue, snake);
+		 HashMap<Integer , Integer > map =  boardCells.get(labelValue); 
+			int row=0;
+			int col=0;
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+	             row = entry.getKey();
+	             col = entry.getValue();
+	        }
+			if(i == 0)
+		 setSnakeToBoardView(red1,40,40,row,col);
+			if (i==1)
+				setSnakeToBoardView(red2,40,40,row,col);
+		}
+		/**************** second kind is blue snake  ***************/
+		labelValue = setObjCheckOcuupied();
+		while((labelValue == x*x) || (labelValue < 31)) // Can't be at the end or the start
+			labelValue = setObjCheckOcuupied();
+		HashMap<Integer , Integer > map =  boardCells.get(labelValue); 
+		int row = 0;
+		int col = 0;
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+             row = entry.getKey();
+             col = entry.getValue();
+        }
+		int endValue = calLabelValue(row+3, col);
+		 snake = new Snake(labelValue,endValue,SnakeColor.blue);
+		 ocuupiedCells.put(labelValue, true);
+		 snakesOnBoard.put(labelValue, snake);
+		 setSnakeToBoardView(bl,35,200,row,col);
+		 /****************yellow Snake *******************/ 
+		 labelValue = setObjCheckOcuupied();
+			while((labelValue == x*x) || (labelValue < 13)) // Can't be at the end or the start
+				labelValue = setObjCheckOcuupied();
+			map =  boardCells.get(labelValue); 
+			 row = 0;
+			 col = 0;
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+	             row = entry.getKey();
+	             col = entry.getValue();
+	        }
+			 endValue = calLabelValue(row+1, col+2);
+			 snake = new Snake(labelValue,endValue,SnakeColor.blue);
+			 ocuupiedCells.put(labelValue, true);
+			 snakesOnBoard.put(labelValue, snake);
+			 setSnakeToBoardView(yellow,170,96,row,col);
+			 /************Green Snake**************************/
+				for(int i=0;i<2;i++) {
+					labelValue = setObjCheckOcuupied();
+					while((labelValue == x*x) ||(labelValue < 30)) // Can't be at the end or the start
+						labelValue = setObjCheckOcuupied();
+					 map =  boardCells.get(labelValue); 
+					 row=0;
+					 col=0;
+					for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			             row = entry.getKey();
+			             col = entry.getValue();
+			        }
+					 endValue = calLabelValue(row+2, col);
+					 snake = new Snake(labelValue,labelValue,SnakeColor.red);
+					 ocuupiedCells.put(labelValue, true);
+					 snakesOnBoard.put(labelValue, snake);
+						if(i == 0)
+					 setSnakeToBoardView(gr1,60,205,row,col);
+						if (i==1)
+							setSnakeToBoardView(gr2,60,205,row,col);
+				}
+	}
+	public void setSnakeToBoardView(ImageView image,int w,int h,int row,int col) {
+		image.setFitWidth(w);
+		image.setFitHeight(h);
+		image.setPreserveRatio(true);
+        GridPane.setRowIndex(image, row);
+        GridPane.setColumnIndex(image, col);
+        GridPane.setRowSpan(image, x);
+        GridPane.setColumnSpan(image, x);
+       GridPane.setHalignment(image, HPos.LEFT);
+       GridPane.setValignment(image, VPos.TOP);
+       board.getChildren().add(image);
 	}
 	public void setLaddrs()
 	{
