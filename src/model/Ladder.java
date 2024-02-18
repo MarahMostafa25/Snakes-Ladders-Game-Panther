@@ -5,53 +5,53 @@ import utils.Level;
 public class Ladder {
 	private static  int ladderId=0;
 	private int LadderNum;
-	private Square squareStart;
-	private Square squareEnd;
-	private int squareLenght;
+	private int squareStart;
+	private int squareEnd;
+	private int LadderLenght;
 	private Level levelGame;
-	public Ladder(int ladderId,Square squareStart, Square squareEnd,int squareLenght,Level levelGame) {
+	public Ladder(int ladderId,int squareStart, int squareEnd,int LadderLenght,Level levelGame) {
         this.LadderNum=ladderId++;
 		this.squareStart = squareStart;
 		this.squareEnd = squareEnd;
 		this.levelGame=levelGame;
 		if(levelGame.equals(Level.Easy))
 		{
-			if(squareLenght>4) {
-				this.squareLenght=4;
+			if(LadderLenght>4) {
+				this.LadderLenght=4;
 			}
-			else if(squareLenght<1) {
-				this.squareLenght=1;
+			else if(LadderLenght<1) {
+				this.LadderLenght=1;
 			}
 			else {
-				this.squareLenght=squareLenght;
+				this.LadderLenght=LadderLenght;
 
 			}
 		}
 		
 		if(levelGame.equals(Level.Medium))
 		{
-			if(squareLenght>6) {
-				this.squareLenght=6;
+			if(LadderLenght>6) {
+				this.LadderLenght=6;
 			}
-			else if(squareLenght<1) {
-				this.squareLenght=1;
+			else if(LadderLenght<1) {
+				this.LadderLenght=1;
 			}
 			else {
-				this.squareLenght=squareLenght;
+				this.LadderLenght=LadderLenght;
 
 			}
 		}
 		
 		if(levelGame.equals(Level.Hard))
 		{
-			if(squareLenght>8) {
-				this.squareLenght=8;
+			if(LadderLenght>8) {
+				this.LadderLenght=8;
 			}
-			else if(squareLenght<1) {
-				this.squareLenght=1;
+			else if(LadderLenght<1) {
+				this.LadderLenght=1;
 			}
 			else {
-				this.squareLenght=squareLenght;
+				this.LadderLenght=LadderLenght;
 
 			}
 		}
@@ -65,33 +65,29 @@ public class Ladder {
 	public static void setLadderId(int ladderId) {
 		Ladder.ladderId = ladderId;
 	}
-	public Square getSquareStart() {
-		return squareStart;
-	}
-	
-	public int getSquareLenght() {
-		return squareLenght;
-	}
-	
-	public void setSquareStart(Square squareStart) {
-		this.squareStart = squareStart;
-	}
-	public Square getSquareEnd() {
-		return squareEnd;
-	}
-	public void setSquareEnd(Square squareEnd) {
-		this.squareEnd = squareEnd;
-	}
-	@Override
-	public String toString() {
-		return "Ladder [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
-	}
 	public int getLadderNum() {
 		return LadderNum;
 	}
 	public void setLadderNum(int ladderNum) {
 		LadderNum = ladderNum;
+	}
+	public int getSquareStart() {
+		return squareStart;
+	}
+	public void setSquareStart(int squareStart) {
+		this.squareStart = squareStart;
+	}
+	public int getSquareEnd() {
+		return squareEnd;
+	}
+	public void setSquareEnd(int squareEnd) {
+		this.squareEnd = squareEnd;
+	}
+	public int getLadderLenght() {
+		return LadderLenght;
+	}
+	public void setLadderLenght(int ladderLenght) {
+		LadderLenght = ladderLenght;
 	}
 	public Level getLevelGame() {
 		return levelGame;
@@ -99,10 +95,6 @@ public class Ladder {
 	public void setLevelGame(Level levelGame) {
 		this.levelGame = levelGame;
 	}
-	
-	
-	
-	
 	
 	
 	
