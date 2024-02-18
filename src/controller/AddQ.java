@@ -105,7 +105,7 @@ public class AddQ implements Initializable{
 		}
 		
 		if (e.getSource() == Answer2) {
-		    if (!Answer1.getText().chars().anyMatch(Character::isLetter)) {
+		    if (!Answer2.getText().chars().anyMatch(Character::isLetter)) {
 		    	a2.setText("*with letters!");
 		        Answer2.setStyle("-fx-border-color:red;");
 		    } else {
@@ -160,31 +160,35 @@ public class AddQ implements Initializable{
 			a.setHeaderText("FILL ALL FIELDS PLEASE");
 			a.showAndWait();
 		}
+		else {
 		
-		//check if the combo box selected (filled)
-		if(correctCombo.getSelectionModel().getSelectedIndex() == -1 || correctAnswer.getSelectionModel().getSelectedIndex() == -1) {
+		if(!Answer1.getText().chars().anyMatch(Character::isLetter)||!Answer2.getText().chars().anyMatch(Character::isLetter)||!Answer3.getText().chars().anyMatch(Character::isLetter)||!Answer4.getText().chars().anyMatch(Character::isLetter)||!ContentQuestion.getText().chars().anyMatch(Character::isLetter)||correctCombo.getSelectionModel().getSelectedIndex() == -1||correctAnswer.getSelectionModel().getSelectedIndex() == -1)
+		{
 			Alert a=new Alert(AlertType.CONFIRMATION);
-			a.setHeaderText("FILL ALL FIELDS PLEASE");
+			a.setHeaderText("INVALID Fields");
 			a.showAndWait();
 		}
+		else {
 		
-		//get the fields the user filled
-		String ques_text = ContentQuestion.getText();
-		String ans1_text = Answer1.getText();
-		String ans2_text = Answer2.getText();
-		String ans3_text = Answer3.getText();
-		String ans4_text = Answer4.getText();
-		Level levell = correctCombo.getSelectionModel().getSelectedItem();
-		int correct=(int) correctAnswer.getSelectionModel().getSelectedItem();
-		Question q = new Question(ques_text, levell, 
-				ans1_text, ans2_text, ans3_text, ans4_text,correct);
-		//write our question to json and add to question hashSet
-		SysData.getInstance().writeQuestionToJson(q,"Questions.json");;
-		//clear fields
-		clearFields();
-		Alert a=new Alert(AlertType.CONFIRMATION);
-		a.setHeaderText("ADDED SUCCESSFULLY");
-		a.showAndWait();
+			//get the fields the user filled
+			String ques_text = ContentQuestion.getText();
+			String ans1_text = Answer1.getText();
+			String ans2_text = Answer2.getText();
+			String ans3_text = Answer3.getText();
+			String ans4_text = Answer4.getText();
+			Level levell = correctCombo.getSelectionModel().getSelectedItem();
+			int correct=(int) correctAnswer.getSelectionModel().getSelectedItem();
+			Question q = new Question(ques_text, levell, 
+					ans1_text, ans2_text, ans3_text, ans4_text,correct);
+			//write our question to json and add to question hashSet
+			SysData.getInstance().writeQuestionToJson(q,"Questions.json");;
+			//clear fields
+			clearFields();
+			Alert a=new Alert(AlertType.CONFIRMATION);
+			a.setHeaderText("ADDED SUCCESSFULLY");
+			a.showAndWait();
+			}
+		}
 
 	}
 	

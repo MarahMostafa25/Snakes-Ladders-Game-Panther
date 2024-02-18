@@ -20,7 +20,7 @@
             <Image url="@../Images/backgroundQuestions.jpg.jpeg" />
          </image>
       </ImageView>
-      <Label layoutX="65.0" layoutY="48.0" prefHeight="54.0" prefWidth="241.0" text="Add new Question">
+      <Label layoutX="71.0" layoutY="51.0" prefHeight="54.0" prefWidth="241.0" text="Add new Question">
          <font>
             <Font name="Arial Bold Italic" size="24.0" />
          </font>
@@ -90,5 +90,25 @@
             </Button>
          </children>
       </AnchorPane>
+      <ImageView fitHeight="91.0" fitWidth="54.0" layoutX="125.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/egy1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="91.0" fitWidth="54.0" layoutX="212.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/egyy3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="91.0" fitWidth="54.0" layoutX="32.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/egyy2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="82.0" fitWidth="41.0" layoutX="192.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/egyy4.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -91,5 +91,25 @@
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Button>
+      <ImageView fitHeight="91.0" fitWidth="54.0" layoutX="124.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/egy1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="91.0" fitWidth="54.0" layoutX="213.0" layoutY="382.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/egyy3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="91.0" fitWidth="54.0" layoutX="33.0" layoutY="382.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/egyy2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="84.0" fitWidth="39.0" layoutX="194.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/egyy4.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

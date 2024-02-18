@@ -66,6 +66,15 @@
     -fx-effect: dropshadow(three-pass-box,#086003, 30, 0.5, 0, 0); 
 }
 
+#pane3143{
+    -fx-background-image: url("../Images/egypt.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 1119 602;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box,#086003, 30, 0.5, 0, 0); 
+}
+
+
 #pane3{
     -fx-background-image: url("");
     -fx-background-repeat: stretch;   

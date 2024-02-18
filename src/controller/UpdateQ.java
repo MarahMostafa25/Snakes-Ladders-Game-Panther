@@ -83,9 +83,9 @@ public class UpdateQ  implements Initializable{
 		else {
 		
 			//check if the combo box selected (filled)
-			if(correct.getSelectionModel().getSelectedIndex() == -1 || correct.getSelectionModel().getSelectedIndex() == -1) {
+			if(!question_text.getText().chars().anyMatch(Character::isLetter)||!answer1_text.getText().chars().anyMatch(Character::isLetter)||!answer2_text.getText().chars().anyMatch(Character::isLetter)||!answer3_text.getText().chars().anyMatch(Character::isLetter)||!answer4_text.getText().chars().anyMatch(Character::isLetter)||correct.getSelectionModel().getSelectedIndex() == -1 || correct.getSelectionModel().getSelectedIndex() == -1) {
 				Alert a=new Alert(AlertType.CONFIRMATION);
-				a.setHeaderText("FILL ALL FIELDS PLEASE");
+				a.setHeaderText("INVALID");
 				a.showAndWait();
 			}
 			else {
