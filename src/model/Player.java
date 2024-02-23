@@ -3,16 +3,14 @@ package model;
 public class Player {
 	private int PlayerId;
 	private String nickName;
-	private int Xposition;
-	private int Yposition;
+	private int position;
 	private String AvatarPath;
 	private static int id=0;
 
-	public Player(String nickName, int Xposition, int Yposition, String AvatarPath) {
+	public Player(String nickName, int position, String AvatarPath) {
 		this.PlayerId=id++;
 		this.nickName = nickName;
-		this.Xposition = Xposition;
-		this.Yposition = Yposition;
+		this.position = position;
 		this.AvatarPath = AvatarPath;
 	}
 
@@ -24,20 +22,14 @@ public class Player {
 		this.nickName = nickName;
 	}
 
-	public int getXposition() {
-		return Xposition;
+	
+
+	public int getPosition() {
+		return position;
 	}
 
-	public void setXposition(int xposition) {
-		Xposition = xposition;
-	}
-
-	public int getYposition() {
-		return Yposition;
-	}
-
-	public void setYposition(int yposition) {
-		Yposition = yposition;
+	public void setPosition(int position) {
+		this.position = position;
 	}
 
 	public String getAvatarPath() {
@@ -50,7 +42,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "player [nickName=" + nickName + ", Xposition=" + Xposition + ", Yposition=" + Yposition
+		return "player [nickName=" + nickName + ", position=" + position 
 				+ ", AvatarPath=" + AvatarPath + "]";
 	}
 

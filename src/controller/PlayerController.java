@@ -175,11 +175,20 @@ public class PlayerController {
 			}
 			else
 			{
-				Player p1=new Player(name1.getText(),0,0,"Images\\egy1.png");
-				Player p2=new Player(name2.getText(),0,0,"Images\\egyy2.png");
+				Player p1=new Player(name1.getText(),0,"Images\\egy1.png");
+				Player p2=new Player(name2.getText(),0,"Images\\egyy2.png");
 				HelpClass.getInstance().setP1(p1);
 				HelpClass.getInstance().setP2(p2);
+				
 				//here navigate to other screen
+				try {
+					Parent root = FXMLLoader.load(getClass().getResource("/view/board.fxml"));
+					Scene scene = new Scene(root);
+					Main.mainS.setScene(scene);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 
 
 			}
@@ -197,13 +206,23 @@ public class PlayerController {
 				}
 				else
 				{
-					Player p1=new Player(name1.getText(),0,0,"Images\\egy1.png");
-					Player p2=new Player(name2.getText(),0,0,"Images\\egyy2.png");
-					Player p3=new Player(name3.getText(),0,0,"Images\\egyy3.png");
+					Player p1=new Player(name1.getText(),0,"Images\\egy1.png");
+					Player p2=new Player(name2.getText(),0,"Images\\egyy2.png");
+					Player p3=new Player(name3.getText(),0,"Images\\egyy3.png");
 
 					HelpClass.getInstance().setP1(p1);
 					HelpClass.getInstance().setP2(p2);
 					HelpClass.getInstance().setP3(p3);
+					
+					//navigate
+					try {
+						Parent root = FXMLLoader.load(getClass().getResource("/view/board.fxml"));
+						Scene scene = new Scene(root);
+						Main.mainS.setScene(scene);
+
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
 
 				}
 			}
@@ -219,15 +238,24 @@ public class PlayerController {
 					}
 					else
 					{
-						Player p1=new Player(name1.getText(),0,0,"Images\\egy1.png");
-						Player p2=new Player(name2.getText(),0,0,"Images\\egyy2.png");
-						Player p3=new Player(name3.getText(),0,0,"Images\\egyy3.png");
-						Player p4=new Player(name3.getText(),0,0,"Images\\egyy4.png");
+						Player p1=new Player(name1.getText(),0,"Images\\egy1.png");
+						Player p2=new Player(name2.getText(),0,"Images\\egyy2.png");
+						Player p3=new Player(name3.getText(),0,"Images\\egyy3.png");
+						Player p4=new Player(name4.getText(),0,"Images\\egyy4.png");
 
 						HelpClass.getInstance().setP1(p1);
 						HelpClass.getInstance().setP2(p2);
 						HelpClass.getInstance().setP3(p3);
 						HelpClass.getInstance().setP4(p4);
+						try {
+							Parent root = FXMLLoader.load(getClass().getResource("/view/board.fxml"));
+							Scene scene = new Scene(root);
+							Main.mainS.setScene(scene);
+
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+						
 
 					}
 				}
