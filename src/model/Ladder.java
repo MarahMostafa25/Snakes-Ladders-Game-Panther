@@ -9,7 +9,7 @@ public class Ladder {
 	private int squareEnd;
 	private int LadderLenght;
 	private Level levelGame;
-	public Ladder(int ladderId,int squareStart, int squareEnd,int LadderLenght,Level levelGame) {
+	public Ladder(int squareStart, int squareEnd,int LadderLenght,Level levelGame) {
         this.LadderNum=ladderId++;
 		this.squareStart = squareStart;
 		this.squareEnd = squareEnd;
