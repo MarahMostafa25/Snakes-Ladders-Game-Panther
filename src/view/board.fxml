@@ -82,11 +82,11 @@
             <Label fx:id="name4" layoutX="272.0" layoutY="511.0" textFill="#067713" />
             <Label fx:id="name2" layoutX="406.0" layoutY="519.0" textFill="#067713" />
             <Label fx:id="name3" layoutX="580.0" layoutY="527.0" prefHeight="17.0" prefWidth="38.0" textFill="#067713" />
-            <Button fx:id="p1turn" layoutX="66.0" layoutY="108.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="61.0" style="-fx-background-radius: 100; -fx-border-color: none;" text="player 1" />
-            <Button fx:id="p2turn" layoutX="66.0" layoutY="153.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="61.0" style="-fx-background-radius: 100; -fx-border-color: none;" text="player2" />
-            <Button fx:id="p3turn" layoutX="66.0" layoutY="197.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="61.0" style="-fx-background-radius: 100; -fx-border-color: none;" text="player3" />
-            <Button fx:id="p4turn" layoutX="66.0" layoutY="248.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="61.0" style="-fx-background-radius: 100; -fx-border-color: none;" text="player4" />
-            <ImageView fx:id="diceImage" fitHeight="108.0" fitWidth="98.0" layoutX="149.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="p1turn" layoutX="66.0" layoutY="108.0" mnemonicParsing="false" onAction="#startPlaying" prefHeight="37.0" prefWidth="61.0" style="-fx-background-radius: 100; -fx-border-color: none;" text="player 1" />
+            <Button fx:id="p2turn" layoutX="66.0" layoutY="153.0" mnemonicParsing="false" onAction="#startPlaying" prefHeight="37.0" prefWidth="61.0" style="-fx-background-radius: 100; -fx-border-color: none;" text="player2" />
+            <Button fx:id="p3turn" layoutX="66.0" layoutY="197.0" mnemonicParsing="false" onAction="#startPlaying" prefHeight="37.0" prefWidth="61.0" style="-fx-background-radius: 100; -fx-border-color: none;" text="player3" />
+            <Button fx:id="p4turn" layoutX="66.0" layoutY="248.0" mnemonicParsing="false" onAction="#startPlaying" prefHeight="37.0" prefWidth="61.0" style="-fx-background-radius: 100; -fx-border-color: none;" text="player4" />
+            <ImageView fx:id="diceImage" fitHeight="130.0" fitWidth="129.0" layoutX="141.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/diceFace.png" />
                </image>

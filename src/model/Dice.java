@@ -29,7 +29,11 @@ public class Dice {
 		}
 		else
 		{
-			this.maxValue = 10;
+			if(levelGame.equals(Level.Medium))
+			{
+				this.maxValue = 13;
+
+			}
 		}
 
 		
