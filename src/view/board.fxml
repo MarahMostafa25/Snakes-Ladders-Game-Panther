@@ -86,7 +86,11 @@
             <Button fx:id="p2turn" layoutX="66.0" layoutY="153.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="61.0" style="-fx-background-radius: 100; -fx-border-color: none;" text="player2" />
             <Button fx:id="p3turn" layoutX="66.0" layoutY="197.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="61.0" style="-fx-background-radius: 100; -fx-border-color: none;" text="player3" />
             <Button fx:id="p4turn" layoutX="66.0" layoutY="248.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="61.0" style="-fx-background-radius: 100; -fx-border-color: none;" text="player4" />
-            <ImageView fx:id="diceImage" fitHeight="77.0" fitWidth="79.0" layoutX="142.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="diceImage" fitHeight="108.0" fitWidth="98.0" layoutX="149.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/diceFace.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
