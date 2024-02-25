@@ -45,7 +45,7 @@ public class MainPageController {
 public void start(ActionEvent e) throws IOException {
 	
 	try {
-		Parent roott =FXMLLoader.load(getClass().getResource("/view/levelView.fxml"));
+		Parent roott =FXMLLoader.load(getClass().getResource("/view/LevelView.fxml"));
 		Scene scene=startbutton.getScene();
 		roott.translateXProperty().set(scene.getHeight());
 	    StackPane container=(StackPane)scene.getRoot();

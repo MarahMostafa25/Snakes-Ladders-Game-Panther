@@ -55,7 +55,9 @@ public class Dice {
 	public int getResult() {
 		
 		Random random = new Random();
-		return random.nextInt((this.maxValue - this.minValue) + 1) + this.minValue;
+        int randomNumber = random.nextInt(13);
+
+		return randomNumber;
 		
 	}
 	public void setResult(int result) {

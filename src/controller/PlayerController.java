@@ -136,6 +136,7 @@ public class PlayerController {
 			name3.setText("");
 			name3.setStyle("-fx-background-color: transparent;");
 	        isFirstTimeClicked=1;
+	        isFirstTimeClickedDel=0;
 	        numPlayer--;
 
 			
