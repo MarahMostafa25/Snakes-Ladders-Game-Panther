@@ -1,5 +1,6 @@
 package controller;
 import java.net.URL;
+import javafx.animation.Timeline;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -58,11 +59,14 @@ import model.Player;
 import model.Question;
 import model.Snake;
 import model.SysData;
+import model.TimerClass;
 import javafx.scene.image.Image;
 
 public class boardController implements Initializable{
 	@FXML
 	private GridPane board;
+	@FXML
+	Text timerCheck;
 	@FXML
 	AnchorPane anchor1;
 	@FXML
@@ -196,7 +200,6 @@ public class boardController implements Initializable{
 		initializeOccupiedCells(x);
 		setBoardCells(x);
 		board.setPrefSize(550, 550);
-		
 		startBoard(rows,cols,x); //This function starts the board and number the cells
 		configureGridPane(); // This function colors the board
 		setSquare();
@@ -213,8 +216,30 @@ public class boardController implements Initializable{
 	    parent.getChildren().remove(x);
 	}
 /**********************************************************************/
+	boolean IsEnds = false;
+	TimerClass startTime = new TimerClass("0:0:0");
+	Timeline timeline1 = new Timeline(
+	    new KeyFrame(Duration.seconds(1),
+	        e -> {
+	            if (IsEnds) {
+	                // Reset timerCheck to "0:0:0" when IsEnds is true
+	                timerCheck.setText("0:0:0");
+	            } else {
+	                // If IsEnds is false, continue updating timerCheck with current time
+	                startTime.oneSecondPassed();
+	                timerCheck.setText(startTime.getCurrentTime());
+	            }
+	            
+	        }
+	        
+	        ));
+	
 	public void startGame()
 	{
+		
+		timeline1.setCycleCount(Timeline.INDEFINITE);
+	    timeline1.play();
+		timerCheck.setText(startTime.getCurrentTime());
 		if(Level2.equals(Level.Medium))
 		{
 			dice=new Dice(0,13,Level.Medium); // 13 = number of faces 0-6 (7) and 2 for each one of the questions 
@@ -230,14 +255,11 @@ public class boardController implements Initializable{
 		    player2 =HelpClass.getInstance().getP2();
 			players.put(player1.getPlayerId(), player1);
 			players.put(player2.getPlayerId(), player2);
-
 			name1.setText(player1.getNickName());
 			name2.setText(player2.getNickName());
 			current.setText(player1.getNickName());
-			
 			removeButton(p3turn);
 			removeButton(p4turn);
-
 		}
 		if(num_of_players==3)
 		{
@@ -271,9 +293,7 @@ public class boardController implements Initializable{
 			player3FXML.setImage(new Image(player3.getAvatarPath()));
 			player4FXML.setImage(new Image(player4.getAvatarPath()));
 			current.setText(player1.getNickName());
-		}
-		
-		
+		}	
 	}
 	/**************************************************************************/
 	/*public void numOfPlayers(int numOfPlayers) this function for the if's apove.
@@ -345,7 +365,7 @@ public class boardController implements Initializable{
 	private void handle_movement(Player p, int diceResult,String type)
 	{
 		int current_pos,next_pos;
-		if(diceResult<7){	
+		if(diceResult < 7){	
 	          currentPlayer=p;
 			  current_pos=p.getPosition();
 			  if(current_pos+diceResult<=x*x) {
@@ -420,7 +440,6 @@ public class boardController implements Initializable{
 				Feedback.message("Error", "Please answer the question");
 				return;
 			}
-
 			if(q.getLevel().equals(Level.Easy)) {
 				addToResult=0;
 				DecResult=-1;
@@ -675,85 +694,108 @@ public class boardController implements Initializable{
 	}
 	/**************************************************************************/
 	//disable buttons
-	private void disbaleButtons() //this function for the on and off of each player
-	{
-		if(currentPlayer==player1)
+		private void disbaleButtons() //this function for the on and off of each player
 		{
-			if(num_of_players==2)
+			if(currentPlayer==player1)
 			{
-				p1turn.setDisable(true);
-				p2turn.setDisable(false);
-			}
-			if(num_of_players==3)
-			{
-				p1turn.setDisable(true);
-				p2turn.setDisable(false);
-				p3turn.setDisable(true);
+				if(num_of_players==2)
+				{
+					p1turn.setDisable(true);
+					p2turn.setDisable(false);
+
+				}
+				if(num_of_players==3)
+				{
+					p1turn.setDisable(true);
+					p2turn.setDisable(false);
+					p3turn.setDisable(true);
+
+				}
+				if(num_of_players==4)
+				{
+					p1turn.setDisable(true);
+					p2turn.setDisable(false);
+					p3turn.setDisable(true);
+					p4turn.setDisable(true);
+				}
+	        	curentImage.setImage(new Image(player2.getAvatarPath()));
+				current.setText(player2.getNickName());
+
+
 
 			}
-			if(num_of_players==4)
+			if(currentPlayer==player2)
 			{
-				p1turn.setDisable(true);
-				p2turn.setDisable(false);
-				p3turn.setDisable(true);
-				p4turn.setDisable(true);
+				if(num_of_players==2)
+				{
+					p1turn.setDisable(false);
+					p2turn.setDisable(true);
+		        	curentImage.setImage(new Image(player1.getAvatarPath()));
+					current.setText(player1.getNickName());
+
+
+				}
+				if(num_of_players==3)
+				{
+					p1turn.setDisable(true);
+					p2turn.setDisable(true);
+					p3turn.setDisable(false);
+		        	curentImage.setImage(new Image(player3.getAvatarPath()));
+					current.setText(player3.getNickName());
+
+
+
+				}
+				if(num_of_players==4)
+				{
+					p1turn.setDisable(true);
+					p2turn.setDisable(true);
+					p3turn.setDisable(false);
+					p4turn.setDisable(true);
+		        	curentImage.setImage(new Image(player3.getAvatarPath()));
+					current.setText(player3.getNickName());
+
+
+
+				}
+
 			}
-		}
-		if(currentPlayer==player2)
-		{
-			if(num_of_players==2)
+			if(currentPlayer==player3)
 			{
+				
+				if(num_of_players==3)
+				{
+					p1turn.setDisable(false);
+					p2turn.setDisable(true);
+					p3turn.setDisable(true);
+		        	curentImage.setImage(new Image(player1.getAvatarPath()));
+					current.setText(player1.getNickName());
+
+
+
+				}
+				if(num_of_players==4)
+				{
+					p1turn.setDisable(true);
+					p2turn.setDisable(true);
+					p3turn.setDisable(true);
+					p4turn.setDisable(false);
+		        	curentImage.setImage(new Image(player4.getAvatarPath()));
+					current.setText(player4.getNickName());
+				}
+
+			}
+			if(currentPlayer==player4)
+			{
+				
 				p1turn.setDisable(false);
 				p2turn.setDisable(true);
-			}
-			if(num_of_players==3)
-			{
-				p1turn.setDisable(true);
-				p2turn.setDisable(true);
-				p3turn.setDisable(false);
-
-			}
-			if(num_of_players==4)
-			{
-				p1turn.setDisable(true);
-				p2turn.setDisable(true);
-				p3turn.setDisable(false);
+				p3turn.setDisable(true);
 				p4turn.setDisable(true);
-
-			}	
-		}
-		if(currentPlayer==player3)
-		{
-			
-			if(num_of_players==3)
-			{
-				p1turn.setDisable(false);
-				p2turn.setDisable(true);
-				p3turn.setDisable(true);
-
-			}
-			if(num_of_players==4)
-			{
-				p1turn.setDisable(true);
-				p2turn.setDisable(true);
-				p3turn.setDisable(true);
-				p4turn.setDisable(false);
-
+	        	curentImage.setImage(new Image(player1.getAvatarPath()));
+				current.setText(player1.getNickName());
 			}
 		}
-		if(currentPlayer==player4)
-		{
-			
-			p1turn.setDisable(false);
-			p2turn.setDisable(true);
-			p3turn.setDisable(true);
-			p4turn.setDisable(true);
-
-			
-		}
-		
-		
-	}
 	/******************************end*************************************/
 	public void startBoard(int rows, int cols, int x) { //finished
 		for (int row = 0; row < x; row++) {
