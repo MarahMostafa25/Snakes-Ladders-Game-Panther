@@ -79,15 +79,23 @@ public class LevelController {
 		if(e.getSource()==easy)
 		{
 			levell=Level.Easy;
+			 easy.setStyle("-fx-font-weight: bold; -fx-text-fill: white;");
+			 medium.setStyle(""); // Reset medium button style
+	         hard.setStyle("");  //Reset hard button style
 		}
 		if(e.getSource()==medium)
 		{
 			levell=Level.Medium;
+			 medium.setStyle("-fx-font-weight: bold; -fx-text-fill: white;");
+			 easy.setStyle(""); // Reset medium button style
+	         hard.setStyle("");  //Reset hard button style
 		}
 		if(e.getSource()==hard)
 		{
 			levell=Level.Hard;
-			
+			 hard.setStyle("-fx-font-weight: bold; -fx-text-fill: white;");
+			 medium.setStyle(""); // Reset medium button style
+	         easy.setStyle("");  //Reset hard button style
 		}
 		HelpClass.getInstance().setLevelGame(levell);
 	}
