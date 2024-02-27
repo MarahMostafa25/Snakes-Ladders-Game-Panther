@@ -1,8 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="564.0" fitWidth="790.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/Rules.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="112.0" layoutY="111.0" prefHeight="39.0" prefWidth="579.0" text="Once upon a time, trapped in an ancient cage in Egypt,Mr. Peabody and  Sherman ">
+         <font>
+            <Font name="Andalus" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="106.0" layoutY="143.0" prefHeight="39.0" prefWidth="570.0" text="discovered their only escape was to play the regular snake and ladder game. Each roll ">
+         <font>
+            <Font name="Andalus" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="112.0" layoutY="173.0" prefHeight="39.0" prefWidth="579.0" text="of the dice became their key to freedom as they navigated through the mystic board, ">
+         <font>
+            <Font name="Andalus" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="102.0" layoutY="204.0" prefHeight="39.0" prefWidth="579.0" text="unlocking the secrets of the past. The serpentine journey became  their ticket to break">
+         <font>
+            <Font name="Andalus" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="101.0" layoutY="236.0" prefHeight="39.0" prefWidth="579.0" text=" free from the ancient confines, turning a simple game into a magical passage to liberty">
+         <font>
+            <Font name="Andalus" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="106.0" layoutY="269.0" prefHeight="39.0" prefWidth="456.0" text="But, unfortunately, having my freedom comes with rules.  ">
+         <font>
+            <Font name="Andalus" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="106.0" layoutY="300.0" prefHeight="39.0" prefWidth="279.0" text="Snakes will keep me from my freedom.">
+         <font>
+            <Font name="Andalus" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="106.0" layoutY="331.0" prefHeight="39.0" prefWidth="279.0" text="The stairs will bring me closer to freedom.">
+         <font>
+            <Font name="Andalus" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="157.0" layoutY="409.0" prefHeight="39.0" prefWidth="436.0" text="HELP ME PLEASE TO GET MY FREEDOM!">
+         <font>
+            <Font name="Andalus" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="106.0" layoutY="361.0" prefHeight="39.0" prefWidth="486.0" text="There is a lot of question that I must answer it to be colser to freedom">
+         <font>
+            <Font name="Andalus" size="15.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
-
