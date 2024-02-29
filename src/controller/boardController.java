@@ -149,7 +149,7 @@ public class boardController implements Initializable{
 	//ladder6 103,350
 	private ImageView ladder1 = new ImageView(new Image("/Images/ladder1.png"));
 	private ImageView ladder2 = new ImageView(new Image("/Images/ladder2.png"));
-	private ImageView ladder3= new ImageView(new Image("/Images/ladder3.png"));
+	private ImageView ladder3= new ImageView(new Image("/Images/ladder_rotate.png"));
 	private ImageView ladder4 = new ImageView(new Image("/Images/ladder41.png"));
 	private ImageView ladder41 = new ImageView(new Image("/Images/ladder41.png"));
 	private ImageView ladder6 = new ImageView(new Image("/Images/ladder6.png"));
@@ -210,8 +210,8 @@ public class boardController implements Initializable{
 		startBoard(rows,cols,x); //This function starts the board and number the cells
 		configureGridPane(); // This function colors the board
 		setSquare();
-		setSnakes();
 		setLaddrs();
+		setSnakes();
 		/***************lets start the game**************************/
 		// we assumed that we will start with player 1 ====> lets disable other buttons
 		startGame();
@@ -904,23 +904,11 @@ public class boardController implements Initializable{
 
 		return check;
 	}
-	//this method checks if the cells yellow snake take are not occupied
-	private int checkEmptyCellsForYellow(int row,int col) // this function for yellow snake because the yellow snake is very large 
-	{
-		int check=1;
-		int number;
-		for(int i=col;i<col+2;i++)
-		{
-			number=calLabelValue(row+1,i);
-			if(ocuupiedCells.get(number)==true)
-			{
-				check=0;
-			}
-		}
-		return check;
-	}
-	// this method is used to set all panes of object as occupied so the ui will be more ...//
-	private void setAllBetweenOccupied(int first,int end)
+	
+	
+	
+	//rotation check
+	private int checkEmptyCellsRotate(int first,int end)
 	{
 		HashMap<Integer , Integer > map ;
 		int rowF=0,rowE=0;
@@ -937,12 +925,77 @@ public class boardController implements Initializable{
 		}
 		int number;
 		int check=1;
-		for(int i=rowF;i<rowE;i++)
+		int col2=colF;
+		for(int i=rowF+1;i<rowE;i++)
+		{
+			number=calLabelValue(i, colF);
+			if(ocuupiedCells.get(number)==true)
+			{
+				check=0;
+			}
+			colF++;
+		}
+		for(int i=rowF+2;i<rowE;i++)
+		{
+			number=calLabelValue(i, col2);
+			ocuupiedCells.put(number,true);
+			col2+=1;
+		}	
+
+
+		return check;
+	}
+	//this method checks if the cells yellow snake take are not occupied
+	private int checkEmptyCellsForYellow(int row,int col) // this function for yellow snake because the yellow snake is very large 
+	{
+		int check=1;
+		int number;
+		for(int i=col;i<col+2;i++)
+		{
+			number=calLabelValue(row+1,i);
+			if(ocuupiedCells.get(number)==true)
+			{
+				check=0;
+			}
+		}
+		return check;
+	}
+	// this method is used to set all panes of object as occupied so the ui will be more ...//
+	private void setAllBetweenOccupied(int first,int end,int num)
+	{
+		HashMap<Integer , Integer > map ;
+		int rowF=0,rowE=0;
+		int colF=0,colE=0;
+		map =  boardCells.get(first);
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			rowF = entry.getKey();
+			colF = entry.getValue();
+		}
+		map =  boardCells.get(end);
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			rowE = entry.getKey();
+			colE = entry.getValue();
+		}
+		int number;
+		int check=1;
+		int col2=colF;
+		for(int i=rowF+num;i<rowE;i++)
 		{
 			number=calLabelValue(i, colF);
 			ocuupiedCells.put(number,true);
+			colF+=num;
 		}	
+		if(num==1)
+		{
+			for(int i=rowF+2;i<rowE;i++)
+			{
+				number=calLabelValue(i, col2);
+				ocuupiedCells.put(number,true);
+				col2+=num;
+			}	
+		}
 	}
+	
 	//this methos set panes which yellow snake take as occupied
 	private void setAllBetYellowOccupied(int row,int col)
 	{
@@ -983,7 +1036,7 @@ public class boardController implements Initializable{
 		int col=0;
 		labelValue = setObjCheckOcuupied();
 		int endValue = calcEnd(labelValue,3,0);
-		while((labelValue == x*x) || (labelValue < 31)||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
+		while((labelValue == x*x) || (labelValue < 31)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
 			labelValue = setObjCheckOcuupied();
 			endValue = calcEnd(labelValue,3,0);
 		}
@@ -996,7 +1049,7 @@ public class boardController implements Initializable{
 		}
 		snake = new Snake(labelValue,endValue,SnakeColor.blue);
 		ocuupiedCells.put(labelValue, true);
-		setAllBetweenOccupied(labelValue,endValue);
+		setAllBetweenOccupied(labelValue,endValue,0);
 		ocuupiedCells.put(endValue, true);
 
 		snakesOnBoard.put(labelValue, snake);
@@ -1013,7 +1066,7 @@ public class boardController implements Initializable{
 			col = entry.getValue();
 		}
 		endValue = calcEnd(labelValue,1,2);
-		while((labelValue == x*x) || (labelValue < 13)||col==x-1||col==x-2||ocuupiedCells.get(endValue)==true||checkEmptyCellsForYellow(row,col)==0) { // Can't be at the end or the start
+		while((labelValue == x*x) || (labelValue < 13)||col==x-1||col==x-2||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCellsForYellow(row,col)==0) { // Can't be at the end or the start
 			labelValue = setObjCheckOcuupied();
 			endValue = calcEnd(labelValue,1,2);
 			map =  boardCells.get(labelValue); 
@@ -1039,7 +1092,7 @@ public class boardController implements Initializable{
 		for(int i=0;i<2;i++) {
 			labelValue = setObjCheckOcuupied();
 			endValue = calcEnd(labelValue,2,0);
-			while((labelValue == x*x) ||(labelValue < 30)||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
+			while((labelValue == x*x) ||(labelValue < 30)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
 				labelValue = setObjCheckOcuupied();
 				endValue = calcEnd(labelValue,2,0);
 			}
@@ -1052,7 +1105,7 @@ public class boardController implements Initializable{
 			}
 			snake = new Snake(labelValue,labelValue,SnakeColor.red);
 			ocuupiedCells.put(labelValue, true);
-			setAllBetweenOccupied(labelValue,endValue);
+			setAllBetweenOccupied(labelValue,endValue,0);
 			ocuupiedCells.put(endValue, true);
 			snakesOnBoard.put(labelValue, snake);
 			if(i == 0)
@@ -1080,9 +1133,10 @@ public class boardController implements Initializable{
 		/**************** ladder 1 in medium level******************/
 		endValue = calcEnd(labelValue,1,0);
 
-		while ((labelValue <11)||labelValue==20||ocuupiedCells.get(endValue)==true) { // Can't be at the end or the start
+		while ((labelValue <11)||labelValue==20||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true) { // Can't be at the end or the start
 			labelValue = setObjCheckOcuupied();
 			endValue = calcEnd(labelValue,1,0);
+			System.out.print("im here 1");
 		}
 		HashMap<Integer, Integer> map = boardCells.get(labelValue);
 		int row = 0;
@@ -1096,13 +1150,12 @@ public class boardController implements Initializable{
 		ocuupiedCells.put(endValue, true);
 		laddersOnBoard.put(labelValue, ladder);
 		setSnakeToBoardView(ladder1, 55, 100, row, col);
-		/*******************ladder 2 in medium level****************/
+		System.out.println("ladder1");
+		
+         /**ladder6**/
+		
 		labelValue = setObjCheckOcuupied();
-		endValue = calcEnd(labelValue,2,0);
-		while ((labelValue <=21)||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
-			labelValue = setObjCheckOcuupied();
-			endValue = calcEnd(labelValue,2,0);
-		}
+		endValue = calcEnd(labelValue,6,4);
 		map = boardCells.get(labelValue);
 		row = 0;
 		col = 0;
@@ -1110,40 +1163,14 @@ public class boardController implements Initializable{
 			row = entry.getKey();
 			col = entry.getValue();
 		}
-		ladder = new Ladder(labelValue,endValue,2,Level.Medium);
-		ocuupiedCells.put(labelValue, true);
-		ocuupiedCells.put(endValue, true);
-		setAllBetweenOccupied(labelValue,endValue);
-		laddersOnBoard.put(labelValue, ladder);//39,135
-		setSnakeToBoardView(ladder2, 39, 135, row, col);
-
-		/*********************ladder 4*********************************/
-		labelValue = setObjCheckOcuupied();
-		endValue = calcEnd(labelValue,4,0);
-		while ((labelValue <=41)||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { 
+		while (row>3||col>5||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCellsRotate(labelValue,endValue)==0) {
 			labelValue = setObjCheckOcuupied();
-			endValue = calcEnd(labelValue,4,0);
-		}
-
-		map = boardCells.get(labelValue);
-		row = 0;
-		col = 0;
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-			row = entry.getKey();
-			col = entry.getValue();
-		}
-		ladder = new Ladder(labelValue,endValue,4,Level.Medium);
-		ocuupiedCells.put(labelValue, true);
-		setAllBetweenOccupied(labelValue,endValue);
-		ocuupiedCells.put(endValue, true);
-		laddersOnBoard.put(labelValue, ladder);//ladder4,87,237
-		setSnakeToBoardView(ladder4, 87, 237, row, col);
-		/**ladder6**/
-		labelValue = setObjCheckOcuupied();
-		endValue = calcEnd(labelValue,6,0);
-		while ((labelValue <=61)||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) {
-			labelValue = setObjCheckOcuupied();
-			endValue = calcEnd(labelValue,6,0);
+			endValue = calcEnd(labelValue,6,4);
+			map = boardCells.get(labelValue);
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+				row = entry.getKey();
+				col = entry.getValue();
+			}
 		}
 		map = boardCells.get(labelValue);
 		row = 0;
@@ -1154,41 +1181,19 @@ public class boardController implements Initializable{
 		}
 		ladder = new Ladder(labelValue,endValue,6,Level.Medium);
 		ocuupiedCells.put(labelValue, true);
-		setAllBetweenOccupied(labelValue,endValue);
+		setAllBetweenOccupied(labelValue,endValue,1);
 		ocuupiedCells.put(endValue, true);
 		laddersOnBoard.put(labelValue, ladder);
-		setSnakeToBoardView(ladder6, 103, 350, row, col);
-		/****** ladder 3 in Medium level********/
-		labelValue = setObjCheckOcuupied();
-		endValue = calcEnd(labelValue,3,0);
-
-		while ((labelValue <= 30|| labelValue==40)||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be less than 31 
-			labelValue = setObjCheckOcuupied();
-			endValue = calcEnd(labelValue,3,0);
-
-		}
-
-		map = boardCells.get(labelValue);
-		row = 0;
-		col = 0;
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-			row = entry.getKey();
-			col = entry.getValue();
-		}
-		ladder = new Ladder(labelValue,endValue,3,Level.Medium);
-		ocuupiedCells.put(labelValue, true);
-		setAllBetweenOccupied(labelValue,endValue);
-
-		ocuupiedCells.put(endValue, true);
-
-		laddersOnBoard.put(labelValue, ladder);
-		setSnakeToBoardView(ladder3, 61, 187, row, col);
-
+		setSnakeToBoardView(ladder6, 265,358, row, col);
+		System.out.println("ladder6");
+		
+		
+		
 		/****** ladder 5 in Medium level *******/
 		labelValue = setObjCheckOcuupied();
 		endValue = calcEnd(labelValue,5,0);
 
-		while ((labelValue < 51)||labelValue==60||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be less than 51 
+		while ((labelValue < 51)||labelValue==60||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be less than 51 
 			labelValue = setObjCheckOcuupied();
 			endValue = calcEnd(labelValue,5,0);
 
@@ -1202,12 +1207,98 @@ public class boardController implements Initializable{
 		}
 		ladder = new Ladder(labelValue,endValue,5,Level.Medium);
 		ocuupiedCells.put(labelValue, true);
-		setAllBetweenOccupied(labelValue,endValue);
+		setAllBetweenOccupied(labelValue,endValue,0);
 
 		ocuupiedCells.put(endValue, true);
 
 		laddersOnBoard.put(labelValue, ladder);
 		setSnakeToBoardView(ladder41, 87, 283, row, col);
+		System.out.println("ladder5");
+		
+		/*********************ladder 4*********************************/
+		labelValue = setObjCheckOcuupied();
+		endValue = calcEnd(labelValue,4,0);
+		while ((labelValue <=41)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { 
+			labelValue = setObjCheckOcuupied();
+			endValue = calcEnd(labelValue,4,0);
+		}
+
+		map = boardCells.get(labelValue);
+		row = 0;
+		col = 0;
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			row = entry.getKey();
+			col = entry.getValue();
+		}
+		ladder = new Ladder(labelValue,endValue,4,Level.Medium);
+		ocuupiedCells.put(labelValue, true);
+		setAllBetweenOccupied(labelValue,endValue,0);
+		ocuupiedCells.put(endValue, true);
+		laddersOnBoard.put(labelValue, ladder);//ladder4,87,237
+		setSnakeToBoardView(ladder4, 87, 237, row, col);
+		System.out.println("ladder4");
+
+		/*******************ladder 2 in medium level****************/
+		labelValue = setObjCheckOcuupied();
+		endValue = calcEnd(labelValue,2,0);
+		while ((labelValue <=21)||ocuupiedCells.get(endValue)==true||ocuupiedCells.get(endValue)==null||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
+			labelValue = setObjCheckOcuupied();
+			endValue = calcEnd(labelValue,2,0);
+		}
+		map = boardCells.get(labelValue);
+		row = 0;
+		col = 0;
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			row = entry.getKey();
+			col = entry.getValue();
+		}
+		ladder = new Ladder(labelValue,endValue,2,Level.Medium);
+		ocuupiedCells.put(labelValue, true);
+		ocuupiedCells.put(endValue, true);
+		setAllBetweenOccupied(labelValue,endValue,0);
+		laddersOnBoard.put(labelValue, ladder);//39,135
+		setSnakeToBoardView(ladder2, 39, 500, row, col);
+		System.out.println("ladder2");
+
+
+		
+		
+		/****** ladder 3 in Medium level********/
+		labelValue = setObjCheckOcuupied();
+		endValue = calcEnd(labelValue,3,1);
+		map = boardCells.get(labelValue);
+		row = 0;
+		col = 0;
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			row = entry.getKey();
+			col = entry.getValue();
+		}
+		while ((labelValue <= 30|| col==9)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be less than 31 
+			labelValue = setObjCheckOcuupied();
+			endValue = calcEnd(labelValue,3,1);
+			map = boardCells.get(labelValue);
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+				row = entry.getKey();
+				col = entry.getValue();
+			}
+
+		}
+
+		
+		ladder = new Ladder(labelValue,endValue,3,Level.Medium);
+		ocuupiedCells.put(labelValue, true);
+		setAllBetweenOccupied(labelValue,endValue,0);
+		ocuupiedCells.put(endValue, true);
+
+		laddersOnBoard.put(labelValue, ladder);
+		setSnakeToBoardView(ladder3, 87, 283, row, col);
+		System.out.println("ladder3");
+
+		
+
+		/**************try rotate**************/
+
+
 	}
 	private Pane createColoredPane(int row, int col) {
 		Color color = getRandomColorFromAllowedColors();
