@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import designPatterns.SquareFactory;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
@@ -63,7 +64,9 @@ import model.HelpClass;
 import model.Ladder;
 import model.Player;
 import model.Question;
+import model.QuestionSquare;
 import model.Snake;
+import model.SurpriseSquare;
 import model.SysData;
 import model.TimerClass;
 import javafx.scene.image.Image;
@@ -108,6 +111,7 @@ public class boardController implements Initializable{
 	@FXML
 	Button p4turn;
 
+	SquareFactory fact=new SquareFactory();
 	private Player currentPlayer=HelpClass.getInstance().getP1();//assuming
 	private Level Level2=HelpClass.getInstance().getLevelGame();
 	private int num_of_players=HelpClass.getInstance().getNumOfPlayer();
@@ -120,12 +124,15 @@ public class boardController implements Initializable{
 	private HashMap<Integer,Ladder> laddersOnBoard = new HashMap<Integer,Ladder>();
 	private HashMap<Integer,Boolean> ocuupiedCells = new HashMap<Integer,Boolean>();
 	private HashMap<Integer,Player> players = new HashMap<Integer,Player>();
-	private HashMap<Integer,Level> ocuupiedQuestions = new HashMap<Integer,Level>();
+	private HashMap<Integer,QuestionSquare> ocuupiedQuestions = new HashMap<Integer,QuestionSquare>();
+	private SurpriseSquare surprise1;
+	private int levelForSurprise;
 	private Dice dice; 
 	private  Player player1; 
 	private  Player player2;
 	private  Player player3;
 	private  Player player4;
+	private Player winner;
 	static ArrayList<Question> usedQues = new ArrayList<>();	
 	private int result_to_return=0; 
 	private int addToResult=0; 
@@ -209,9 +216,9 @@ public class boardController implements Initializable{
 		board.setPrefSize(550, 550);
 		startBoard(rows,cols,x); //This function starts the board and number the cells
 		configureGridPane(); // This function colors the board
-		setSquare();
 		setLaddrs();
 		setSnakes();
+		setSquare();
 		/***************lets start the game**************************/
 		// we assumed that we will start with player 1 ====> lets disable other buttons
 		startGame();
@@ -583,9 +590,7 @@ public class boardController implements Initializable{
 				easy.add(q);
 			}
 		}
-		easy.removeAll(usedQues);
 		Collections.shuffle(easy);
-		usedQues.add(easy.get(0));
 		return easy.get(0);
 
 	}
@@ -600,9 +605,7 @@ public class boardController implements Initializable{
 				medium.add(q);
 			}
 		}
-		medium.removeAll(usedQues);
 		Collections.shuffle(medium);
-		usedQues.add(medium.get(0));
 		return medium.get(0);
 
 	}
@@ -616,21 +619,52 @@ public class boardController implements Initializable{
 				hard.add(q);
 			}
 		}
-		hard.removeAll(usedQues);
 		Collections.shuffle(hard);
-		usedQues.add(hard.get(0));
 		return hard.get(0);
 
 	}
 
+	private void check_winner(int pos ,String type)
+	{
+		
+		if(pos==100)
+		{
+			if(type=="p1") {winner=player1;}
+			if(type=="p2") {winner=player2;}
+			if(type=="p3") {winner=player3;}
+			if(type=="p4") {winner=player4;}
+			Alert a=new Alert(AlertType.CONFIRMATION);
+			a.setHeaderText("Player:"+winner.getNickName()+"is winner! CONGRATS!");
+			a.showAndWait();
+			p1turn.setDisable(true);
+			p2turn.setDisable(true);
+			p3turn.setDisable(true);
+			p4turn.setDisable(true);
+			
+		}
+		
+	}
 	private void check_move(Player p , int position,String type)
 	{
+		
 		ImageView v;
 		HashMap<Integer , Integer > map ;
 		int row=0,col=0;
 		int lad=check_ladder(position);// if -1 then no ladder here
 		int snake1 = check_snake(position);
-		/*		int square = check_square(postion);*/
+		int square = check_square(position,p,type);
+		if(square==1) return;
+		if(position==levelForSurprise) {
+			if(position+10<=x*x)
+			{
+				check_move(p,position+10,type);
+				return;
+			}
+			else
+			{
+				return;
+			}
+		}
 		if(lad!=-1)//it means we have ladder
 		{
 			position=lad;
@@ -652,11 +686,14 @@ public class boardController implements Initializable{
 		if(type=="p1") { // in this condtion we update the postion of each plauer 
 			board.getChildren().remove(player1Image);
 			setSnakeToBoardView(player1Image,50,50,row,col);
+			
+			
 		}
 		if(type=="p2")
 		{
 			board.getChildren().remove(player2Image);
 			setSnakeToBoardView(player2Image,50,50,row,col);
+			
 		}
 		if(type=="p3")
 		{
@@ -668,12 +705,29 @@ public class boardController implements Initializable{
 			board.getChildren().remove(player4Image);
 			setSnakeToBoardView(player4Image,50,50,row,col);
 		}
+		check_winner(position,type);
 	}
-	/*private int check_square(int position)
+	private int check_square(int position,Player p,String type)
 	{
-		int pos = -1;
-
-	}*/
+        QuestionSquare res=ocuupiedQuestions.get(new Integer(position));
+		if(res!=null)
+		{
+			 if(res.getType()=="Easy")
+			 {
+				 display_question(7,p,type);
+			 }
+			 if(res.getType()=="Medium")
+			 {
+				 display_question(9,p,type);
+			 }
+			 if(res.getType()=="Hard")
+			 {
+				 display_question(11,p,type);
+			 }
+			 return 1;
+		}
+		return 0;
+	}
 	/*****************************************************************/
 	private int check_snake(int position)
 	{
@@ -818,10 +872,11 @@ public class boardController implements Initializable{
 			randomCol = random.nextInt(x-1);
 			labelValue = calLabelValue(randomRow, randomCol);
 		}
-		return labelValue;
+		return labelValue; 
 	}
 	public void setSquare() // sets surprise and question
 	{
+		HashMap<Integer , Integer > map ;
 		int labelValue = setObjCheckOcuupied();
 		while(labelValue > ((x*x)-10)) // can't jump over the end 
 			labelValue = setObjCheckOcuupied();
@@ -829,17 +884,26 @@ public class boardController implements Initializable{
 		ImageView surprise = new ImageView(new Image("/Images/surprise.png"));
 		surprise.setFitWidth(40);
 		surprise.setFitHeight(40);
-		HashMap<Integer , Integer > map =  boardCells.get(labelValue); 
 		int row=0;
 		int col=0;
+		map =  boardCells.get(labelValue); 
 		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
 			row = entry.getKey();
 			col = entry.getValue();
 		}
+		SurpriseSquare sq1=(SurpriseSquare)fact.getType("SurpriseSquare", row, col);
+		surprise1=sq1;
+		levelForSurprise=labelValue;
 		GridPane.setConstraints(surprise, col, row,1,1);//first is column , second is row,
 		board.getChildren().add(surprise);
+		
+		/***start question square**/
+		String type="Easy";
 		for(int i=0;i<3;i++) /********questions for the random set in the board*///////////
 		{
+			if(i==0) {type="Easy";}
+			if(i==1) {type="Medium";}
+			if(i==2) {type="Hard";}
 			labelValue = setObjCheckOcuupied();
 			ocuupiedCells.put(labelValue, true);
 			ImageView question = new ImageView(new Image("/Images/question.jpg"));
@@ -852,14 +916,12 @@ public class boardController implements Initializable{
 				row = entry.getKey();
 				col = entry.getValue();
 			}
+			QuestionSquare question_fact=(QuestionSquare)fact.getType(type,row, col);
+			
 			GridPane.setConstraints(question, col, row,1,1);
 			board.getChildren().add(question);
-			if(i == 0)
-			ocuupiedQuestions.put(labelValue,Level.Easy);
-			if(i == 1)
-				ocuupiedQuestions.put(labelValue,Level.Medium);
-			if(i == 2)
-				ocuupiedQuestions.put(labelValue,Level.Hard);
+			ocuupiedQuestions.put(labelValue,question_fact);
+			
 		}
 	}
 	private int calcEnd(int labelValue,int stepsRow,int stepsCol)
@@ -1130,35 +1192,13 @@ public class boardController implements Initializable{
 		Ladder ladder = null;
 		int labelValue = setObjCheckOcuupied();
 		int endValue=0;
-		/**************** ladder 1 in medium level******************/
-		endValue = calcEnd(labelValue,1,0);
-
-		while ((labelValue <11)||labelValue==20||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true) { // Can't be at the end or the start
-			labelValue = setObjCheckOcuupied();
-			endValue = calcEnd(labelValue,1,0);
-			System.out.print("im here 1");
-		}
+		
+        /**ladder6**/
+		
+		endValue = calcEnd(labelValue,6,4);
 		HashMap<Integer, Integer> map = boardCells.get(labelValue);
 		int row = 0;
 		int col = 0;
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-			row = entry.getKey();
-			col = entry.getValue();
-		}
-		ladder = new Ladder(labelValue,endValue,1,Level.Medium);
-		ocuupiedCells.put(labelValue, true);
-		ocuupiedCells.put(endValue, true);
-		laddersOnBoard.put(labelValue, ladder);
-		setSnakeToBoardView(ladder1, 55, 100, row, col);
-		System.out.println("ladder1");
-		
-         /**ladder6**/
-		
-		labelValue = setObjCheckOcuupied();
-		endValue = calcEnd(labelValue,6,4);
-		map = boardCells.get(labelValue);
-		row = 0;
-		col = 0;
 		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
 			row = entry.getKey();
 			col = entry.getValue();
@@ -1188,6 +1228,32 @@ public class boardController implements Initializable{
 		System.out.println("ladder6");
 		
 		
+		
+		
+		/**************** ladder 1 in medium level******************/
+		labelValue = setObjCheckOcuupied();
+		endValue = calcEnd(labelValue,1,0);
+
+		while ((labelValue <11)||labelValue==20||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true) { // Can't be at the end or the start
+			labelValue = setObjCheckOcuupied();
+			endValue = calcEnd(labelValue,1,0);
+			System.out.print("im here 1");
+		}
+		 map = boardCells.get(labelValue);
+		 row = 0;
+		 col = 0;
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			row = entry.getKey();
+			col = entry.getValue();
+		}
+		ladder = new Ladder(labelValue,endValue,1,Level.Medium);
+		ocuupiedCells.put(labelValue, true);
+		ocuupiedCells.put(endValue, true);
+		laddersOnBoard.put(labelValue, ladder);
+		setSnakeToBoardView(ladder1, 55, 100, row, col);
+		System.out.println("ladder1");
+		
+         
 		
 		/****** ladder 5 in Medium level *******/
 		labelValue = setObjCheckOcuupied();
