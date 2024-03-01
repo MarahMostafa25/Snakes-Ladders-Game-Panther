@@ -17,6 +17,7 @@ public class Game {
 	private Player currplayer;
 	private Board board;
 	private Timer gameTimer;
+	private Player winner;
 	public Game(Dice dice, Level gameLevel, Player currplayer, Board board, Timer gameTimer) {
 		super();
 		this.dice = dice;
@@ -115,6 +116,14 @@ public class Game {
 
 	public void setGameTimer(Timer gameTimer) {
 		this.gameTimer = gameTimer;
+	}
+
+	public Player getWinner() {
+		return winner;
+	}
+
+	public void setWinner(Player winner) {
+		this.winner = winner;
 	}
 	
 	
