@@ -1,1 +1,135 @@
-{"questions":[{"level":"Medium","answ3":"has explicitly defined dependencies on its required execution context","answ4":"all the answers are correct","answ1":"encapsulates a subset of the systemï¿½s functionality and\/or data","answ2":"restricts access to that subset via an explicitly defined interface","right":4,"content":"A  component is an architectural entity that 7."},{"level":"Hard","answ3":"Communication skills","answ4":"all of them","answ1":"Coaching abilities","answ2":"Prioritization skills","right":4,"content":" Which soft skills are required to be a successful software architect"},{"level":"Easy","answ3":"testing phase follows the build phase","answ4":"Development is completed as a simple project or deliverable","answ1":"flexible method to build a software","answ2":"process is broken down into several phases","right":1,"content":"what's correct about Agile? "},{"level":"Medium","answ3":"The Scrum Master must assign tasks to individuals","answ4":"Team members must volunteer or tasks appropriate to their skills","answ1":"The complex tasks must be allocated by the Scrum Master","answ2":"Tasks must be allocated to team members by the Product Owner","right":4,"content":"How should work be allocated to the team in a Scrum project?"},{"level":"Hard","answ3":"Integration Testing","answ4":"Unit Testing","answ1":"System Testing","answ2":"Regression Testing","right":2,"content":"In Software Maintenance which type of testing is being used "},{"level":"Hard","answ3":"SRS is also the main output of the requirements specification activity","answ4":"none of them","answ1":"SRS is the main input of the software product design process","answ2":"SRS is the main output to the engineering design process","right":3,"content":"Which true about SRS"},{"level":"Hard","answ3":"Adaptability of test case for automation","answ4":"all of them","answ1":"Mastering the automation tool","answ2":"Reliability of Automation script","right":4,"content":" What are the automation challenges that SQA(Software Quality Assurance) team faces while testing?"},{"level":"Hard","answ3":"Breaking down project goals into deliverable tasks","answ4":"all of them","answ1":"Project code QA testing","answ2":"Task distribution for software engineer teams","right":4,"content":" What do software architects do"},{"level":"Hard","answ3":"Operational level requirement","answ4":"all of the mentioned","answ1":"User level requirement","answ2":"Physical level requirement","right":4,"content":"Technical level abstraction includes"},{"level":"Medium","answ3":"Bug reports","answ4":"all of the mentioned","answ1":"Code changes","answ2":"Test plans","right":4,"content":"What should the Software QA document include"},{"level":"Easy","answ3":"Reliability","answ4":"all of the mentioned","answ1":"Performance","answ2":"Availability","right":4,"content":"Which of these comes under operational attributes"},{"level":"Easy","answ3":"rarely use formal inspection or peer review processes ","answ4":" all answers is uncorrect","answ1":"never use formal inspection or peer review processes","answ2":"always use formal inspection or peer review processes","right":3,"content":"Agile processes is :"},{"level":"Medium","answ3":"better to use incremental requirements engineering and express requirements as â\u20AC˜user storiesâ\u20AC™.","answ4":"Answers 2 and 3 are correct","answ1":"The customers would always press the developers about the time","answ2":"producing a requirements document is a waste of time","right":"2","content":"Many agile methods argue that:"},{"level":"Hard","answ3":"organized so that other systems can use it","answ4":"Answers 1 and 2 are correct","answ1":"organized so that system customers can use it","answ2":"organized so that software developers can use it","right":"4","content":"The software requirements document should be"},{"level":"Easy","answ3":"Domain","answ4":"all requirements","answ1":"Functional","answ2":"Non-Functional","right":"1","content":"system requirements that should describe the system services in detail is a "},{"level":"Medium","answ3":"society","answ4":"roject magnitude","answ1":"nothing affecting it.","answ2":"developers","right":"4","content":"what Factor affecting the extent of the review?"},{"level":"Medium","answ3":"product uproval.","answ4":"record Errors","answ1":"Identify risks.","answ2":"locate deviadions from conventions","right":"4","content":"In direct Reviews"},{"level":"Hard","answ3":"Criticizing the programmer who wrote the code","answ4":"Testing the coding ability of other programmers","answ1":"Finding and fixing code problems","answ2":"Checking the systematicity of code before entering it into the system","right":"1","content":"which one is NOT a  objectives type of review?"},{"level":"Medium","answ3":"Access to functional system tests","answ4":"Neither answer is correct","answ1":"Access to unit testing manually or automatically","answ2":"Shadow access to testing at all levels while looking at the system code","right":"4","content":"Black Box tests is :"},{"level":"Easy","answ3":"interviews","answ4":" all answers are correct","answ1":"Questionnaires","answ2":"Observations","right":"4","content":"collecting requirements by"},{"level":"Medium","answ3":"5 Stages of testing","answ4":"2 Stages of testing","answ1":"1 Stages of testing","answ2":"3 Stages of testing","right":"2","content":"there is :"},{"level":"Hard","answ3":"publicetive Maintenance","answ4":"all answers are correct","answ1":"Corrective Maintenance","answ2":" programmetive Maintenance","right":"1","content":"Which of these is a Types of maintenance"},{"level":"Hard","answ3":"it's to ensure the continuous and efficient operation of the system","answ4":"all answers is uncorrect","answ1":"to make efficient of the Development testing to make the system more effective","answ2":"it is that with the finish of project we need to to make sure that all the system data is complate and correct","right":"3","content":"what is a Maintenance?"},{"level":"Hard","answ3":"where users or potential users of a system test the system in their own environment","answ4":"Answers 1 and 2 are correct","answ1":"where the system is tested during development to discover bugs and defects","answ2":"where a separate testing team test a complete version of the system before it is released to users","right":"1","content":"Development Testing is"},{"level":"Easy","answ3":"it's a part of junit test","answ4":"it's a set of architectural design decisions that are applicable to a recurring design problem","answ1":"it's the process of determining a software systemâ\u20AC™s architecture","answ2":"it's an approach to software development","right":"4","content":"what is an Architectural Patterns?"},{"level":"Medium","answ3":"process view","answ4":" All the answers is correct","answ1":"conceptual view","answ2":"logical view","right":"4","content":"we can document an Architectures by __?"},{"level":"Medium","answ3":"has explicitly defined dependencies on its required execution context","answ4":"All the answers are correct","answ1":"encapsulates a subset of the systemâ\u20AC™s functionality and\/or data","answ2":"restricts access to that subset via an explicitly defined interface","right":"4","content":"A component is an architectural entity that ____?"},{"level":"Medium","answ3":"wwww","answ4":"rrrrr","answ1":"rrrrr","answ2":"eeeee","right":3,"content":"mmmmm"},{"level":"Hard","answ3":"four","answ4":"one","answ1":"two","answ2":"three","right":3,"content":"hello marah"}]}
+
+
+  {
+    "questions": [
+      {
+        "level": "Easy",
+        "answ3": "Because requirements change frequently and render the document quickly outdated.",
+        "answ4": "Because it is not compatible with agile principles.",
+        "answ1": "Because it is costly to create.",
+        "answ2": "Because it requires too much pre-delivery analysis.",
+        "right": 3,
+        "content": "Why do many agile methods argue against producing a requirements document?"
+      },
+      {
+        "level": "Hard",
+        "answ3": "Critical systems requiring extensive pre-delivery analysis.",
+        "answ4": "Systems with rapidly changing requirements.",
+        "answ1": "Business systems with stable requirements.",
+        "answ2": "Systems developed by a single team.",
+        "right": 3,
+        "content": "In what scenarios might using user stories for requirements be problematic?"
+      },
+      {
+        "level": "Medium",
+        "answ3": "They may be the basis for a bid for a contract and also the basis for the contract itself.",
+        "answ4": "They ensure compliance with industry standards and regulations.",
+        "answ1": "They serve as a basis for project management and resource allocation.",
+        "answ2": "They provide guidelines for system testing and validation.",
+        "right": 3,
+        "content": "What dual function do requirements typically serve?"
+      },
+      {
+        "level": "Easy",
+        "answ3": "As a specific software feature",
+        "answ4": "As a formal contract between stakeholders",
+        "answ1": "As a high-level abstract statement of a service or system constraint",
+        "answ2": "As a detailed mathematical functional specification",
+        "right": 1,
+        "content": "How is a requirement defined?"
+      },
+      {
+        "level": "Easy",
+        "answ3": "Design review",
+        "answ4": "Design inspection",
+        "answ1": "Design evaluation",
+        "answ2": "Design presentation",
+        "right": 3,
+        "content": "What is a formal, scheduled activity where a designer presents material about a design and peers evaluate the technical aspects?"
+      },
+      {
+        "level": "Medium",
+        "answ3": "Design assessments",
+        "answ4": "Design reviews",
+        "answ1": "Design evaluations",
+        "answ2": "Design appraisals",
+        "right": 4,
+        "content": "What is the inclusive term used for reviews, walkthroughs, and inspections?"
+      },
+      {
+        "level": "Medium",
+        "answ3": "They are primarily used for algorithm optimization.",
+        "answ4": "They are designed for low-level code implementation.",
+        "answ1": "They focus solely on user interface design.",
+        "answ2": "They are stylized descriptions based on tried and tested practices.",
+        "right": 2,
+        "content": "What distinguishes architectural patterns from other types of patterns in software engineering?"
+      },
+      {
+        "level": "Hard",
+        "answ3": "Examples of every instance where the pattern has been successfully implemented",
+        "answ4": "Detailed implementation guidelines for specific programming languages",
+        "answ1": "When it is and is not appropriate to use the pattern, and details on its strengths and weaknesses",
+        "answ2": "A comprehensive list of all possible use cases for the pattern",
+        "right": 1,
+        "content": "What information should an architectural pattern provide?"
+      },
+      {
+        "level": "Easy",
+        "answ3": "Critical systems requiring extensive pre-delivery analysis.",
+        "answ4": "Systems with rapidly changing requirements.",
+        "answ1": "Business systems with stable requirements.",
+        "answ2": "Systems developed by a single team.",
+        "right": 3,
+        "content": "In what scenarios might using user stories for requirements be problematic?"
+      },
+      {
+        "level": "Medium",
+        "answ3": "Because requirements change frequently and render the document quickly outdated.",
+        "answ4": "Because it is not compatible with agile principles.",
+        "answ1": "Because it requires too much pre-delivery analysis.",
+        "answ2": "Because it is costly to create.",
+        "right": 3,
+        "content": "Why do many agile methods argue against producing a requirements document?"
+      },
+
+      {
+        "level": "Medium",
+        "answ3": "To ensure that the team stays focused on delivering value to the customer.",
+        "answ4": "To minimize the need for documentation and meetings.",
+        "answ1": "To promote close collaboration between cross-functional teams.",
+        "answ2": "To establish a rigid plan that guides the entire project.",
+        "right": 1,
+        "content": "What is one of the primary goals of the daily stand-up meeting in Agile development?"
+      }
+   ,
+      {
+        "level": "Easy",
+        "answ3": "Use case diagrams",
+        "answ4": "Sequence diagrams",
+        "answ1": "Activity diagrams",
+        "answ2": "Class diagrams",
+        "right": 2,
+        "content": "Which diagram shows the interactions between a system and its environment?"
+      },
+      {
+        "level": "Easy",
+        "answ3": "Class diagrams",
+        "answ4": "State diagrams",
+        "answ1": "Use case diagrams",
+        "answ2": "Sequence diagrams",
+        "right": 3,
+        "content": "Which diagram displays the object classes in the system and their associations?"
+      },
+      {
+        "level": "Hard",
+        "answ3": "To verify the internal structure, design, or implementation of the software.",
+        "answ4": "To evaluate the functionality of individual units or components of the software.",
+        "answ1": "To assess the behavior of the entire software system.",
+        "answ2": "To ensure that the software meets specific performance criteria.",
+        "right": 1,
+        "content": "What is the primary objective of black-box testing?"
+      }
+    ]
+  }
+  
