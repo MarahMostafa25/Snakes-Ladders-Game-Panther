@@ -126,7 +126,11 @@ public class HardBoardController implements Initializable{
 	private HashMap<Integer,Player> players = new HashMap<Integer,Player>();
 	private HashMap<Integer,QuestionSquare> ocuupiedQuestions = new HashMap<Integer,QuestionSquare>();
 	private SurpriseSquare surprise1;
+	private SurpriseSquare surprise2;
+	private ImageView surprisePic1 = new ImageView(new Image("/Images/surprise.png"));
+	private ImageView surprisePic2 = new ImageView(new Image("/Images/surprise.png"));
 	private int levelForSurprise;
+	private int levelForSurprise2;
 	private Dice dice; 
 	private  Player player1; 
 	private  Player player2;
@@ -628,7 +632,7 @@ public class HardBoardController implements Initializable{
 		int snake1 = check_snake(position);//-1
 		int square = check_square(position,p,type);
 		//if(square==1) return;
-		if(position==levelForSurprise) {
+		if(position==levelForSurprise||position==levelForSurprise2) {
 			if(position+10<=x*x)
 			{
 				check_move(p,position+10,type);
@@ -858,27 +862,40 @@ public class HardBoardController implements Initializable{
 	}
 	public void setSquare() // sets surprise and question
 	{
+		int row=0,col=0;
 		HashMap<Integer , Integer > map ;
 		int labelValue = setObjCheckOcuupied();
-		while(labelValue > ((x*x)-10)) // can't jump over the end 
-			labelValue = setObjCheckOcuupied();
-		ocuupiedCells.put(labelValue, true);
-		ImageView surprise = new ImageView(new Image("/Images/surprise.png"));
-		surprise.setFitWidth(40);
-		surprise.setFitHeight(40);
-		int row=0;
-		int col=0;
-		map =  boardCells.get(labelValue); 
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-			row = entry.getKey();
-			col = entry.getValue();
+		for(int i=0;i<2;i++) {
+			while(labelValue > ((x*x)-10)) // can't jump over the end 
+				labelValue = setObjCheckOcuupied();
+			ocuupiedCells.put(labelValue, true);
+			row=0;
+			col=0;
+			map =  boardCells.get(labelValue); 
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+				row = entry.getKey();
+				col = entry.getValue();
+			}
+			if(i==0) {
+				surprisePic1.setFitWidth(40);
+				surprisePic1.setFitHeight(40);
+				SurpriseSquare sq1=(SurpriseSquare)fact.getType("SurpriseSquare", row, col);
+				surprise1=sq1;
+				levelForSurprise=labelValue;
+				GridPane.setConstraints(surprisePic1, col, row,1,1);//first is column , second is row,
+				board.getChildren().add(surprisePic1);
+			}
+			if(i==1) {
+				surprisePic2.setFitWidth(40);
+				surprisePic2.setFitHeight(40);
+				SurpriseSquare sq2=(SurpriseSquare)fact.getType("SurpriseSquare", row, col);
+				surprise2=sq2;
+				levelForSurprise2=labelValue;
+				GridPane.setConstraints(surprisePic2, col, row,1,1);//first is column , second is row,
+				board.getChildren().add(surprisePic2);
+			}
+			
 		}
-		SurpriseSquare sq1=(SurpriseSquare)fact.getType("SurpriseSquare", row, col);
-		surprise1=sq1;
-		levelForSurprise=labelValue;
-		GridPane.setConstraints(surprise, col, row,1,1);//first is column , second is row,
-		board.getChildren().add(surprise);
-		
 		/***start question square**/
 		String type="Easy";
 		for(int i=0;i<3;i++) /********questions for the random set in the board*///////////
