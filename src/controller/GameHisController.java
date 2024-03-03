@@ -62,7 +62,7 @@ public class GameHisController implements Initializable{
 		ArrayList<Game> all_games=new ArrayList<Game>();
 		all_games.addAll(Main.res.getAllgames());
 		ObservableList<Game> dataGame = FXCollections.observableArrayList(all_games);
-		gameNum.setCellValueFactory(new PropertyValueFactory<Game,Integer>("gameNum"));
+		gameNum.setCellValueFactory(new PropertyValueFactory<Game,Integer>("id"));
 		level.setCellValueFactory(new PropertyValueFactory<Game,Level>("gameLevel"));
 		winner.setCellValueFactory(new PropertyValueFactory<Game,Player>("winner"));
 		time.setCellValueFactory(new PropertyValueFactory<Game,String>("gameTimer"));

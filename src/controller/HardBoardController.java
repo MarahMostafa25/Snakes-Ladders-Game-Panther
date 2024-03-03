@@ -62,6 +62,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Dice;
+import model.Game;
 import model.HelpClass;
 import model.Ladder;
 import model.Player;
@@ -165,7 +166,7 @@ public class HardBoardController implements Initializable{
 	//40,40
 	private ImageView red1 = new ImageView(new Image("/Images/redSnake.png"));
 	private ImageView red2 = new ImageView(new Image("/Images/redSnake.png"));
-	
+	private ArrayList<Game> game1=new ArrayList<Game>();
 	/*ladders*/
 
 	//ladder1 , 60,60 
@@ -600,7 +601,7 @@ public class HardBoardController implements Initializable{
 	{
 		
 		int c=1;
-		if(pos==100)
+		if(pos==x*x)
 		{
 			c=0;
 			if(type=="p1") {winner=player1;}
@@ -631,6 +632,12 @@ public class HardBoardController implements Initializable{
 			p2turn.setDisable(true);
 			p3turn.setDisable(true);
 			p4turn.setDisable(true);
+			timeline1.stop();
+			Game game=new Game(Level2,winner,timerCheck.getText());
+			game1=Main.res.getAllgames();
+			game1.add(game);
+			Main.res.setAllgames(game1);
+			Main.update();
 			return c;
 			
 		}

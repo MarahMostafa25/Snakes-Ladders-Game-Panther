@@ -568,7 +568,7 @@ public class EasyBoardController implements Initializable{
 	private int check_winner(int pos ,String type)
 	{
 		int c=1;
-		if(pos==100)
+		if(pos==x*x)
 		{
 			c=0;
 			if(type=="p1") {winner=player1;}

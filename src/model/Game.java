@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -7,7 +8,7 @@ import java.util.TimerTask;
 
 import utils.Level;
 
-public class Game {
+public class Game implements Serializable{
 	private static int gameNum=0;
 	private Level gameLevel; //game level , 1 -easy , 2 medium , 3 hard
 	private Player winner;
@@ -19,8 +20,6 @@ public class Game {
 		this.gameLevel = gameLevel;
 		this.winner = winner;
 		this.gameTimer = gameTimer;
-	
-		
 	}
 	public static int getGameNum() {
 		return gameNum;
