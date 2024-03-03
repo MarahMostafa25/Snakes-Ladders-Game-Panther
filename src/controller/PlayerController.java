@@ -20,6 +20,7 @@ import model.InputValidator;
 import model.NoNumbersValidation;
 import model.NonEmptyValidation;
 import model.Player;
+import utils.Level;
 
 public class PlayerController {
 	@FXML
@@ -170,6 +171,19 @@ public class PlayerController {
 	public void start2(ActionEvent e) throws IOException {
 		
 		HelpClass.getInstance().setNumOfPlayer(numPlayer);
+		String navigate="";
+		if(HelpClass.getInstance().getLevelGame().equals(Level.Easy))
+		{
+			navigate="/view/EasyBoard.fxml";
+		}
+		if(HelpClass.getInstance().getLevelGame().equals(Level.Medium))
+		{
+			navigate="/view/board.fxml";
+		}
+		if(HelpClass.getInstance().getLevelGame().equals(Level.Hard))
+		{
+			navigate="/view/HardBoard.fxml";
+		}
 		InputValidator nameValidator = new InputValidator(new NoNumbersValidation());
 		InputValidator emptyValidator = new InputValidator(new NonEmptyValidation());
 	    boolean inputsValid = true;
@@ -188,14 +202,14 @@ public class PlayerController {
             }
 			else
 			{
-				Player p1=new Player(name1.getText(),99,"Images\\egy1.png");
+				Player p1=new Player(name1.getText(),1,"Images\\egy1.png");
 				Player p2=new Player(name2.getText(),1,"Images\\egyy2.png");
 				HelpClass.getInstance().setP1(p1);
 				HelpClass.getInstance().setP2(p2);
 				
 				//here navigate to other screen
 				try {
-					Parent root = FXMLLoader.load(getClass().getResource("/view/board.fxml"));
+					Parent root = FXMLLoader.load(getClass().getResource(navigate));
 					Scene scene = new Scene(root);
 					Main.mainS.setScene(scene);
 
@@ -233,7 +247,7 @@ public class PlayerController {
 					
 					//navigate
 					try {
-						Parent root = FXMLLoader.load(getClass().getResource("/view/board.fxml"));
+						Parent root = FXMLLoader.load(getClass().getResource(navigate));
 						Scene scene = new Scene(root);
 						Main.mainS.setScene(scene);
 
@@ -269,7 +283,7 @@ public class PlayerController {
 						HelpClass.getInstance().setP3(p3);
 						HelpClass.getInstance().setP4(p4);
 						try {
-							Parent root = FXMLLoader.load(getClass().getResource("/view/board.fxml"));
+							Parent root = FXMLLoader.load(getClass().getResource(navigate));
 							Scene scene = new Scene(root);
 							Main.mainS.setScene(scene);
 
