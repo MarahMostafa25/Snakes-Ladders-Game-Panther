@@ -8,8 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import model.RulesClickedObserver;
 
-public class RuleController {
+public class RuleController implements RulesClickedObserver {
 
 	@FXML
 	Button backbutton;
@@ -27,6 +28,11 @@ public class RuleController {
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
+		}
+		@Override
+		public void onRulesClicked() {
+			// TODO Auto-generated method stub
+			 System.out.println("Rules button clicked!");
 		}
 
 }
