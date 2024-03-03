@@ -86,6 +86,15 @@ public void start(ActionEvent e) throws IOException {
 
 @FXML
 public void history(ActionEvent e) throws IOException {
+	try {
+		Parent root = FXMLLoader.load(getClass().getResource("/view/GameHistory.fxml"));
+		Scene scene = new Scene(root);
+		Main.mainS.setScene(scene);
+
+	} catch (Exception e1) {
+		e1.printStackTrace();
+	}
+
 
 }
 

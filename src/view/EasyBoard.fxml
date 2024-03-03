@@ -101,7 +101,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Button id="button7" fx:id="backbutton" layoutX="24.0" layoutY="70.0" minHeight="27.0" minWidth="45.0" mnemonicParsing="false" onAction="#backB" prefHeight="27.0" prefWidth="49.0" style="-fx-border-radius: 100;" stylesheets="@application.css" text="back">
+      <Button id="button7" fx:id="backbutton" layoutX="24.0" layoutY="70.0" minHeight="27.0" minWidth="45.0" mnemonicParsing="false" onAction="#backB" prefHeight="30.0" prefWidth="61.0" style="-fx-border-radius: 100;" stylesheets="@application.css" text="Home">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>

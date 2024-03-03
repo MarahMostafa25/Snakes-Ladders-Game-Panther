@@ -8,6 +8,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -96,6 +99,27 @@
                   <Image url="@../Images/diceFace.png" />
                </image>
             </ImageView>
+            <Button id="button7" fx:id="backbutton" layoutX="13.0" layoutY="67.0" minHeight="27.0" minWidth="45.0" mnemonicParsing="false" onAction="#backB" prefHeight="30.0" prefWidth="61.0" style="-fx-border-radius: 100;" stylesheets="@application.css" text="Home">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.28947368264198303" green="0.23159383237361908" blue="0.022335931658744812" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.44736841320991516" green="0.30560970306396484" blue="0.022092267870903015" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

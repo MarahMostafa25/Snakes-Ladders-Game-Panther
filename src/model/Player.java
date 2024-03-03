@@ -5,6 +5,7 @@ public class Player {
 	private String nickName;
 	private int position;
 	private String AvatarPath;
+	private int score;
 	private static int id=0;
 
 	public Player(String nickName, int position, String AvatarPath) {
@@ -13,6 +14,16 @@ public class Player {
 		this.position = position;
 		this.AvatarPath = AvatarPath;
 	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public int getScore() {
+		return score;
+	}
+	
+	
+
 
 	public String getNickName() {
 		return nickName;

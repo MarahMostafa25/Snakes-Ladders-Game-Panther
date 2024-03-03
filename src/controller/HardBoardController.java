@@ -1,4 +1,5 @@
 package controller;
+import java.io.IOException;
 import java.net.URL;
 import javafx.animation.Timeline;
 import java.util.ArrayList;
@@ -15,12 +16,14 @@ import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -205,6 +208,19 @@ public class HardBoardController implements Initializable{
 			labelValue = ((x - row) * x - (x - col - 1));
 		}
 		return labelValue;
+	}
+	
+	//get back to previous page
+	@FXML
+	public void backB(ActionEvent e) throws IOException {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
+			Scene scene = new Scene(root);
+			Main.mainS.setScene(scene);
+
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 	}
 	/****************************************************************************/
 
@@ -1379,7 +1395,7 @@ public class HardBoardController implements Initializable{
 		setSnakeToBoardView(ladder3, 75, 236, row, col);
 		
 
-		/*******************ladder 2 in medium level****************/
+		/*******************ladder 2 in hard level****************/
 		labelValue = setObjCheckOcuupied();
 		endValue = calcEnd(labelValue,2,0);
 		while ((labelValue <27)||ocuupiedCells.get(endValue)==true||ocuupiedCells.get(endValue)==null||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start

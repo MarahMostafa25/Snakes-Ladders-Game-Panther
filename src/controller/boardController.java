@@ -63,6 +63,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Dice;
+import model.Game;
 import model.HelpClass;
 import model.Ladder;
 import model.Player;
@@ -170,6 +171,7 @@ public class boardController implements Initializable{
 	private ImageView player3Image = new ImageView(new Image("/Images/egyy3.png"));
 	private ImageView player4Image = new ImageView(new Image("/Images/egyy4.png"));
 	static Stage window = new Stage();
+	private ArrayList<Game> game1=new ArrayList<Game>();
 
 	//*************************************************************//
 	private void initializeOccupiedCells(int x) {
@@ -596,6 +598,12 @@ public class boardController implements Initializable{
 			p2turn.setDisable(true);
 			p3turn.setDisable(true);
 			p4turn.setDisable(true);
+			timeline1.stop();
+			Game game=new Game(Level2,winner,timerCheck.getText());
+			game1=Main.res.getAllgames();
+			game1.add(game);
+			Main.res.setAllgames(game1);
+			Main.update();
 			return c;
 			
 		}
@@ -1355,7 +1363,7 @@ public class boardController implements Initializable{
 		@FXML
 		public void backB(ActionEvent e) throws IOException {
 			try {
-				Parent root = FXMLLoader.load(getClass().getResource("/view/Players.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
 				Scene scene = new Scene(root);
 				Main.mainS.setScene(scene);
 

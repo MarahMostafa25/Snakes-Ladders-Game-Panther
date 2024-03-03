@@ -9,122 +9,56 @@ import utils.Level;
 
 public class Game {
 	private static int gameNum=0;
-	private HashMap<Integer,Player> allPlayers; // the participants in the game 
-	private HashMap<Integer,Ladder> allLaders; // the ladders among the game
-	private HashMap<Integer,Snake> allSnakes; // the snakes among the game 
-	private Dice dice;
 	private Level gameLevel; //game level , 1 -easy , 2 medium , 3 hard
-	private Player currplayer;
-	private Board board;
-	private Timer gameTimer;
-	public Game(Dice dice, Level gameLevel, Player currplayer, Board board, Timer gameTimer) {
+	private Player winner;
+	private String gameTimer;
+	private int id;
+	public Game(Level gameLevel , Player winner ,String gameTimer) {
 		super();
-		this.dice = dice;
+		id=gameNum++;
 		this.gameLevel = gameLevel;
-		this.currplayer = currplayer;
-		this.board = board;
+		this.winner = winner;
 		this.gameTimer = gameTimer;
-		allPlayers=new  HashMap<Integer,Player>();
-		allLaders=new  HashMap<Integer,Ladder>();
-		allSnakes=new  HashMap<Integer,Snake>();
-
-
+	
 		
 	}
-
-	public void add_player(Player p)
-	{
-		allPlayers.put(p.getPlayerId(), p);
-	}
-	public void add_Snake(Snake s)
-	{
-		allSnakes.put(s.getSnakeNumber(), s);
-	}
-	public void add_ladder(Ladder l)
-	{
-		allLaders.put(l.getLadderNum(), l);
-	}
-
 	public static int getGameNum() {
 		return gameNum;
 	}
-
 	public static void setGameNum(int gameNum) {
 		Game.gameNum = gameNum;
 	}
-
-	public HashMap<Integer, Player> getAllPlayers() {
-		return allPlayers;
-	}
-
-	public void setAllPlayers(HashMap<Integer, Player> allPlayers) {
-		this.allPlayers = allPlayers;
-	}
-
-	public HashMap<Integer, Ladder> getAllLaders() {
-		return allLaders;
-	}
-
-	public void setAllLaders(HashMap<Integer, Ladder> allLaders) {
-		this.allLaders = allLaders;
-	}
-
-	public HashMap<Integer, Snake> getAllSnakes() {
-		return allSnakes;
-	}
-
-	public void setAllSnakes(HashMap<Integer, Snake> allSnakes) {
-		this.allSnakes = allSnakes;
-	}
-
-	public Dice getDice() {
-		return dice;
-	}
-
-	public void setDice(Dice dice) {
-		this.dice = dice;
-	}
-
 	public Level getGameLevel() {
 		return gameLevel;
 	}
-
 	public void setGameLevel(Level gameLevel) {
 		this.gameLevel = gameLevel;
 	}
-
-	public Player getCurrplayer() {
-		return currplayer;
+	public Player getWinner() {
+		return winner;
 	}
-
-	public void setCurrplayer(Player currplayer) {
-		this.currplayer = currplayer;
+	public void setWinner(Player winner) {
+		this.winner = winner;
 	}
-
-	public Board getBoard() {
-		return board;
-	}
-
-	public void setBoard(Board board) {
-		this.board = board;
-	}
-
-	public Timer getGameTimer() {
+	public String getGameTimer() {
 		return gameTimer;
 	}
-
-	public void setGameTimer(Timer gameTimer) {
+	public void setGameTimer(String gameTimer) {
 		this.gameTimer = gameTimer;
 	}
-	
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	@Override
+	public String toString() {
+		return "Game [gameLevel=" + gameLevel + ", winner=" + winner + ", gameTimer=" + gameTimer + ", id=" + id + "]";
+	}
 	
 
 	
 
-	 
-	 	
 	
-	
-
 }

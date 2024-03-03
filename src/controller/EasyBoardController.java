@@ -374,10 +374,11 @@ public class EasyBoardController implements Initializable{
 		pause.play();
 
 	}
+	//get back to previous page
 	@FXML
 	public void backB(ActionEvent e) throws IOException {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/view/Players.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
 			Scene scene = new Scene(root);
 			Main.mainS.setScene(scene);
 
@@ -1003,6 +1004,7 @@ public class EasyBoardController implements Initializable{
 			ocuupiedCells.put(number,true);
 		}
 	}
+	
 	
 	public void setSnakes()
 	{
