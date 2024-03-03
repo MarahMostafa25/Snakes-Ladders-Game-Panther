@@ -34,6 +34,14 @@ public class Dice {
 				this.maxValue = 13;
 
 			}
+			else
+			{
+				if(levelGame.equals(Level.Hard))
+				{
+					this.maxValue = 15;
+
+				}
+			}
 		}
 
 		
@@ -55,7 +63,7 @@ public class Dice {
 	public int getResult() {
 		
 		Random random = new Random();
-        int randomNumber = random.nextInt(13);
+        int randomNumber = random.nextInt(maxValue);
 
 		return randomNumber;
 		

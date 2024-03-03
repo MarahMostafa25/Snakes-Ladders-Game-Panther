@@ -16,6 +16,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import model.HelpClass;
+import model.InputValidator;
+import model.NoNumbersValidation;
+import model.NonEmptyValidation;
 import model.Player;
 
 public class PlayerController {
@@ -167,13 +170,22 @@ public class PlayerController {
 	public void start2(ActionEvent e) throws IOException {
 		
 		HelpClass.getInstance().setNumOfPlayer(numPlayer);
+		InputValidator nameValidator = new InputValidator(new NoNumbersValidation());
+		InputValidator emptyValidator = new InputValidator(new NonEmptyValidation());
+	    boolean inputsValid = true;
+	    boolean inputsValid2 = true;
 		if(numPlayer==2) {
-			if(!name1.getText().chars().allMatch(Character::isLetter)||!name2.getText().chars().allMatch(Character::isLetter)||name1.getText().length()==0||name2.getText().length()==0)
-			{
+			
+            inputsValid = nameValidator.validateInput(name1.getText()) && nameValidator.validateInput(name2.getText());
+            inputsValid2 = emptyValidator.validateInput(name1.getText()) && emptyValidator.validateInput(name2.getText());
+
+            if(!inputsValid||!inputsValid2)
+            {
+
 				Alert a=new Alert(AlertType.CONFIRMATION);
 				a.setHeaderText("Choose character names please");
 				a.showAndWait();
-			}
+            }
 			else
 			{
 				Player p1=new Player(name1.getText(),1,"Images\\egy1.png");
@@ -193,18 +205,22 @@ public class PlayerController {
 
 
 			}
-			
 		}
 		else
 		{
 			if(numPlayer==3)
 			{
-				if(!name3.getText().chars().allMatch(Character::isLetter)||name3.getText().length()==0)
-				{
+	            inputsValid = nameValidator.validateInput(name1.getText()) && nameValidator.validateInput(name2.getText()) && nameValidator.validateInput(name3.getText());
+	            inputsValid2 = emptyValidator.validateInput(name1.getText()) && emptyValidator.validateInput(name2.getText()) && emptyValidator.validateInput(name3.getText());
+
+	            if(!inputsValid||!inputsValid2)
+	            {
+
 					Alert a=new Alert(AlertType.CONFIRMATION);
 					a.setHeaderText("Choose character names please");
 					a.showAndWait();
-				}
+	            }
+				
 				else
 				{
 					Player p1=new Player(name1.getText(),1,"Images\\egy1.png");
@@ -231,12 +247,16 @@ public class PlayerController {
 			{
 				if(numPlayer==4)
 				{
-					if(!name3.getText().chars().allMatch(Character::isLetter)|| !name4.getText().chars().allMatch(Character::isLetter)||name3.getText().length()==0||name4.getText().length()==0)
-					{
+		            inputsValid = nameValidator.validateInput(name1.getText()) && nameValidator.validateInput(name2.getText()) && nameValidator.validateInput(name3.getText()) && nameValidator.validateInput(name4.getText());
+		            inputsValid2 = emptyValidator.validateInput(name1.getText()) && emptyValidator.validateInput(name2.getText()) && emptyValidator.validateInput(name3.getText()) && emptyValidator.validateInput(name4.getText());
+
+		            if(!inputsValid||!inputsValid2)
+		            {
+
 						Alert a=new Alert(AlertType.CONFIRMATION);
 						a.setHeaderText("Choose character names please");
 						a.showAndWait();
-					}
+		            }
 					else
 					{
 						Player p1=new Player(name1.getText(),1,"Images\\egy1.png");
