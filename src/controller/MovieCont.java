@@ -39,7 +39,7 @@ public class MovieCont implements Initializable{
 		   Duration duration = Duration.seconds(3.5);
 	        Timeline timeline = new Timeline(new KeyFrame(duration, event -> {
 	        	try {
-	    			Parent root = FXMLLoader.load(getClass().getResource("/view/MainPage.fxml"));
+	    			Parent root = FXMLLoader.load(getClass().getResource("/view/GameRules.fxml"));
 	    			Scene scene = new Scene(root);
 	    			Main.mainS.setScene(scene);
 

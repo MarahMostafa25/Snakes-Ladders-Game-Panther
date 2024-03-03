@@ -388,15 +388,16 @@ public class EasyBoardController implements Initializable{
 
 	private void handle_movement(Player p, int diceResult,String type)
 	{
+		int x=6;
 		int current_pos,next_pos;
 		if(diceResult < 5){	
 			currentPlayer=p;
 			current_pos=p.getPosition();
 			if(current_pos+diceResult<=x*x) {
 				next_pos=current_pos+diceResult;
-				check_move(p,next_pos,type);
+				x=check_move(p,next_pos,type);
 			}
-			disbaleButtons();
+			if(x!=0) {disbaleButtons();}
 		}
 		else
 		{
@@ -413,6 +414,7 @@ public class EasyBoardController implements Initializable{
 	}
 	private int current_pos_q;
 	private int next_player_q;
+	private int have_winner=6;
 	private boolean display_question(int diceResult,Player p,String type)
 	{
 		Stage window3 = new Stage();  // Create a new Stage
@@ -486,102 +488,25 @@ public class EasyBoardController implements Initializable{
 				DecResult=-3;
 			}
 			/********************this should be in function***************************/
-			if(q.getCorrectAnswerNumber() == 1 && a1.isSelected()) {
-				Feedback2.message("right", "right answer ");
-				result_to_return=addToResult;
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
+			if ((q.getCorrectAnswerNumber() == 1 && a1.isSelected()) ||
+				    (q.getCorrectAnswerNumber() == 2 && a2.isSelected()) ||
+				    (q.getCorrectAnswerNumber() == 3 && a3.isSelected()) ||
+				    (q.getCorrectAnswerNumber() == 4 && a4.isSelected())) {
+				    Feedback2.message("right", "right answer ");
+				    result_to_return = addToResult;
+				} else {
+				    Feedback.message("Wrong", "wrong answer");
+				    result_to_return = DecResult;
 				}
-				disbaleButtons();
-				window3.close();
-			}
-			else if(q.getCorrectAnswerNumber() == 1 && !a1.isSelected()) {
-				Feedback.message("Wrong", "wrong answer");
-				result_to_return=DecResult;	
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
+
+				currentPlayer = p;
+				current_pos_q = p.getPosition();
+				if (current_pos_q + result_to_return <= x * x && current_pos_q + result_to_return >= 1) {
+				    next_player_q = current_pos_q + result_to_return;
+				    have_winner=check_move(p, next_player_q, type);
 				}
-				disbaleButtons();
+				if(have_winner!=0) {disbaleButtons();}
 				window3.close();
-			}
-			if(q.getCorrectAnswerNumber()== 2 && a2.isSelected()) {
-				Feedback2.message("right", "right answer ");
-				result_to_return=addToResult;
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window3.close();
-			}
-			else if(q.getCorrectAnswerNumber()== 2 && !a2.isSelected()) {
-				Feedback.message("Wrong", "wrong answer");
-				result_to_return=DecResult;		
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window3.close();
-			}
-			if(q.getCorrectAnswerNumber()== 3 && a3.isSelected()) {
-				Feedback2.message("right", "right answer ");
-				result_to_return=addToResult;
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window3.close();
-			}
-			else if(q.getCorrectAnswerNumber()== 3 && !a3.isSelected()) {
-				Feedback.message("Wrong", "wrong answer");
-				result_to_return=DecResult;	
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window3.close();
-			}
-			if(q.getCorrectAnswerNumber()== 4 && a4.isSelected()) {
-				Feedback2.message("right", "right answer ");
-				result_to_return=addToResult;
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window3.close();
-			}
-			else if(q.getCorrectAnswerNumber()== 4 && !a4.isSelected()) {
-				Feedback.message("Wrong", "wrong answer");
-				result_to_return=DecResult;	
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window3.close();
-			}
 			/************************to here***********************************/
 		});
 		System.out.print("reached here");
@@ -639,27 +564,48 @@ public class EasyBoardController implements Initializable{
 
 	}
 
-	private void check_winner(int pos ,String type)
+	private int check_winner(int pos ,String type)
 	{
-		
-		if(pos==x*x)
+		int c=1;
+		if(pos==100)
 		{
+			c=0;
 			if(type=="p1") {winner=player1;}
 			if(type=="p2") {winner=player2;}
 			if(type=="p3") {winner=player3;}
 			if(type=="p4") {winner=player4;}
-			Alert a=new Alert(AlertType.CONFIRMATION);
-			a.setHeaderText("Player:"+winner.getNickName()+"is winner! CONGRATS!");
-			a.show();
+			Stage window3 = new Stage();
+			window3.setTitle("THERE IS A WINNER");
+			window3.setMinWidth(500);
+			window3.setMinHeight(200);
+			Label win = new Label("winner is:"+winner.getNickName());
+			Button sub = new Button("continue");
+			VBox vbox = new VBox();
+			vbox.getChildren().addAll(win,sub);
+			sub.setStyle(
+	                "-fx-background-radius: 30; -fx-min-width: 30px; -fx-min-height: 30px; " +
+	                "-fx-background-color: #ffa089;");
+			sub.setOnAction(e->{
+				window3.close();
+				});
+			BackgroundFill backgroundFill = new BackgroundFill(javafx.scene.paint.Color.web("#ffcba4"), CornerRadii.EMPTY, Insets.EMPTY);
+	        Background background = new Background(backgroundFill);
+	        vbox.setBackground(background);
+			Scene scene = new Scene(vbox, 50, 40);
+			window3.setScene(scene);
+			window3.show();
 			p1turn.setDisable(true);
 			p2turn.setDisable(true);
 			p3turn.setDisable(true);
 			p4turn.setDisable(true);
+			return c;
 			
 		}
+		return c;
+		
 		
 	}
-	private void check_move(Player p , int position,String type)
+	private int check_move(Player p , int position,String type)
 	{
 		
 		ImageView v;
@@ -709,7 +655,14 @@ public class EasyBoardController implements Initializable{
 			board.getChildren().remove(player4Image);
 			setSnakeToBoardView(player4Image,50,50,row,col);
 		}
-		check_winner(position,type);
+		if(check_winner(position,type)==0)
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
 	}
 	private int check_square(int position,Player p,String type)
 	{

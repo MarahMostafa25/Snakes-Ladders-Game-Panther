@@ -1,69 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RuleController">
    <children>
-      <ImageView fitHeight="564.0" fitWidth="790.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/Rules.jpg" />
-         </image>
-      </ImageView>
-      <Label layoutX="112.0" layoutY="111.0" prefHeight="39.0" prefWidth="579.0" text="Once upon a time, trapped in an ancient cage in Egypt,Mr. Peabody and  Sherman ">
-         <font>
-            <Font name="Andalus" size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="106.0" layoutY="143.0" prefHeight="39.0" prefWidth="570.0" text="discovered their only escape was to play the regular snake and ladder game. Each roll ">
-         <font>
-            <Font name="Andalus" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="112.0" layoutY="173.0" prefHeight="39.0" prefWidth="579.0" text="of the dice became their key to freedom as they navigated through the mystic board, ">
-         <font>
-            <Font name="Andalus" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="102.0" layoutY="204.0" prefHeight="39.0" prefWidth="579.0" text="unlocking the secrets of the past. The serpentine journey became  their ticket to break">
-         <font>
-            <Font name="Andalus" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="101.0" layoutY="236.0" prefHeight="39.0" prefWidth="579.0" text=" free from the ancient confines, turning a simple game into a magical passage to liberty">
-         <font>
-            <Font name="Andalus" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="106.0" layoutY="269.0" prefHeight="39.0" prefWidth="456.0" text="But, unfortunately, having my freedom comes with rules.  ">
-         <font>
-            <Font name="Andalus" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="106.0" layoutY="300.0" prefHeight="39.0" prefWidth="279.0" text="Snakes will keep me from my freedom.">
-         <font>
-            <Font name="Andalus" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="106.0" layoutY="331.0" prefHeight="39.0" prefWidth="279.0" text="The stairs will bring me closer to freedom.">
-         <font>
-            <Font name="Andalus" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="157.0" layoutY="409.0" prefHeight="39.0" prefWidth="436.0" text="HELP ME PLEASE TO GET MY FREEDOM!">
-         <font>
-            <Font name="Andalus" size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="106.0" layoutY="361.0" prefHeight="39.0" prefWidth="486.0" text="There is a lot of question that I must answer it to be colser to freedom">
-         <font>
-            <Font name="Andalus" size="15.0" />
-         </font>
-      </Label>
+      <AnchorPane prefHeight="592.0" prefWidth="1119.0" style="-fx-background-color: #880808;">
+         <children>
+            <ImageView fitHeight="592.0" fitWidth="806.0" layoutX="157.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/ruleBack.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="280.0" layoutY="111.0" prefHeight="39.0" prefWidth="579.0" text="Once upon a time, trapped in an ancient cage in Egypt,Mr. Peabody and  Sherman ">
+               <font>
+                  <Font name="Andalus" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="277.0" layoutY="142.0" prefHeight="39.0" prefWidth="570.0" text="discovered their only escape was to play the regular snake and ladder game. Each roll ">
+               <font>
+                  <Font name="Andalus" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="272.0" layoutY="171.0" prefHeight="39.0" prefWidth="579.0" text="of the dice became their key to freedom as they navigated through the mystic board, ">
+               <font>
+                  <Font name="Andalus" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="272.0" layoutY="196.0" prefHeight="39.0" prefWidth="579.0" text="unlocking the secrets of the past. The serpentine journey became  their ticket to break">
+               <font>
+                  <Font name="Andalus" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="272.0" layoutY="235.0" prefHeight="39.0" prefWidth="579.0" text=" free from the ancient confines, turning a simple game into a magical passage to liberty">
+               <font>
+                  <Font name="Andalus" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="272.0" layoutY="265.0" prefHeight="39.0" prefWidth="456.0" text="But, unfortunately, having my freedom comes with rules.  ">
+               <font>
+                  <Font name="Andalus" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="272.0" layoutY="296.0" prefHeight="39.0" prefWidth="279.0" text="Snakes will keep me from my freedom.">
+               <font>
+                  <Font name="Andalus" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="270.0" layoutY="335.0" prefHeight="39.0" prefWidth="279.0" text="The stairs will bring me closer to freedom.">
+               <font>
+                  <Font name="Andalus" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="352.0" layoutY="401.0" prefHeight="39.0" prefWidth="436.0" text="HELP ME PLEASE TO GET MY FREEDOM!">
+               <font>
+                  <Font name="Andalus" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="270.0" layoutY="362.0" prefHeight="39.0" prefWidth="486.0" text="There is a lot of question that I must answer it to be colser to freedom">
+               <font>
+                  <Font name="Andalus" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="83.0" fitWidth="85.0" layoutX="537.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/iconRule.png" />
+               </image>
+            </ImageView>
+            <Button id="button7" fx:id="backbutton" layoutX="513.0" layoutY="512.0" minHeight="44.0" minWidth="45.0" mnemonicParsing="false" onAction="#backB" prefHeight="42.0" prefWidth="65.0" style="-fx-border-radius: 100; -fx-background-color: white;" stylesheets="@application.css" text="SKIP">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.28947368264198303" green="0.23159383237361908" blue="0.022335931658744812" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.44736841320991516" green="0.30560970306396484" blue="0.022092267870903015" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

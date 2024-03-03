@@ -1,4 +1,5 @@
 package controller;
+import java.io.IOException;
 import java.net.URL;
 import javafx.animation.Timeline;
 import java.util.ArrayList;
@@ -15,12 +16,14 @@ import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -110,6 +113,8 @@ public class boardController implements Initializable{
 	Button p3turn;
 	@FXML
 	Button p4turn;
+	@FXML
+	Button backbutton;
 
 	SquareFactory fact=new SquareFactory();
 	private Player currentPlayer=HelpClass.getInstance().getP1();//assuming
@@ -258,6 +263,8 @@ public class boardController implements Initializable{
 		{
 			dice=new Dice(0,13,Level.Medium); // 13 = number of faces 0-6 (7) and 2 for each one of the questions 
 		}
+		
+		
 		p2turn.setDisable(true);
 		p3turn.setDisable(true);
 		p4turn.setDisable(true);
@@ -378,15 +385,16 @@ public class boardController implements Initializable{
 
 	private void handle_movement(Player p, int diceResult,String type)
 	{
+		int x=6;
 		int current_pos,next_pos;
 		if(diceResult < 7){	
 			currentPlayer=p;
 			current_pos=p.getPosition();
 			if(current_pos+diceResult<=x*x) {
 				next_pos=current_pos+diceResult;
-				check_move(p,next_pos,type);
+				x=check_move(p,next_pos,type);
 			}
-			disbaleButtons();
+			if(x!=0) {disbaleButtons();}
 		}
 		else
 		{
@@ -403,8 +411,10 @@ public class boardController implements Initializable{
 	}
 	private int current_pos_q;
 	private int next_player_q;
+	private int have_winner=6;
 	private boolean display_question(int diceResult,Player p,String type)
 	{
+		Stage window3 = new Stage();  // Create a new Stage
 		result_to_return=0;
 		addToResult=0;
 		DecResult=0;
@@ -433,16 +443,19 @@ public class boardController implements Initializable{
 		Question q = new Question(question1.getQuestionContent(),question1.getLevel(),question1.getAnswer1()
 				,question1.getAnswer2(),question1.getAnswer3(),question1.getAnswer4(),question1.getCorrectAnswerNumber());
 		//we have the question here so lets check answer and display it
-		window.setTitle("Try answer the question" + q.getLevel());
-		window.setMinWidth(500);
-		window.setMinHeight(200);
+		window3.setTitle("Try answer the question" + q.getLevel());
+		window3.setMinWidth(500);
+		window3.setMinHeight(200);
 		Label question = new Label("Question:");
 		Text questionText = new Text(q.getQuestionContent());
 		RadioButton a1 = new RadioButton(q.getAnswer1());
 		RadioButton a2 = new RadioButton(q.getAnswer2());
 		RadioButton a3 = new RadioButton(q.getAnswer3());
 		RadioButton a4 = new RadioButton(q.getAnswer4());
-
+		/* RadioButton[] answerButtons = new RadioButton[4];
+		    for (int i = 0; i < 4; i++) {
+		        answerButtons[i] = new RadioButton(question.getAnswers()[i]);
+		    }*/
 		ToggleGroup tg = new ToggleGroup(); 
 		a1.setToggleGroup(tg);
 		a2.setToggleGroup(tg);
@@ -472,102 +485,26 @@ public class boardController implements Initializable{
 				DecResult=-3;
 			}
 			/********************this should be in function***************************/
-			if(q.getCorrectAnswerNumber() == 1 && a1.isSelected()) {
-				Feedback2.message("right", "right answer ");
-				result_to_return=addToResult;
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
+			if ((q.getCorrectAnswerNumber() == 1 && a1.isSelected()) ||
+				    (q.getCorrectAnswerNumber() == 2 && a2.isSelected()) ||
+				    (q.getCorrectAnswerNumber() == 3 && a3.isSelected()) ||
+				    (q.getCorrectAnswerNumber() == 4 && a4.isSelected())) {
+				    Feedback2.message("right", "right answer ");
+				    result_to_return = addToResult;
+				} else {
+				    Feedback.message("Wrong", "wrong answer");
+				    result_to_return = DecResult;
 				}
-				disbaleButtons();
-				window.close();
-			}
-			else if(q.getCorrectAnswerNumber() == 1 && !a1.isSelected()) {
-				Feedback.message("Wrong", "wrong answer");
-				result_to_return=DecResult;	
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
+
+				currentPlayer = p;
+				current_pos_q = p.getPosition();
+				if (current_pos_q + result_to_return <= x * x && current_pos_q + result_to_return >= 1) {
+				    next_player_q = current_pos_q + result_to_return;
+				    have_winner=check_move(p, next_player_q, type);
 				}
-				disbaleButtons();
-				window.close();
-			}
-			if(q.getCorrectAnswerNumber()== 2 && a2.isSelected()) {
-				Feedback2.message("right", "right answer ");
-				result_to_return=addToResult;
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window.close();
-			}
-			else if(q.getCorrectAnswerNumber()== 2 && !a2.isSelected()) {
-				Feedback.message("Wrong", "wrong answer");
-				result_to_return=DecResult;		
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window.close();
-			}
-			if(q.getCorrectAnswerNumber()== 3 && a3.isSelected()) {
-				Feedback2.message("right", "right answer ");
-				result_to_return=addToResult;
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window.close();
-			}
-			else if(q.getCorrectAnswerNumber()== 3 && !a3.isSelected()) {
-				Feedback.message("Wrong", "wrong answer");
-				result_to_return=DecResult;	
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window.close();
-			}
-			if(q.getCorrectAnswerNumber()== 4 && a4.isSelected()) {
-				Feedback2.message("right", "right answer ");
-				result_to_return=addToResult;
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window.close();
-			}
-			else if(q.getCorrectAnswerNumber()== 4 && !a4.isSelected()) {
-				Feedback.message("Wrong", "wrong answer");
-				result_to_return=DecResult;	
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window.close();
-			}
+				if(have_winner!=0) {disbaleButtons();}
+				window3.close();
+			
 			/************************to here***********************************/
 		});
 		System.out.print("reached here");
@@ -578,8 +515,9 @@ public class boardController implements Initializable{
         Background background = new Background(backgroundFill);
         vbox.setBackground(background);
 		Scene scene = new Scene(vbox, 50, 40);
-		window.setScene(scene);
-		window.show();
+		window3.setScene(scene);
+		window3.show();
+		
 		return false;
 	}
 	private Question getEasyQuestion() {
@@ -624,45 +562,65 @@ public class boardController implements Initializable{
 
 	}
 
-	private void check_winner(int pos ,String type)
+	private int check_winner(int pos ,String type)
 	{
-		
+		int c=1;
 		if(pos==100)
 		{
+			c=0;
 			if(type=="p1") {winner=player1;}
 			if(type=="p2") {winner=player2;}
 			if(type=="p3") {winner=player3;}
 			if(type=="p4") {winner=player4;}
-			Alert a=new Alert(AlertType.CONFIRMATION);
-			a.setHeaderText("Player:"+winner.getNickName()+"is winner! CONGRATS!");
-			a.showAndWait();
+			Stage window3 = new Stage();
+			window3.setTitle("THERE IS A WINNER");
+			window3.setMinWidth(500);
+			window3.setMinHeight(200);
+			Label win = new Label("winner is:"+winner.getNickName());
+			Button sub = new Button("continue");
+			VBox vbox = new VBox();
+			vbox.getChildren().addAll(win,sub);
+			sub.setStyle(
+	                "-fx-background-radius: 30; -fx-min-width: 30px; -fx-min-height: 30px; " +
+	                "-fx-background-color: #ffa089;");
+			sub.setOnAction(e->{
+				window3.close();
+				});
+			BackgroundFill backgroundFill = new BackgroundFill(javafx.scene.paint.Color.web("#ffcba4"), CornerRadii.EMPTY, Insets.EMPTY);
+	        Background background = new Background(backgroundFill);
+	        vbox.setBackground(background);
+			Scene scene = new Scene(vbox, 50, 40);
+			window3.setScene(scene);
+			window3.show();
 			p1turn.setDisable(true);
 			p2turn.setDisable(true);
 			p3turn.setDisable(true);
 			p4turn.setDisable(true);
+			return c;
 			
 		}
+		return c;
 		
 	}
-	private void check_move(Player p , int position,String type)
+	private int check_move(Player p , int position,String type)
 	{
 		
 		ImageView v;
 		HashMap<Integer , Integer > map ;
 		int row=0,col=0;
 		int lad=check_ladder(position);// if -1 then no ladder here
-		int snake1 = check_snake(position);
+		int snake1 = check_snake(position);//-1
 		int square = check_square(position,p,type);
-		if(square==1) return;
+		//if(square==1) return;
 		if(position==levelForSurprise) {
 			if(position+10<=x*x)
 			{
 				check_move(p,position+10,type);
-				return;
+				return 3;
 			}
 			else
 			{
-				return;
+				return 3;
 			}
 		}
 		if(lad!=-1)//it means we have ladder
@@ -705,13 +663,21 @@ public class boardController implements Initializable{
 			board.getChildren().remove(player4Image);
 			setSnakeToBoardView(player4Image,50,50,row,col);
 		}
-		check_winner(position,type);
+		if(check_winner(position,type)==0)
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
 	}
 	private int check_square(int position,Player p,String type)
 	{
         QuestionSquare res=ocuupiedQuestions.get(new Integer(position));
 		if(res!=null)
 		{
+	         p.setPosition(position);
 			 if(res.getType()=="Easy")
 			 {
 				 display_question(7,p,type);
@@ -905,6 +871,7 @@ public class boardController implements Initializable{
 			if(i==1) {type="Medium";}
 			if(i==2) {type="Hard";}
 			labelValue = setObjCheckOcuupied();
+			while(labelValue==100) { labelValue = setObjCheckOcuupied();}
 			ocuupiedCells.put(labelValue, true);
 			ImageView question = new ImageView(new Image("/Images/question.jpg"));
 			question.setFitWidth(40);
@@ -997,12 +964,7 @@ public class boardController implements Initializable{
 			}
 			colF++;
 		}
-		for(int i=rowF+2;i<rowE;i++)
-		{
-			number=calLabelValue(i, col2);
-			ocuupiedCells.put(number,true);
-			col2+=1;
-		}	
+		
 
 
 		return check;
@@ -1144,7 +1106,7 @@ public class boardController implements Initializable{
 			row = entry.getKey();
 			col = entry.getValue();
 		}
-		snake = new Snake(labelValue,endValue,SnakeColor.blue);
+		snake = new Snake(labelValue,endValue,SnakeColor.yellow);
 		ocuupiedCells.put(labelValue, true);
 		setAllBetYellowOccupied(row,col);
 		ocuupiedCells.put(endValue, true);
@@ -1165,7 +1127,7 @@ public class boardController implements Initializable{
 				row = entry.getKey();
 				col = entry.getValue();
 			}
-			snake = new Snake(labelValue,labelValue,SnakeColor.red);
+			snake = new Snake(labelValue,endValue,SnakeColor.green);
 			ocuupiedCells.put(labelValue, true);
 			setAllBetweenOccupied(labelValue,endValue,0);
 			ocuupiedCells.put(endValue, true);
@@ -1234,7 +1196,7 @@ public class boardController implements Initializable{
 		labelValue = setObjCheckOcuupied();
 		endValue = calcEnd(labelValue,1,0);
 
-		while ((labelValue <11)||labelValue==20||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true) { // Can't be at the end or the start
+		while ((labelValue <11)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true) { // Can't be at the end or the start
 			labelValue = setObjCheckOcuupied();
 			endValue = calcEnd(labelValue,1,0);
 			System.out.print("im here 1");
@@ -1389,6 +1351,18 @@ public class boardController implements Initializable{
 		}
 		return false;
 	}
+	//get back to previous page
+		@FXML
+		public void backB(ActionEvent e) throws IOException {
+			try {
+				Parent root = FXMLLoader.load(getClass().getResource("/view/Players.fxml"));
+				Scene scene = new Scene(root);
+				Main.mainS.setScene(scene);
+
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
 
 	private Color getRandomColorFromAllowedColors() {
 		return allowedColors[(int) (Math.random() * allowedColors.length)];
@@ -1431,3 +1405,38 @@ public class boardController implements Initializable{
 				(int) (color.getBlue() * 255));
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

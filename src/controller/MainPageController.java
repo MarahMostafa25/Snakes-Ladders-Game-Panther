@@ -35,12 +35,25 @@ public class MainPageController {
 	@FXML
 	Button questionsbutton;
 	@FXML
+	Button rules;
+	@FXML
     AnchorPane root;
 	@FXML 
 	StackPane stack;
 	
 	
+@FXML
+public void rules(ActionEvent e) throws IOException {
+	try {
+		Parent root = FXMLLoader.load(getClass().getResource("/view/GameRules.fxml"));
+		Scene scene = new Scene(root);
+		Main.mainS.setScene(scene);
 
+	} catch (Exception e1) {
+		e1.printStackTrace();
+	}
+	
+}
 @FXML
 public void start(ActionEvent e) throws IOException {
 	

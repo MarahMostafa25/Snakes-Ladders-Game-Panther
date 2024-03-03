@@ -86,6 +86,27 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Button>
+                        <Button fx:id="rules" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#rules" prefHeight="37.0" prefWidth="60.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@../view/application.css" text="RULES">
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.3947368562221527" green="0.008528265170753002" blue="0.24025341868400574" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.3070175349712372" green="0.21309608221054077" blue="0.010423434898257256" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>

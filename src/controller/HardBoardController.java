@@ -115,7 +115,7 @@ public class HardBoardController implements Initializable{
 	private Player currentPlayer=HelpClass.getInstance().getP1();//assuming
 	private Level Level2=HelpClass.getInstance().getLevelGame();
 	private int num_of_players=HelpClass.getInstance().getNumOfPlayer();
-	private int x=10;
+	private int x=13;
 	private Pane[][] panes = new Pane[x][x];
 	private  Label label;
 	// This hashmap saves what the user see
@@ -137,29 +137,47 @@ public class HardBoardController implements Initializable{
 	private int result_to_return=0; 
 	private int addToResult=0; 
 	private int DecResult=0;
+	
+//	setSnakeToBoardView(red1,40,40,0,0);
+//	setSnakeToBoardView(bl,35,150,3,4);
+//	setSnakeToBoardView(gr2,60,205,5,6);
+//	setSnakeToBoardView(yellow,170,80,2,4);
+	
 	//60,205
 	private ImageView gr1 = new ImageView(new Image("/Images/greenSnake.png"));
 	private ImageView gr2 = new ImageView(new Image("/Images/greenSnake.png"));
-	//35,200
-	private ImageView bl = new ImageView(new Image("/Images/blueSnake.png"));
-	//170,96
+	//35,150
+	private ImageView b1 = new ImageView(new Image("/Images/blueSnake.png"));
+	private ImageView b2 = new ImageView(new Image("/Images/blueSnake.png"));
+
+	
+	//170,80
 	private ImageView yellow = new ImageView(new Image("/Images/yellowSnake.png"));
+	private ImageView yellow2 = new ImageView(new Image("/Images/yellowSnake.png"));
+
+	//40,40
 	private ImageView red1 = new ImageView(new Image("/Images/redSnake.png"));
 	private ImageView red2 = new ImageView(new Image("/Images/redSnake.png"));
+	
 	/*ladders*/
 
-	//ladder1 , 55,100 
-	//ladder2 , 39,135
-	//ladder3, 61,187
-	//ladder4,87,237
-	//ladder5,87,283
-	//ladder6 103,350
+	//ladder1 , 60,60 
+	//ladder2 , 39,500
+	//ladder3, 75,236
+	//ladder4,87,283
+	//ladder5,87,237
+	//ladder6 80,275
+	//ladder 7 260,320
+	//ladder 8 265,358
 	private ImageView ladder1 = new ImageView(new Image("/Images/ladder1.png"));
 	private ImageView ladder2 = new ImageView(new Image("/Images/ladder2.png"));
 	private ImageView ladder3= new ImageView(new Image("/Images/ladder_rotate.png"));
-	private ImageView ladder4 = new ImageView(new Image("/Images/ladder41.png"));
-	private ImageView ladder41 = new ImageView(new Image("/Images/ladder41.png"));
-	private ImageView ladder6 = new ImageView(new Image("/Images/ladder6.png"));
+	private ImageView ladder4 = new ImageView(new Image("/Images/ladder_rotate.png"));
+	private ImageView ladder5 = new ImageView(new Image("/Images/ladder41.png"));
+	private ImageView ladder6 = new ImageView(new Image("/Images/ladder6Hard.png"));
+	private ImageView ladder7 = new ImageView(new Image("/Images/ladder4Easy.png"));
+	private ImageView ladder8 = new ImageView(new Image("/Images/ladder6.png"));
+
 	private ImageView player1Image = new ImageView(new Image("/Images/egy1.png"));
 	private ImageView player2Image = new ImageView(new Image("/Images/egyy2.png"));
 	private ImageView player3Image = new ImageView(new Image("/Images/egyy3.png"));
@@ -177,7 +195,7 @@ public class HardBoardController implements Initializable{
 	private int calLabelValue(int row,int col)
 	{
 		int labelValue;
-		if (row % 2 == 0) {
+		if (row % 2 == 1) {
 			labelValue = ((x - row) * x - col);
 		} else {
 			labelValue = ((x - row) * x - (x - col - 1));
@@ -218,11 +236,13 @@ public class HardBoardController implements Initializable{
 		configureGridPane(); // This function colors the board
 		setLaddrs();
 		setSnakes();
-		setSquare();
+		//setSquare();
 		/***************lets start the game**************************/
 		// we assumed that we will start with player 1 ====> lets disable other buttons
 		startGame();
 	}
+	
+	
 	@FXML
 	private void removeButton(Button x) {
 		// Assuming the button's parent is an AnchorPane
@@ -254,9 +274,9 @@ public class HardBoardController implements Initializable{
 		timeline1.setCycleCount(Timeline.INDEFINITE);
 		timeline1.play();
 		timerCheck.setText(startTime.getCurrentTime());
-		if(Level2.equals(Level.Medium))
+		if(Level2.equals(Level.Hard))
 		{
-			dice=new Dice(0,13,Level.Medium); // 13 = number of faces 0-6 (7) and 2 for each one of the questions 
+			dice=new Dice(0,15,Level.Hard); 
 		}
 		
 		
@@ -347,7 +367,7 @@ public class HardBoardController implements Initializable{
 				diceImage.setImage(new Image("/Images/DiceEasy.png"));
 			} else if (diceResult == 9 || diceResult == 10) {
 				diceImage.setImage(new Image("/Images/DiceMedium.png"));
-			} else if (diceResult == 11 || diceResult == 12) {
+			} else if (diceResult > 10 && diceResult < 15) {
 				diceImage.setImage(new Image("/Images/DiceHard.png"));
 			}
 
@@ -380,6 +400,7 @@ public class HardBoardController implements Initializable{
 
 	private void handle_movement(Player p, int diceResult,String type)
 	{
+		int x=6;
 		int current_pos,next_pos;
 		if(diceResult < 7){	
 			currentPlayer=p;
@@ -388,7 +409,7 @@ public class HardBoardController implements Initializable{
 				next_pos=current_pos+diceResult;
 				check_move(p,next_pos,type);
 			}
-			disbaleButtons();
+			if(x!=0) {disbaleButtons();}
 		}
 		else
 		{
@@ -405,6 +426,7 @@ public class HardBoardController implements Initializable{
 	}
 	private int current_pos_q;
 	private int next_player_q;
+	private int have_winner=6;
 	private boolean display_question(int diceResult,Player p,String type)
 	{
 		Stage window3 = new Stage();  // Create a new Stage
@@ -426,7 +448,7 @@ public class HardBoardController implements Initializable{
 			}
 			else
 			{
-				if(diceResult==11||diceResult==12)
+				if(diceResult>10&&diceResult<15)
 				{
 					question1 = getHardQuestion();
 
@@ -478,102 +500,25 @@ public class HardBoardController implements Initializable{
 				DecResult=-3;
 			}
 			/********************this should be in function***************************/
-			if(q.getCorrectAnswerNumber() == 1 && a1.isSelected()) {
-				Feedback2.message("right", "right answer ");
-				result_to_return=addToResult;
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
+			if ((q.getCorrectAnswerNumber() == 1 && a1.isSelected()) ||
+				    (q.getCorrectAnswerNumber() == 2 && a2.isSelected()) ||
+				    (q.getCorrectAnswerNumber() == 3 && a3.isSelected()) ||
+				    (q.getCorrectAnswerNumber() == 4 && a4.isSelected())) {
+				    Feedback2.message("right", "right answer ");
+				    result_to_return = addToResult;
+				} else {
+				    Feedback.message("Wrong", "wrong answer");
+				    result_to_return = DecResult;
 				}
-				disbaleButtons();
-				window3.close();
-			}
-			else if(q.getCorrectAnswerNumber() == 1 && !a1.isSelected()) {
-				Feedback.message("Wrong", "wrong answer");
-				result_to_return=DecResult;	
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
+
+				currentPlayer = p;
+				current_pos_q = p.getPosition();
+				if (current_pos_q + result_to_return <= x * x && current_pos_q + result_to_return >= 1) {
+				    next_player_q = current_pos_q + result_to_return;
+				    have_winner=check_move(p, next_player_q, type);
 				}
-				disbaleButtons();
+				if(have_winner!=0) {disbaleButtons();}
 				window3.close();
-			}
-			if(q.getCorrectAnswerNumber()== 2 && a2.isSelected()) {
-				Feedback2.message("right", "right answer ");
-				result_to_return=addToResult;
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window3.close();
-			}
-			else if(q.getCorrectAnswerNumber()== 2 && !a2.isSelected()) {
-				Feedback.message("Wrong", "wrong answer");
-				result_to_return=DecResult;		
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window3.close();
-			}
-			if(q.getCorrectAnswerNumber()== 3 && a3.isSelected()) {
-				Feedback2.message("right", "right answer ");
-				result_to_return=addToResult;
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window3.close();
-			}
-			else if(q.getCorrectAnswerNumber()== 3 && !a3.isSelected()) {
-				Feedback.message("Wrong", "wrong answer");
-				result_to_return=DecResult;	
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window3.close();
-			}
-			if(q.getCorrectAnswerNumber()== 4 && a4.isSelected()) {
-				Feedback2.message("right", "right answer ");
-				result_to_return=addToResult;
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window3.close();
-			}
-			else if(q.getCorrectAnswerNumber()== 4 && !a4.isSelected()) {
-				Feedback.message("Wrong", "wrong answer");
-				result_to_return=DecResult;	
-				currentPlayer=p;
-				current_pos_q=p.getPosition();
-				if(current_pos_q+result_to_return<=x*x && current_pos_q+result_to_return>=1) {
-					next_player_q=current_pos_q+result_to_return;
-					check_move(p,next_player_q,type);
-				}
-				disbaleButtons();
-				window3.close();
-			}
 			/************************to here***********************************/
 		});
 		System.out.print("reached here");
@@ -631,27 +576,49 @@ public class HardBoardController implements Initializable{
 
 	}
 
-	private void check_winner(int pos ,String type)
+	private int check_winner(int pos ,String type)
 	{
 		
+		int c=1;
 		if(pos==100)
 		{
+			c=0;
 			if(type=="p1") {winner=player1;}
 			if(type=="p2") {winner=player2;}
 			if(type=="p3") {winner=player3;}
 			if(type=="p4") {winner=player4;}
-			Alert a=new Alert(AlertType.CONFIRMATION);
-			a.setHeaderText("Player:"+winner.getNickName()+"is winner! CONGRATS!");
-			a.show();
+			Stage window3 = new Stage();
+			window3.setTitle("THERE IS A WINNER");
+			window3.setMinWidth(500);
+			window3.setMinHeight(200);
+			Label win = new Label("winner is:"+winner.getNickName());
+			Button sub = new Button("continue");
+			VBox vbox = new VBox();
+			vbox.getChildren().addAll(win,sub);
+			sub.setStyle(
+	                "-fx-background-radius: 30; -fx-min-width: 30px; -fx-min-height: 30px; " +
+	                "-fx-background-color: #ffa089;");
+			sub.setOnAction(e->{
+				window3.close();
+				});
+			BackgroundFill backgroundFill = new BackgroundFill(javafx.scene.paint.Color.web("#ffcba4"), CornerRadii.EMPTY, Insets.EMPTY);
+	        Background background = new Background(backgroundFill);
+	        vbox.setBackground(background);
+			Scene scene = new Scene(vbox, 50, 40);
+			window3.setScene(scene);
+			window3.show();
 			p1turn.setDisable(true);
 			p2turn.setDisable(true);
 			p3turn.setDisable(true);
 			p4turn.setDisable(true);
+			return c;
 			
 		}
+		return c;
+		
 		
 	}
-	private void check_move(Player p , int position,String type)
+	private int check_move(Player p , int position,String type)
 	{
 		
 		ImageView v;
@@ -665,11 +632,11 @@ public class HardBoardController implements Initializable{
 			if(position+10<=x*x)
 			{
 				check_move(p,position+10,type);
-				return;
+				return 3;
 			}
 			else
 			{
-				return;
+				return 3;
 			}
 		}
 		if(lad!=-1)//it means we have ladder
@@ -692,27 +659,34 @@ public class HardBoardController implements Initializable{
 		}
 		if(type=="p1") { // in this condtion we update the postion of each plauer 
 			board.getChildren().remove(player1Image);
-			setSnakeToBoardView(player1Image,50,50,row,col);
+			setSnakeToBoardView(player1Image,40,40,row,col);
 			
 			
 		}
 		if(type=="p2")
 		{
 			board.getChildren().remove(player2Image);
-			setSnakeToBoardView(player2Image,50,50,row,col);
+			setSnakeToBoardView(player2Image,40,40,row,col);
 			
 		}
 		if(type=="p3")
 		{
 			board.getChildren().remove(player3Image);
-			setSnakeToBoardView(player3Image,50,50,row,col);
+			setSnakeToBoardView(player3Image,40,40,row,col);
 		}
 		if(type=="p4")
 		{
 			board.getChildren().remove(player4Image);
-			setSnakeToBoardView(player4Image,50,50,row,col);
+			setSnakeToBoardView(player4Image,40,40,row,col);
 		}
-		check_winner(position,type);
+		if(check_winner(position,type)==0)
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
 	}
 	private int check_square(int position,Player p,String type)
 	{
@@ -1006,13 +980,7 @@ public class HardBoardController implements Initializable{
 			}
 			colF++;
 		}
-		for(int i=rowF+2;i<rowE;i++)
-		{
-			number=calLabelValue(i, col2);
-			ocuupiedCells.put(number,true);
-			col2+=1;
-		}	
-
+		
 
 		return check;
 	}
@@ -1081,6 +1049,7 @@ public class HardBoardController implements Initializable{
 	{
 		Snake snake = null;
 		int labelValue = 0;
+		int endValue=0;
 		/*********first Kind red snakes*********/
 		for(int i=0;i<2;i++) {
 			labelValue = setObjCheckOcuupied();
@@ -1105,65 +1074,78 @@ public class HardBoardController implements Initializable{
 		HashMap<Integer , Integer > map ;
 		int row=0;
 		int col=0;
-		labelValue = setObjCheckOcuupied();
-		int endValue = calcEnd(labelValue,3,0);
-		while((labelValue == x*x) || (labelValue < 31)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
+		for(int i=0;i<2;i++) {
 			labelValue = setObjCheckOcuupied();
 			endValue = calcEnd(labelValue,3,0);
-		}
-		map =  boardCells.get(labelValue); 
-		row = 0;
-		col = 0;
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-			row = entry.getKey();
-			col = entry.getValue();
-		}
-		snake = new Snake(labelValue,endValue,SnakeColor.blue);
-		ocuupiedCells.put(labelValue, true);
-		setAllBetweenOccupied(labelValue,endValue,0);
-		ocuupiedCells.put(endValue, true);
-
-		snakesOnBoard.put(labelValue, snake);
-		setSnakeToBoardView(bl,35,200,row,col);
-
-
-		/****************yellow Snake *******************/ 
-		labelValue = setObjCheckOcuupied();
-		map =  boardCells.get(labelValue); 
-		row = 0;
-		col = 0;
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-			row = entry.getKey();
-			col = entry.getValue();
-		}
-		endValue = calcEnd(labelValue,1,2);
-		while((labelValue == x*x) || (labelValue < 13)||col==x-1||col==x-2||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCellsForYellow(row,col)==0) { // Can't be at the end or the start
-			labelValue = setObjCheckOcuupied();
-			endValue = calcEnd(labelValue,1,2);
+			while((labelValue == x*x) || (labelValue < 40)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
+				labelValue = setObjCheckOcuupied();
+				endValue = calcEnd(labelValue,3,0);
+			}
 			map =  boardCells.get(labelValue); 
+			row = 0;
+			col = 0;
 			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
 				row = entry.getKey();
 				col = entry.getValue();
 			}
+			snake = new Snake(labelValue,endValue,SnakeColor.blue);
+			ocuupiedCells.put(labelValue, true);
+			setAllBetweenOccupied(labelValue,endValue,0);
+			ocuupiedCells.put(endValue, true);
+	
+			snakesOnBoard.put(labelValue, snake);
+			if(i == 0)
+				setSnakeToBoardView(b1,35,150,row,col);
+			if (i==1)
+				setSnakeToBoardView(b2,35,150,row,col);
 		}
-		map =  boardCells.get(labelValue);
-		row = 0;
-		col = 0;
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-			row = entry.getKey();
-			col = entry.getValue();
+
+
+		/****************yellow Snake *******************/
+		for(int i=0;i<2;i++) {
+			labelValue = setObjCheckOcuupied();
+			map =  boardCells.get(labelValue); 
+			row = 0;
+			col = 0;
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+				row = entry.getKey();
+				col = entry.getValue();
+			}
+			endValue = calcEnd(labelValue,1,2);
+			while((labelValue == x*x) || (labelValue < 14)||col==x-1||col==x-2||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCellsForYellow(row,col)==0) { // Can't be at the end or the start
+				labelValue = setObjCheckOcuupied();
+				endValue = calcEnd(labelValue,1,2);
+				map =  boardCells.get(labelValue); 
+				for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+					row = entry.getKey();
+					col = entry.getValue();
+				}
+			}
+			map =  boardCells.get(labelValue);
+			row = 0;
+			col = 0;
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+				row = entry.getKey();
+				col = entry.getValue();
+			}
+			snake = new Snake(labelValue,endValue,SnakeColor.yellow);
+			ocuupiedCells.put(labelValue, true);
+			setAllBetYellowOccupied(row,col);
+			ocuupiedCells.put(endValue, true);
+			snakesOnBoard.put(labelValue, snake);
+			if(i==0) {
+			  setSnakeToBoardView(yellow,170,80,row,col);
+			}
+			if(i==1)
+			{
+			  setSnakeToBoardView(yellow2,170,80,row,col);
+			}
 		}
-		snake = new Snake(labelValue,endValue,SnakeColor.yellow);
-		ocuupiedCells.put(labelValue, true);
-		setAllBetYellowOccupied(row,col);
-		ocuupiedCells.put(endValue, true);
-		snakesOnBoard.put(labelValue, snake);
-		setSnakeToBoardView(yellow,170,96,row,col);
 		/************Green Snake**************************/
 		for(int i=0;i<2;i++) {
 			labelValue = setObjCheckOcuupied();
 			endValue = calcEnd(labelValue,2,0);
-			while((labelValue == x*x) ||(labelValue < 30)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
+			while((labelValue == x*x) ||(labelValue < 39)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
 				labelValue = setObjCheckOcuupied();
 				endValue = calcEnd(labelValue,2,0);
 			}
@@ -1183,6 +1165,7 @@ public class HardBoardController implements Initializable{
 				setSnakeToBoardView(gr1,60,205,row,col);
 			if (i==1)
 				setSnakeToBoardView(gr2,60,205,row,col);
+
 		}
 	}
 	public void setSnakeToBoardView(ImageView image,int w,int h,int row,int col) {
@@ -1202,9 +1185,9 @@ public class HardBoardController implements Initializable{
 		int labelValue = setObjCheckOcuupied();
 		int endValue=0;
 		
-        /**ladder6**/
+        /**ladder8**/
 		
-		endValue = calcEnd(labelValue,6,4);
+		endValue = calcEnd(labelValue,8,5);
 		HashMap<Integer, Integer> map = boardCells.get(labelValue);
 		int row = 0;
 		int col = 0;
@@ -1212,9 +1195,9 @@ public class HardBoardController implements Initializable{
 			row = entry.getKey();
 			col = entry.getValue();
 		}
-		while (row>3||col>5||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCellsRotate(labelValue,endValue)==0) {
+		while (row>4||col>7||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCellsRotate(labelValue,endValue)==0) {
 			labelValue = setObjCheckOcuupied();
-			endValue = calcEnd(labelValue,6,4);
+			endValue = calcEnd(labelValue,8,5);
 			map = boardCells.get(labelValue);
 			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
 				row = entry.getKey();
@@ -1228,25 +1211,55 @@ public class HardBoardController implements Initializable{
 			row = entry.getKey();
 			col = entry.getValue();
 		}
-		ladder = new Ladder(labelValue,endValue,6,Level.Medium);
+		ladder = new Ladder(labelValue,endValue,8,Level.Hard);
 		ocuupiedCells.put(labelValue, true);
 		setAllBetweenOccupied(labelValue,endValue,1);
 		ocuupiedCells.put(endValue, true);
 		laddersOnBoard.put(labelValue, ladder);
-		setSnakeToBoardView(ladder6, 265,358, row, col);
-		System.out.println("ladder6");
+		setSnakeToBoardView(ladder8, 265,358, row, col);
 		
 		
+        /**ladder7**/
 		
-		
-		/**************** ladder 1 in medium level******************/
-		labelValue = setObjCheckOcuupied();
-		endValue = calcEnd(labelValue,1,0);
-
-		while ((labelValue <11)||labelValue==20||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true) { // Can't be at the end or the start
+		endValue = calcEnd(labelValue,7,4);
+	    map = boardCells.get(labelValue);
+	    row = 0;
+		col = 0;
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			row = entry.getKey();
+			col = entry.getValue();
+		}
+		while (row>5||col>8||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCellsRotate(labelValue,endValue)==0) {
 			labelValue = setObjCheckOcuupied();
-			endValue = calcEnd(labelValue,1,0);
-			System.out.print("im here 1");
+			endValue = calcEnd(labelValue,7,4);
+			map = boardCells.get(labelValue);
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+				row = entry.getKey();
+				col = entry.getValue();
+			}
+		}
+		map = boardCells.get(labelValue);
+		row = 0;
+		col = 0;
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			row = entry.getKey();
+			col = entry.getValue();
+		}
+		ladder = new Ladder(labelValue,endValue,7,Level.Hard);
+		ocuupiedCells.put(labelValue, true);
+		setAllBetweenOccupied(labelValue,endValue,1);
+		ocuupiedCells.put(endValue, true);
+		laddersOnBoard.put(labelValue, ladder);
+		setSnakeToBoardView(ladder7, 260,320, row, col);
+		
+		/**************** ladder 6 in medium level******************/
+		labelValue = setObjCheckOcuupied();
+		endValue = calcEnd(labelValue,6,0);
+
+		while ((labelValue <79)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
+			labelValue = setObjCheckOcuupied();
+			endValue = calcEnd(labelValue,6,0);
+			
 		}
 		 map = boardCells.get(labelValue);
 		 row = 0;
@@ -1255,12 +1268,13 @@ public class HardBoardController implements Initializable{
 			row = entry.getKey();
 			col = entry.getValue();
 		}
-		ladder = new Ladder(labelValue,endValue,1,Level.Medium);
+		ladder = new Ladder(labelValue,endValue,6,Level.Hard);
 		ocuupiedCells.put(labelValue, true);
 		ocuupiedCells.put(endValue, true);
 		laddersOnBoard.put(labelValue, ladder);
-		setSnakeToBoardView(ladder1, 55, 100, row, col);
-		System.out.println("ladder1");
+		setAllBetweenOccupied(labelValue,endValue,0);
+		setSnakeToBoardView(ladder6, 80, 275, row, col);
+		
 		
          
 		
@@ -1268,7 +1282,7 @@ public class HardBoardController implements Initializable{
 		labelValue = setObjCheckOcuupied();
 		endValue = calcEnd(labelValue,5,0);
 
-		while ((labelValue < 51)||labelValue==60||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be less than 51 
+		while ((labelValue < 66)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be less than 51 
 			labelValue = setObjCheckOcuupied();
 			endValue = calcEnd(labelValue,5,0);
 
@@ -1280,24 +1294,19 @@ public class HardBoardController implements Initializable{
 			row = entry.getKey();
 			col = entry.getValue();
 		}
-		ladder = new Ladder(labelValue,endValue,5,Level.Medium);
+		ladder = new Ladder(labelValue,endValue,5,Level.Hard);
 		ocuupiedCells.put(labelValue, true);
 		setAllBetweenOccupied(labelValue,endValue,0);
 
 		ocuupiedCells.put(endValue, true);
 
 		laddersOnBoard.put(labelValue, ladder);
-		setSnakeToBoardView(ladder41, 87, 283, row, col);
-		System.out.println("ladder5");
+		setSnakeToBoardView(ladder5, 87, 237, row, col);
+		
 		
 		/*********************ladder 4*********************************/
 		labelValue = setObjCheckOcuupied();
-		endValue = calcEnd(labelValue,4,0);
-		while ((labelValue <=41)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { 
-			labelValue = setObjCheckOcuupied();
-			endValue = calcEnd(labelValue,4,0);
-		}
-
+		endValue = calcEnd(labelValue,4,1);
 		map = boardCells.get(labelValue);
 		row = 0;
 		col = 0;
@@ -1305,18 +1314,58 @@ public class HardBoardController implements Initializable{
 			row = entry.getKey();
 			col = entry.getValue();
 		}
-		ladder = new Ladder(labelValue,endValue,4,Level.Medium);
+		while ((labelValue < 53|| col==x-1)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be less than 31 
+			labelValue = setObjCheckOcuupied();
+			endValue = calcEnd(labelValue,4,1);
+			map = boardCells.get(labelValue);
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+				row = entry.getKey();
+				col = entry.getValue();
+			}
+
+		}
+		ladder = new Ladder(labelValue,endValue,4,Level.Hard);
 		ocuupiedCells.put(labelValue, true);
 		setAllBetweenOccupied(labelValue,endValue,0);
 		ocuupiedCells.put(endValue, true);
-		laddersOnBoard.put(labelValue, ladder);//ladder4,87,237
-		setSnakeToBoardView(ladder4, 87, 237, row, col);
-		System.out.println("ladder4");
+
+		laddersOnBoard.put(labelValue, ladder);
+		setSnakeToBoardView(ladder4, 87, 283, row, col);
+		
+		
+		/*********************ladder 3*********************************/
+		labelValue = setObjCheckOcuupied();
+		endValue = calcEnd(labelValue,3,1);
+		map = boardCells.get(labelValue);
+		row = 0;
+		col = 0;
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			row = entry.getKey();
+			col = entry.getValue();
+		}
+		while ((labelValue < 40|| col==x-1)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be less than 31 
+			labelValue = setObjCheckOcuupied();
+			endValue = calcEnd(labelValue,3,1);
+			map = boardCells.get(labelValue);
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+				row = entry.getKey();
+				col = entry.getValue();
+			}
+
+		}
+		ladder = new Ladder(labelValue,endValue,3,Level.Hard);
+		ocuupiedCells.put(labelValue, true);
+		setAllBetweenOccupied(labelValue,endValue,0);
+		ocuupiedCells.put(endValue, true);
+
+		laddersOnBoard.put(labelValue, ladder);
+		setSnakeToBoardView(ladder3, 75, 236, row, col);
+		
 
 		/*******************ladder 2 in medium level****************/
 		labelValue = setObjCheckOcuupied();
 		endValue = calcEnd(labelValue,2,0);
-		while ((labelValue <=21)||ocuupiedCells.get(endValue)==true||ocuupiedCells.get(endValue)==null||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
+		while ((labelValue <27)||ocuupiedCells.get(endValue)==true||ocuupiedCells.get(endValue)==null||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
 			labelValue = setObjCheckOcuupied();
 			endValue = calcEnd(labelValue,2,0);
 		}
@@ -1327,20 +1376,20 @@ public class HardBoardController implements Initializable{
 			row = entry.getKey();
 			col = entry.getValue();
 		}
-		ladder = new Ladder(labelValue,endValue,2,Level.Medium);
+		ladder = new Ladder(labelValue,endValue,2,Level.Hard);
 		ocuupiedCells.put(labelValue, true);
 		ocuupiedCells.put(endValue, true);
 		setAllBetweenOccupied(labelValue,endValue,0);
 		laddersOnBoard.put(labelValue, ladder);//39,135
 		setSnakeToBoardView(ladder2, 39, 500, row, col);
-		System.out.println("ladder2");
-
-
 		
-		
-		/****** ladder 3 in Medium level********/
+		/****** ladder 1 in Medium level********/
 		labelValue = setObjCheckOcuupied();
-		endValue = calcEnd(labelValue,3,1);
+		endValue = calcEnd(labelValue,1,0);
+		while ((labelValue <14)||ocuupiedCells.get(endValue)==true||ocuupiedCells.get(endValue)==null||checkEmptyCells(labelValue,endValue)==0) { // Can't be at the end or the start
+			labelValue = setObjCheckOcuupied();
+			endValue = calcEnd(labelValue,1,0);
+		}
 		map = boardCells.get(labelValue);
 		row = 0;
 		col = 0;
@@ -1348,27 +1397,12 @@ public class HardBoardController implements Initializable{
 			row = entry.getKey();
 			col = entry.getValue();
 		}
-		while ((labelValue <= 30|| col==9)||ocuupiedCells.get(endValue)==null||ocuupiedCells.get(endValue)==true||checkEmptyCells(labelValue,endValue)==0) { // Can't be less than 31 
-			labelValue = setObjCheckOcuupied();
-			endValue = calcEnd(labelValue,3,1);
-			map = boardCells.get(labelValue);
-			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-				row = entry.getKey();
-				col = entry.getValue();
-			}
-
-		}
-
-		
-		ladder = new Ladder(labelValue,endValue,3,Level.Medium);
+		ladder = new Ladder(labelValue,endValue,1,Level.Hard);
 		ocuupiedCells.put(labelValue, true);
-		setAllBetweenOccupied(labelValue,endValue,0);
 		ocuupiedCells.put(endValue, true);
-
-		laddersOnBoard.put(labelValue, ladder);
-		setSnakeToBoardView(ladder3, 87, 283, row, col);
-		System.out.println("ladder3");
-
+		setAllBetweenOccupied(labelValue,endValue,0);
+		laddersOnBoard.put(labelValue, ladder);//39,135
+		setSnakeToBoardView(ladder1, 40,80, row, col);
 		
 
 		/**************try rotate**************/
