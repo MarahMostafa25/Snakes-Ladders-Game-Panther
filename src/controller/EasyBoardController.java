@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-import designPatterns.SquareFactory;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
@@ -69,6 +68,7 @@ import model.Player;
 import model.Question;
 import model.QuestionSquare;
 import model.Snake;
+import model.SquareFactory;
 import model.SurpriseSquare;
 import model.SysData;
 import model.TimerClass;

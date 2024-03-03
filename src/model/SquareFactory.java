@@ -1,8 +1,4 @@
-package designPatterns;
-
-import model.Square;
-import model.SurpriseSquare;
-import model.QuestionSquare;
+package model;
 
 public class SquareFactory {
 	
