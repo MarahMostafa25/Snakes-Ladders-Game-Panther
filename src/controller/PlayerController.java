@@ -188,7 +188,7 @@ public class PlayerController {
             }
 			else
 			{
-				Player p1=new Player(name1.getText(),1,"Images\\egy1.png");
+				Player p1=new Player(name1.getText(),99,"Images\\egy1.png");
 				Player p2=new Player(name2.getText(),1,"Images\\egyy2.png");
 				HelpClass.getInstance().setP1(p1);
 				HelpClass.getInstance().setP2(p2);

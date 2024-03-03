@@ -385,16 +385,16 @@ public class boardController implements Initializable{
 
 	private void handle_movement(Player p, int diceResult,String type)
 	{
-		int x=6;
+		int num1=6;
 		int current_pos,next_pos;
 		if(diceResult < 7){	
 			currentPlayer=p;
 			current_pos=p.getPosition();
 			if(current_pos+diceResult<=x*x) {
 				next_pos=current_pos+diceResult;
-				x=check_move(p,next_pos,type);
+				num1=check_move(p,next_pos,type);
 			}
-			if(x!=0) {disbaleButtons();}
+			if(num1!=0) {disbaleButtons();}
 		}
 		else
 		{
