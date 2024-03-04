@@ -29,7 +29,7 @@ import javafx.scene.media.MediaView;
 
 
 
-public class MainPageController {
+public class MainPageController implements Initializable{
 
 	@FXML
 	Button startbutton;
@@ -138,6 +138,13 @@ public class MainPageController {
 	            observer.onRulesClicked();
 	        }
 	    }
+
+		@Override
+		public void initialize(URL location, ResourceBundle resources) {
+			// TODO Auto-generated method stub
+			Main.media.play();
+			
+		}
 
 
 

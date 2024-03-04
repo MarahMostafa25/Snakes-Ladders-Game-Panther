@@ -14,21 +14,23 @@ import model.SysData;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
 	public static SysData res;
 	public static Stage mainS=null;
-
+    public static MediaPlayer media;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			/*MediaPlayer media=new MediaPlayer(new Media(getClass().getResource("/Images/audioo.mp3").toString()));
+			media=new MediaPlayer(new Media(getClass().getResource("/Images/alaadin.mp3").toString()));
 			media.setCycleCount(MediaPlayer.INDEFINITE);
 			media.play();
 			primaryStage.setOnCloseRequest(windowEvent->
 			{
 				media.stop();
-			});*/
+			});
 			Parent root = FXMLLoader.load(getClass().getResource("/view/moviePlay.fxml"));
 			Scene scene = new Scene(root);
 			mainS=primaryStage;

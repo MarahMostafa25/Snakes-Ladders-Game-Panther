@@ -202,8 +202,8 @@ public class PlayerController {
             }
 			else
 			{
-				Player p1=new Player(name1.getText(),1,"Images\\egy1.png");
-				Player p2=new Player(name2.getText(),1,"Images\\egyy2.png");
+				Player p1=new Player(name1.getText(),1,"Images/egy1.png");
+				Player p2=new Player(name2.getText(),1,"Images/egyy2.png");
 				HelpClass.getInstance().setP1(p1);
 				HelpClass.getInstance().setP2(p2);
 				
@@ -237,9 +237,9 @@ public class PlayerController {
 				
 				else
 				{
-					Player p1=new Player(name1.getText(),1,"Images\\egy1.png");
-					Player p2=new Player(name2.getText(),1,"Images\\egyy2.png");
-					Player p3=new Player(name3.getText(),1,"Images\\egyy3.png");
+					Player p1=new Player(name1.getText(),1,"Images/egy1.png");
+					Player p2=new Player(name2.getText(),1,"Images/egyy2.png");
+					Player p3=new Player(name3.getText(),1,"Images/egyy3.png");
 
 					HelpClass.getInstance().setP1(p1);
 					HelpClass.getInstance().setP2(p2);
@@ -273,10 +273,10 @@ public class PlayerController {
 		            }
 					else
 					{
-						Player p1=new Player(name1.getText(),1,"Images\\egy1.png");
-						Player p2=new Player(name2.getText(),1,"Images\\egyy2.png");
-						Player p3=new Player(name3.getText(),1,"Images\\egyy3.png");
-						Player p4=new Player(name4.getText(),1,"Images\\egyy4.png");
+						Player p1=new Player(name1.getText(),1,"Images/egy1.png");
+						Player p2=new Player(name2.getText(),1,"Images/egyy2.png");
+						Player p3=new Player(name3.getText(),1,"Images/egyy3.png");
+						Player p4=new Player(name4.getText(),1,"Images/egyy4.png");
 
 						HelpClass.getInstance().setP1(p1);
 						HelpClass.getInstance().setP2(p2);

@@ -62,6 +62,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Dice;
+import model.Game;
 import model.HelpClass;
 import model.Ladder;
 import model.Player;
@@ -115,7 +116,7 @@ public class EasyBoardController implements Initializable{
 	Button p3turn;
 	@FXML
 	Button p4turn;
-
+	private ArrayList<Game> game1=new ArrayList<Game>();
 	SquareFactory fact=new SquareFactory();
 	private Player currentPlayer=HelpClass.getInstance().getP1();//assuming
 	private Level Level2=HelpClass.getInstance().getLevelGame();
@@ -389,7 +390,7 @@ public class EasyBoardController implements Initializable{
 
 	private void handle_movement(Player p, int diceResult,String type)
 	{
-		int num1=6;
+		int num1=6;//its flag number . used to decide if we have winner or not ( if its 0 we have winner .1 we dont have winner)-started by any number which don't equal 1 or 0
 		int current_pos,next_pos;
 		if(diceResult < 5){	
 			currentPlayer=p;
@@ -599,7 +600,14 @@ public class EasyBoardController implements Initializable{
 			p2turn.setDisable(true);
 			p3turn.setDisable(true);
 			p4turn.setDisable(true);
+			timeline1.stop();
+			Game game=new Game(Level2,winner,timerCheck.getText());
+			game1=Main.res.getAllgames();
+			game1.add(game);
+			Main.res.setAllgames(game1);
+			Main.update();
 			return c;
+			
 			
 		}
 		return c;
@@ -636,25 +644,25 @@ public class EasyBoardController implements Initializable{
 		}
 		if(type=="p1") { // in this condtion we update the postion of each plauer 
 			board.getChildren().remove(player1Image);
-			setSnakeToBoardView(player1Image,50,50,row,col);
+			setSnakeToBoardView(player1Image,75,75,row,col);
 			
 			
 		}
 		if(type=="p2")
 		{
 			board.getChildren().remove(player2Image);
-			setSnakeToBoardView(player2Image,50,50,row,col);
+			setSnakeToBoardView(player2Image,75,75,row,col);
 			
 		}
 		if(type=="p3")
 		{
 			board.getChildren().remove(player3Image);
-			setSnakeToBoardView(player3Image,50,50,row,col);
+			setSnakeToBoardView(player3Image,75,75,row,col);
 		}
 		if(type=="p4")
 		{
 			board.getChildren().remove(player4Image);
-			setSnakeToBoardView(player4Image,50,50,row,col);
+			setSnakeToBoardView(player4Image,75,75,row,col);
 		}
 		if(check_winner(position,type)==0)
 		{
