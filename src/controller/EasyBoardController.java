@@ -856,7 +856,7 @@ public class EasyBoardController implements Initializable{
 			int labelValue = setObjCheckOcuupied();
 			while(labelValue==49) { labelValue = setObjCheckOcuupied();}
 			ocuupiedCells.put(labelValue, true);
-			ImageView question = new ImageView(new Image("/Images/question.jpg"));
+			ImageView question = new ImageView(new Image("/Images/question-mark.gif"));
 			question.setFitWidth(40);
 			question.setFitHeight(40);
 			//Set constraints to span 2 columns and 1 row
