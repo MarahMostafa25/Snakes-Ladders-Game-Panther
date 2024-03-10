@@ -131,8 +131,8 @@ public class HardBoardController implements Initializable{
 	private HashMap<Integer,QuestionSquare> ocuupiedQuestions = new HashMap<Integer,QuestionSquare>();
 	private SurpriseSquare surprise1;
 	private SurpriseSquare surprise2;
-	private ImageView surprisePic1 = new ImageView(new Image("/Images/surprise.png"));
-	private ImageView surprisePic2 = new ImageView(new Image("/Images/surprise.png"));
+	private ImageView surprisePic1 = new ImageView(new Image("/Images/surprise.gif"));
+	private ImageView surprisePic2 = new ImageView(new Image("/Images/surprise.gif"));
 	private int levelForSurprise;
 	private int levelForSurprise2;
 	private Dice dice; 
@@ -257,7 +257,7 @@ public class HardBoardController implements Initializable{
 		configureGridPane(); // This function colors the board
 		setLaddrs();
 		setSnakes();
-		//setSquare();
+		setSquare();
 		/***************lets start the game**************************/
 		// we assumed that we will start with player 1 ====> lets disable other buttons
 		startGame();

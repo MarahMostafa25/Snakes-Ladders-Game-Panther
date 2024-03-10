@@ -855,7 +855,7 @@ public class boardController implements Initializable{
 		while(labelValue > ((x*x)-10)) // can't jump over the end 
 			labelValue = setObjCheckOcuupied();
 		ocuupiedCells.put(labelValue, true);
-		ImageView surprise = new ImageView(new Image("/Images/surprise.png"));
+		ImageView surprise = new ImageView(new Image("/Images/surprise.gif"));
 		surprise.setFitWidth(40);
 		surprise.setFitHeight(40);
 		int row=0;
