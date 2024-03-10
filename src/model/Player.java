@@ -55,8 +55,7 @@ public class Player implements Serializable {
 
 	@Override
 	public String toString() {
-		return "player [nickName=" + nickName + ", position=" + position 
-				+ ", AvatarPath=" + AvatarPath + "]";
+		return nickName;
 	}
 
 	public static int getId() {

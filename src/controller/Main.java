@@ -40,8 +40,6 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
-	
 	public static void main(String[] args) {
 		deSerialize();
 		if(res==null)
@@ -105,4 +103,33 @@ public class Main extends Application {
 	        
 	      }
 	}
+    private static boolean isMusicMuted = false;
+
+    // Your existing code here...
+
+    public static void toggleMusic() {
+        isMusicMuted = !isMusicMuted;
+        if (isMusicMuted) {
+        	media.pause(); // Pause the music
+        } else {
+            // Code to play or unmute the music
+        	media.play();
+        }
+    }
+
+    public static boolean isMusicMuted() {
+        return isMusicMuted;
+    }
+    
+    public static void stopMusic() {
+        if (media != null) {
+        	media.stop();
+        }
+    }
+    public static void startMusic() {
+        if (media != null) {
+            media.play();
+        }
+    }
+
 }

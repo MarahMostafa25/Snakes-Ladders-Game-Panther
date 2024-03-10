@@ -694,7 +694,6 @@ public class HardBoardController implements Initializable{
 		{
 			board.getChildren().remove(player2Image);
 			setSnakeToBoardView(player2Image,40,40,row,col);
-			
 		}
 		if(type=="p3")
 		{

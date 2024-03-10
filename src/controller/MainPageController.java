@@ -49,8 +49,10 @@ public class MainPageController implements Initializable{
 	  public MainPageController() {
 	        ruleController = new RuleController(); // Initialize the RuleController
 	        addRulesClickedObserver(ruleController); // Register RuleController as an observer
-	    }
-
+	        
+	        
+	  }
+	  
 	@FXML
 	public void rules(ActionEvent e) throws IOException {
         notifyRulesClickedObservers();
@@ -142,11 +144,9 @@ public class MainPageController implements Initializable{
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
 			// TODO Auto-generated method stub
+			RuleController.media1.stop();
+			Main.media.setVolume(1);
 			Main.media.play();
 			
 		}
-
-
-
-
 }
