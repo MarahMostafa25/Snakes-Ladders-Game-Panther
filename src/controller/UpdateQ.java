@@ -3,7 +3,9 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import org.json.simple.parser.ParseException;
 
@@ -72,6 +74,7 @@ public class UpdateQ  implements Initializable{
 	}
 
 	public void updateQuestion(ActionEvent e) throws IOException, ParseException {
+		Set<String> uniqueAnswers = new HashSet<>();
 		if(question_text.getText().length() == 0 || answer1_text.getText().length() == 0 ||
 				answer2_text.getText().length() == 0 || answer3_text.getText().length() == 0 ||
 						answer4_text.getText().length() == 0 ) {
@@ -79,7 +82,20 @@ public class UpdateQ  implements Initializable{
 			Alert a=new Alert(AlertType.CONFIRMATION);
 			a.setHeaderText("FILL ALL FIELDS PLEASE");
 			a.showAndWait();
+			return;
 		}
+		uniqueAnswers.clear();  // Clear the set before checking again
+	    uniqueAnswers.add(answer1_text.getText());
+	    uniqueAnswers.add(answer2_text.getText());
+	    uniqueAnswers.add(answer3_text.getText());
+	    uniqueAnswers.add(answer4_text.getText());
+	    if(uniqueAnswers.size() != 4)
+	    {
+	    	Alert a=new Alert(AlertType.CONFIRMATION);
+			a.setHeaderText("un unique answers");
+			a.showAndWait();
+			return;
+	    }
 		else {
 		
 			//check if the combo box selected (filled)

@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -169,7 +171,7 @@ public class PlayerController {
 	//here i saved the players in the helping class instance so i could use it in the real game
 	@FXML
 	public void start2(ActionEvent e) throws IOException {
-		
+		Set<String> uniquePlayers = new HashSet<>();
 		HelpClass.getInstance().setNumOfPlayer(numPlayer);
 		String navigate="";
 		if(HelpClass.getInstance().getLevelGame().equals(Level.Easy))
@@ -189,7 +191,14 @@ public class PlayerController {
 	    boolean inputsValid = true;
 	    boolean inputsValid2 = true;
 		if(numPlayer==2) {
-			
+			uniquePlayers.add(name1.getText());
+			uniquePlayers.add(name2.getText());
+			if(uniquePlayers.size()!=2) {
+				Alert a=new Alert(AlertType.CONFIRMATION);
+				a.setHeaderText("names are unique");
+				a.showAndWait();
+				return;
+				}
             inputsValid = nameValidator.validateInput(name1.getText()) && nameValidator.validateInput(name2.getText());
             inputsValid2 = emptyValidator.validateInput(name1.getText()) && emptyValidator.validateInput(name2.getText());
 
@@ -224,6 +233,15 @@ public class PlayerController {
 		{
 			if(numPlayer==3)
 			{
+				uniquePlayers.add(name1.getText());
+				uniquePlayers.add(name2.getText());
+				uniquePlayers.add(name3.getText());
+				if(uniquePlayers.size()!=3) {
+					Alert a=new Alert(AlertType.CONFIRMATION);
+					a.setHeaderText("names are unique");
+					a.showAndWait();
+					return;
+					}
 	            inputsValid = nameValidator.validateInput(name1.getText()) && nameValidator.validateInput(name2.getText()) && nameValidator.validateInput(name3.getText());
 	            inputsValid2 = emptyValidator.validateInput(name1.getText()) && emptyValidator.validateInput(name2.getText()) && emptyValidator.validateInput(name3.getText());
 
@@ -261,6 +279,16 @@ public class PlayerController {
 			{
 				if(numPlayer==4)
 				{
+					uniquePlayers.add(name1.getText());
+					uniquePlayers.add(name2.getText());
+					uniquePlayers.add(name3.getText());
+					uniquePlayers.add(name4.getText());
+					if(uniquePlayers.size()!=4) {
+						Alert a=new Alert(AlertType.CONFIRMATION);
+						a.setHeaderText("names are unique");
+						a.showAndWait();
+						return;
+						}
 		            inputsValid = nameValidator.validateInput(name1.getText()) && nameValidator.validateInput(name2.getText()) && nameValidator.validateInput(name3.getText()) && nameValidator.validateInput(name4.getText());
 		            inputsValid2 = emptyValidator.validateInput(name1.getText()) && emptyValidator.validateInput(name2.getText()) && emptyValidator.validateInput(name3.getText()) && emptyValidator.validateInput(name4.getText());
 

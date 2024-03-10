@@ -3,7 +3,9 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -152,6 +154,8 @@ public class AddQ implements Initializable{
 	
 	@FXML
 	public void add1(ActionEvent e) throws IOException {
+		Set<String> uniqueAnswers = new HashSet<>();
+		
 		if(ContentQuestion.getText().length() == 0 || Answer1.getText().length() == 0 ||
 				Answer2.getText().length() == 0 || Answer3.getText().length() == 0 ||
 						Answer4.getText().length() == 0 ) {
@@ -159,7 +163,20 @@ public class AddQ implements Initializable{
 			Alert a=new Alert(AlertType.CONFIRMATION);
 			a.setHeaderText("FILL ALL FIELDS PLEASE");
 			a.showAndWait();
+			return;
 		}
+		uniqueAnswers.clear();  // Clear the set before checking again
+	    uniqueAnswers.add(Answer1.getText());
+	    uniqueAnswers.add(Answer2.getText());
+	    uniqueAnswers.add(Answer3.getText());
+	    uniqueAnswers.add(Answer4.getText());
+	    if(uniqueAnswers.size() != 4)
+	    {
+	    	Alert a=new Alert(AlertType.CONFIRMATION);
+			a.setHeaderText("un unique answers");
+			a.showAndWait();
+			return;
+	    }
 		else {
 		
 		if(!Answer1.getText().chars().anyMatch(Character::isLetter)||!Answer2.getText().chars().anyMatch(Character::isLetter)||!Answer3.getText().chars().anyMatch(Character::isLetter)||!Answer4.getText().chars().anyMatch(Character::isLetter)||!ContentQuestion.getText().chars().anyMatch(Character::isLetter)||correctCombo.getSelectionModel().getSelectedIndex() == -1||correctAnswer.getSelectionModel().getSelectedIndex() == -1)
