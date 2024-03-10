@@ -116,7 +116,8 @@ public class boardController implements Initializable{
 	Button p4turn;
 	@FXML
 	Button backbutton;
-
+	@FXML
+	Button muteButton;
 	SquareFactory fact=new SquareFactory();
 	private Player currentPlayer=HelpClass.getInstance().getP1();//assuming
 	private Level Level2=HelpClass.getInstance().getLevelGame();
@@ -235,6 +236,10 @@ public class boardController implements Initializable{
 		// Assuming the button's parent is an AnchorPane
 		AnchorPane parent = (AnchorPane) x.getParent();
 		parent.getChildren().remove(x);
+	}
+	@FXML
+	private void handleMuteButtonAction(ActionEvent event) {
+		Main.toggleMusic();
 	}
 	/**********************************************************************/
 	boolean IsEnds = false;

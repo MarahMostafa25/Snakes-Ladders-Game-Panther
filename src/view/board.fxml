@@ -45,6 +45,7 @@
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
+                  <Button id="button7" fx:id="muteButton" layoutX="1196.0" layoutY="6.0" onAction="#handleMuteButtonAction" prefHeight="39.0" prefWidth="52.0" style="-fx-background-radius: 100; -fx-background-color: white; -fx-border-radius: 100;" stylesheets="@application.css" text="sound" />
                </children>
             </AnchorPane>
             <ImageView fitHeight="120.0" fitWidth="61.0" layoutX="181.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
@@ -123,8 +124,8 @@
                   <Font name="Arial Bold Italic" size="24.0" />
                </font>
             </Text>
-            <ImageView fx:id="curentImage" fitHeight="81.0" fitWidth="68.0" layoutX="478.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="current" layoutX="572.0" layoutY="91.0" prefHeight="16.0" prefWidth="38.0" textFill="#196905">
+            <ImageView fx:id="curentImage" fitHeight="152.0" fitWidth="115.0" layoutX="478.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="current" layoutX="572.0" layoutY="91.0" prefHeight="16.0" prefWidth="129.0" textFill="#196905">
                <font>
                   <Font name="Arial Bold Italic" size="14.0" />
                </font>

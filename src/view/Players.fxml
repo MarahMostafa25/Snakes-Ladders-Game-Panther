@@ -27,18 +27,18 @@
                      </image>
                   </ImageView>
                   <TextField fx:id="name2" layoutX="777.0" layoutY="184.0" prefHeight="25.0" prefWidth="65.0" />
-                  <Button fx:id="startButton" layoutX="897.0" layoutY="504.0" mnemonicParsing="false" onAction="#start2" prefHeight="49.0" prefWidth="159.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@application.css">
+                  <Button fx:id="startButton" layoutX="897.0" layoutY="504.0" mnemonicParsing="false" onAction="#start2" prefHeight="49.0" prefWidth="159.0" style="-fx-background-radius: 60; -fx-border-color: none;" stylesheets="@application.css" text="Let's Start">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
                               <Stop>
                                  <color>
-                                    <Color red="0.28947368264198303" green="0.23159383237361908" blue="0.022335931658744812" />
+                                    <Color red="0.07017543911933899" green="0.056530214846134186" blue="0.011695906519889832" />
                                  </color>
                               </Stop>
                               <Stop offset="1.0">
                                  <color>
-                                    <Color red="0.44736841320991516" green="0.30560970306396484" blue="0.022092267870903015" />
+                                    <Color red="0.19298245012760162" green="0.13163308799266815" blue="0.008934373036026955" />
                                  </color>
                               </Stop>
                            </stops>
@@ -73,11 +73,6 @@
                   <ImageView fx:id="image4" fitHeight="103.0" fitWidth="85.0" layoutX="690.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
                   <TextField fx:id="name3" layoutX="524.0" layoutY="108.0" prefHeight="19.0" prefWidth="65.0" style="-fx-background-color: transparent;" />
                   <TextField fx:id="name4" layoutX="690.0" layoutY="108.0" prefHeight="18.0" prefWidth="65.0" style="-fx-background-color: transparent;" />
-                  <ImageView fitHeight="58.0" fitWidth="85.0" layoutX="934.0" layoutY="507.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/letsStart.gif" />
-                     </image>
-                  </ImageView>
                   <Button id="button7" fx:id="backbutton" layoutX="28.0" layoutY="14.0" minHeight="44.0" minWidth="45.0" mnemonicParsing="false" onAction="#backB" prefHeight="42.0" prefWidth="65.0" style="-fx-border-radius: 100;" stylesheets="@application.css" text="back">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">

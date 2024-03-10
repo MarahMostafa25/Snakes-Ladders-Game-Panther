@@ -4,49 +4,67 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="602.0" prefWidth="1119.3" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuestionController">
    <children>
       <AnchorPane id="pane3143" layoutX="10.0" layoutY="10.0" prefHeight="602.0" prefWidth="1119.0" stylesheets="@application.css">
          <children>
-            <Label layoutX="396.0" layoutY="161.0" prefHeight="25.0" prefWidth="321.0" style="-fx-background-color: white; -fx-border-radius: 30;" text="                    Questions" textFill="#673803">
+            <Label layoutX="328.0" layoutY="111.0" prefHeight="25.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-radius: 30;" text="                    Questions" textFill="#673803">
                <font>
                   <Font name="Arial Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="add" layoutX="480.0" layoutY="458.0" mnemonicParsing="false" onAction="#addQ" prefHeight="57.0" prefWidth="187.0" style="-fx-border-color: none;" stylesheets="@application.css" text="Add" textFill="#362401">
+            <Button fx:id="add" layoutX="441.0" layoutY="476.0" mnemonicParsing="false" onAction="#addQ" prefHeight="84.0" prefWidth="231.0" style="-fx-border-color: none;" stylesheets="@application.css" text="Add" textFill="#362401">
                <font>
                   <Font name="Arial Bold Italic" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="remove" layoutX="324.0" layoutY="458.0" mnemonicParsing="false" onAction="#deleteQuestion" prefHeight="57.0" prefWidth="154.0" style="-fx-border-color: none;" stylesheets="@application.css" text="Remove" textFill="#312702">
+            <Button fx:id="remove" layoutX="232.0" layoutY="478.0" mnemonicParsing="false" onAction="#deleteQuestion" prefHeight="84.0" prefWidth="201.0" style="-fx-border-color: none;" stylesheets="@application.css" text="Remove" textFill="#312702">
                <font>
                   <Font name="Arial Bold Italic" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="update" layoutX="670.0" layoutY="458.0" mnemonicParsing="false" onAction="#UpdateScene" prefHeight="57.0" prefWidth="176.0" style="-fx-border-color: none;" stylesheets="@application.css" text="Update" textFill="#482f04">
+            <Button fx:id="update" layoutX="683.0" layoutY="475.0" mnemonicParsing="false" onAction="#UpdateScene" prefHeight="84.0" prefWidth="209.0" style="-fx-border-color: none;" stylesheets="@application.css" text="Update" textFill="#482f04">
                <font>
                   <Font name="Arial Bold Italic" size="11.0" />
                </font>
             </Button>
-            <TableView fx:id="tablee" layoutX="320.0" layoutY="196.0" prefHeight="254.0" prefWidth="478.0" stylesheets="@application.css">
+            <TableView fx:id="tablee" layoutX="229.0" layoutY="153.0" prefHeight="313.0" prefWidth="616.0" stylesheets="@application.css">
                <columns>
-                  <TableColumn fx:id="question" prefWidth="74.6666898727417" text="Question" />
-                  <TableColumn fx:id="ans1" prefWidth="66.6666488647461" text="Answer1" />
-                  <TableColumn fx:id="ans2" prefWidth="70.0" text="Answer2" />
-                  <TableColumn fx:id="ans3" prefWidth="86.66670227050781" text="Answer3" />
-                  <TableColumn fx:id="ans4" prefWidth="72.6666259765625" text="Answer4" />
-                  <TableColumn fx:id="correct" prefWidth="60.0" text="Correct" />
-                  <TableColumn fx:id="level" prefWidth="102.0" text="Level" />
+                  <TableColumn fx:id="question" prefWidth="473.33335876464844" text="Question" />
+                  <TableColumn fx:id="correct" prefWidth="70.0" text="Correct" />
+                  <TableColumn fx:id="level" prefWidth="67.99993896484375" text="Level" />
                </columns>
             </TableView>
             <Button id="button7" fx:id="backbutton" layoutX="14.0" layoutY="14.0" minHeight="44.0" minWidth="45.0" mnemonicParsing="false" onAction="#backB" prefHeight="37.0" prefWidth="65.0" style="-fx-border-radius: 100;" stylesheets="@application.css" text="back">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.28947368264198303" green="0.23159383237361908" blue="0.022335931658744812" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.44736841320991516" green="0.30560970306396484" blue="0.022092267870903015" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="idsearch" layoutX="322.0" layoutY="42.0" />
+            <Button id="button7" fx:id="search1" layoutX="485.0" layoutY="40.0" minHeight="25.0" minWidth="45.0" mnemonicParsing="false" onAction="#search" prefHeight="30.0" prefWidth="65.0" style="-fx-border-radius: 100;" stylesheets="@application.css" text="Search">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>

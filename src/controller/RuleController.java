@@ -17,6 +17,8 @@ public class RuleController implements RulesClickedObserver {
 	 public static MediaPlayer media1;
 	@FXML
 	Button backbutton;
+	@FXML
+	Button muteButton;
 	public RuleController() {
 		// TODO Auto-generated constructor stub
 		try {

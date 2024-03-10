@@ -165,6 +165,15 @@ public class AddQ implements Initializable{
 			a.showAndWait();
 			return;
 		}
+		if (ContentQuestion.getText().contains("\"") || Answer1.getText().contains("\"") ||
+			    Answer2.getText().contains("\"") || Answer3.getText().contains("\"") ||
+			    Answer4.getText().contains("\"")) {
+			    // If any field contains a double quote, show a warning
+			    Alert a = new Alert(AlertType.CONFIRMATION);
+			    a.setHeaderText("Please remove double quotes (\") from all fields");
+			    a.showAndWait();
+			    return;
+			}
 		uniqueAnswers.clear();  // Clear the set before checking again
 	    uniqueAnswers.add(Answer1.getText());
 	    uniqueAnswers.add(Answer2.getText());

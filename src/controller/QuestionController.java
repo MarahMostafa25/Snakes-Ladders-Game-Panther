@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import org.json.simple.parser.ParseException;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +19,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Question;
@@ -35,14 +37,6 @@ public class QuestionController implements Initializable {
 	@FXML
 	TableColumn<Question,String> question;
 	@FXML
-	TableColumn<Question,String> ans1 ;
-	@FXML
-	TableColumn<Question,String> ans2;
-	@FXML
-	TableColumn<Question,String> ans3;
-	@FXML
-	TableColumn<Question,String> ans4;
-	@FXML
 	TableColumn<Question,Integer> correct;
 	@FXML
     TableColumn<Question, String> level;
@@ -56,12 +50,43 @@ public class QuestionController implements Initializable {
     Button update;
 	@FXML
     Button backbutton;
+	@FXML
+	Button search1;
+	@FXML
+	TextField idsearch;
 	
 	public QuestionController() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	@FXML
+	 public void search(ActionEvent e)
+	 {
+		 if(idsearch.getText().equals(""))
+		 {
+			 Alert a=new Alert(AlertType.CONFIRMATION);
+			 a.setHeaderText("Invalid Input!!!");
+			 a.showAndWait();
+		 }
+		 else
+		 {
+			// Get the word entered in the search text field
+			 String searchWord = idsearch.getText().toLowerCase();
+			 // Find the first row containing the entered word
+			 int index = tablee.getItems().indexOf(tablee.getItems().stream()
+			         .filter(question -> question.getQuestionContent().toLowerCase().contains(searchWord))
+			         .findFirst()
+			         .orElse(null));
+
+			 // If a row containing the word is found, select it in the table and scroll to it
+			 if (index >= 0) {
+			     tablee.getSelectionModel().select(index);
+			     tablee.scrollTo(index);
+			 }
+
+			 
+		 }
+	 }
 	
 	//fill the table method
   	public void fill() {
@@ -69,10 +94,6 @@ public class QuestionController implements Initializable {
   		question.setCellValueFactory(new PropertyValueFactory<Question, String>("questionContent"));
   		level.setCellValueFactory(new PropertyValueFactory<Question, String>("level"));
   		correct.setCellValueFactory(new PropertyValueFactory<Question, Integer>("correctAnswerNumber"));
-  		ans1.setCellValueFactory(new PropertyValueFactory<Question, String>("answer1"));
-  		ans2.setCellValueFactory(new PropertyValueFactory<Question, String>("answer2"));
-  		ans3.setCellValueFactory(new PropertyValueFactory<Question, String>("answer3"));
-  		ans4.setCellValueFactory(new PropertyValueFactory<Question, String>("answer4"));
   		HashSet<Question> set = new HashSet<>();
   		set.addAll(dataQues);
   		ObservableList<Question>dataQues2 =  FXCollections.observableArrayList(set);

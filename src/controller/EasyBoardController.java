@@ -116,6 +116,8 @@ public class EasyBoardController implements Initializable{
 	Button p3turn;
 	@FXML
 	Button p4turn;
+	@FXML
+	Button muteButton;
 	private ArrayList<Game> game1=new ArrayList<Game>();
 	SquareFactory fact=new SquareFactory();
 	private Player currentPlayer=HelpClass.getInstance().getP1();//assuming
@@ -187,7 +189,11 @@ public class EasyBoardController implements Initializable{
 		return labelValue;
 	}
 	/****************************************************************************/
-
+ 
+	@FXML
+	private void handleMuteButtonAction(ActionEvent event) {
+		Main.toggleMusic();
+	}
 	// This function converts the row and cols to the numbers on the board 
 	private void setBoardCells(int x) // shows the user board the number of each cell
 	{

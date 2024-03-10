@@ -114,7 +114,8 @@ public class HardBoardController implements Initializable{
 	Button p3turn;
 	@FXML
 	Button p4turn;
-
+	@FXML
+	Button muteButton;
 	SquareFactory fact=new SquareFactory();
 	private Player currentPlayer=HelpClass.getInstance().getP1();//assuming
 	private Level Level2=HelpClass.getInstance().getLevelGame();
@@ -237,6 +238,10 @@ public class HardBoardController implements Initializable{
 				boardCells.put(labelValue, rowColPair);
 			}
 		}
+	}
+	@FXML
+	private void handleMuteButtonAction(ActionEvent event) {
+		Main.toggleMusic();
 	}
 	/*******************************************************************************/
 	private final Color[] allowedColors = {

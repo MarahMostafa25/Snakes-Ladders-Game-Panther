@@ -84,6 +84,15 @@ public class UpdateQ  implements Initializable{
 			a.showAndWait();
 			return;
 		}
+		if (question_text.getText().contains("\"") || answer1_text.getText().contains("\"") ||
+				answer2_text.getText().contains("\"") || answer3_text.getText().contains("\"") ||
+			    answer4_text.getText().contains("\"")) {
+			    // If any field contains a double quote, show a warning
+			    Alert a = new Alert(AlertType.CONFIRMATION);
+			    a.setHeaderText("Please remove double quotes (\") from all fields");
+			    a.showAndWait();
+			    return;
+			}
 		uniqueAnswers.clear();  // Clear the set before checking again
 	    uniqueAnswers.add(answer1_text.getText());
 	    uniqueAnswers.add(answer2_text.getText());
