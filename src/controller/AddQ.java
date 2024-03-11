@@ -155,6 +155,8 @@ public class AddQ implements Initializable{
 	@FXML
 	public void add1(ActionEvent e) throws IOException {
 		Set<String> uniqueAnswers = new HashSet<>();
+		Main.res.loadQ("Questions.json");
+		Set<Question> qq=Main.res.getAllQuestions();
 		
 		if(ContentQuestion.getText().length() == 0 || Answer1.getText().length() == 0 ||
 				Answer2.getText().length() == 0 || Answer3.getText().length() == 0 ||
@@ -174,6 +176,14 @@ public class AddQ implements Initializable{
 			    a.showAndWait();
 			    return;
 			}
+		Question q_new=new Question(ContentQuestion.getText());
+		if(qq.contains(q_new))
+		{
+			Alert a = new Alert(AlertType.CONFIRMATION);
+		    a.setHeaderText("already exist!");
+		    a.showAndWait();
+		    return;
+		}
 		uniqueAnswers.clear();  // Clear the set before checking again
 	    uniqueAnswers.add(Answer1.getText());
 	    uniqueAnswers.add(Answer2.getText());

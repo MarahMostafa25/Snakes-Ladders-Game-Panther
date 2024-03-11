@@ -75,6 +75,8 @@ public class UpdateQ  implements Initializable{
 
 	public void updateQuestion(ActionEvent e) throws IOException, ParseException {
 		Set<String> uniqueAnswers = new HashSet<>();
+		Main.res.loadQ("Questions.json");
+		Set<Question> qq=Main.res.getAllQuestions();
 		if(question_text.getText().length() == 0 || answer1_text.getText().length() == 0 ||
 				answer2_text.getText().length() == 0 || answer3_text.getText().length() == 0 ||
 						answer4_text.getText().length() == 0 ) {
@@ -93,6 +95,14 @@ public class UpdateQ  implements Initializable{
 			    a.showAndWait();
 			    return;
 			}
+		Question q_new=new Question(question_text.getText());
+		if(qq.contains(q_new))
+		{
+			Alert a = new Alert(AlertType.CONFIRMATION);
+		    a.setHeaderText("already exist!");
+		    a.showAndWait();
+		    return;
+		}
 		uniqueAnswers.clear();  // Clear the set before checking again
 	    uniqueAnswers.add(answer1_text.getText());
 	    uniqueAnswers.add(answer2_text.getText());
