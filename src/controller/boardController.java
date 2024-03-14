@@ -132,6 +132,7 @@ public class boardController implements Initializable{
 	private HashMap<Integer,Boolean> ocuupiedCells = new HashMap<Integer,Boolean>();
 	private HashMap<Integer,Player> players = new HashMap<Integer,Player>();
 	private HashMap<Integer,QuestionSquare> ocuupiedQuestions = new HashMap<Integer,QuestionSquare>();
+	private HashMap<Integer,Boolean> ocuupiedTurn = new HashMap<Integer,Boolean>();
 	private SurpriseSquare surprise1;
 	private int levelForSurprise;
 	private Dice dice; 
@@ -401,7 +402,7 @@ public class boardController implements Initializable{
 				next_pos=current_pos+diceResult;
 				num1=check_move(p,next_pos,type);
 			}
-			if(num1!=0) {disbaleButtons();}
+			if(num1!=0&&num1!=9) {disbaleButtons();}
 		}
 		else
 		{
@@ -509,7 +510,7 @@ public class boardController implements Initializable{
 				    next_player_q = current_pos_q + result_to_return;
 				    have_winner=check_move(p, next_player_q, type);
 				}
-				if(have_winner!=0) {disbaleButtons();}
+				if(have_winner!=0 && have_winner!=9) {disbaleButtons();}
 				window3.close();
 			
 			/************************to here***********************************/
@@ -624,6 +625,13 @@ public class boardController implements Initializable{
 		int lad=check_ladder(position);// if -1 then no ladder here
 		int snake1 = check_snake(position);//-1
 		int square = check_square(position,p,type);
+		//check if we have turn square:
+		Boolean tu=ocuupiedTurn.get(position);
+		if(tu)
+		{
+			p.setPosition(position);
+			return 9;
+		}
 		//if(square==1) return;
 		if(position==levelForSurprise) {
 			if(position+10<=x*x)
@@ -901,6 +909,42 @@ public class boardController implements Initializable{
 			GridPane.setConstraints(question, col, row,1,1);
 			board.getChildren().add(question);
 			ocuupiedQuestions.put(labelValue,question_fact);
+			
+		}
+		// set another turn square.
+		for (int i=0;i<2;i++)
+		{
+			labelValue = setObjCheckOcuupied();
+			while(labelValue ==x*x)
+			{
+				labelValue = setObjCheckOcuupied();
+			}
+			ocuupiedCells.put(labelValue, true);
+			ocuupiedTurn.put(labelValue, true);
+			map =  boardCells.get(labelValue); 
+			row = 0;
+			col = 0;
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+				row = entry.getKey();
+				col = entry.getValue();
+			}
+			if(i==0) {
+				ImageView win1 = new ImageView(new Image("/Images/plus.jpg"));
+				win1.setFitWidth(40);
+				win1.setFitHeight(40);
+				GridPane.setConstraints(win1, col, row,1,1);
+				board.getChildren().add(win1);
+			}
+			if(i==1){
+				ImageView win2= new ImageView(new Image("/Images/plus.jpg"));
+				win2.setFitWidth(40);
+				win2.setFitHeight(40);
+				GridPane.setConstraints(win2, 1, 9,1,1);
+				board.getChildren().add(win2);
+			}
+			
+			
+			
 			
 		}
 	}
