@@ -191,12 +191,15 @@ public class HardBoardController implements Initializable{
 	private ImageView player2Image = new ImageView(new Image("/Images/egyy2.png"));
 	private ImageView player3Image = new ImageView(new Image("/Images/egyy3.png"));
 	private ImageView player4Image = new ImageView(new Image("/Images/egyy4.png"));
+	private HashMap<Integer,Boolean> ocuupiedTurn = new HashMap<Integer,Boolean>();
+
 	static Stage window = new Stage();
 
 	//*************************************************************//
 	private void initializeOccupiedCells(int x) {
 		for (int i = 1; i <= x*x; i++) {
 			ocuupiedCells.put(i, false);
+			ocuupiedTurn.put(i, false);
 		}
 	}
 	/***************************************************************/
@@ -435,7 +438,7 @@ public class HardBoardController implements Initializable{
 				next_pos=current_pos+diceResult;
 				num1=check_move(p,next_pos,type);
 			}
-			if(num1!=0) {disbaleButtons();}
+			if(num1!=0 && num1!=9) {disbaleButtons();}
 		}
 		else
 		{
@@ -543,7 +546,7 @@ public class HardBoardController implements Initializable{
 				    next_player_q = current_pos_q + result_to_return;
 				    have_winner=check_move(p, next_player_q, type);
 				}
-				if(have_winner!=0) {disbaleButtons();}
+				if(have_winner!=0 && have_winner!=9) {disbaleButtons();}
 				window3.close();
 			/************************to here***********************************/
 		});
@@ -659,6 +662,8 @@ public class HardBoardController implements Initializable{
 		int lad=check_ladder(position);// if -1 then no ladder here
 		int snake1 = check_snake(position);//-1
 		int square = check_square(position,p,type);
+		//check if we have turn square:
+		Boolean tu=ocuupiedTurn.get(position);
 		//if(square==1) return;
 		if(position==levelForSurprise||position==levelForSurprise2) {
 			if(position+10<=x*x)
@@ -709,6 +714,10 @@ public class HardBoardController implements Initializable{
 		{
 			board.getChildren().remove(player4Image);
 			setSnakeToBoardView(player4Image,40,40,row,col);
+		}
+		if(tu==true)
+		{
+			return 9;
 		}
 		if(check_winner(position,type)==0)
 		{
@@ -948,6 +957,52 @@ public class HardBoardController implements Initializable{
 			GridPane.setConstraints(question, col, row,1,1);
 			board.getChildren().add(question);
 			ocuupiedQuestions.put(labelValue,question_fact);
+			
+		}
+		
+		
+		// set another turn square.
+		for (int i=0;i<3;i++)
+		{
+			labelValue = setObjCheckOcuupied();
+			while(labelValue ==x*x||labelValue==1)
+			{
+				labelValue = setObjCheckOcuupied();
+			}
+			ocuupiedCells.put(labelValue, true);
+			ocuupiedTurn.put(labelValue, true);
+			
+			map =  boardCells.get(labelValue); 
+			row = 0;
+			col = 0;
+			for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+				row = entry.getKey();
+				col = entry.getValue();
+			}
+			if(i==0) {
+				ImageView win1 = new ImageView(new Image("/Images/plus.png"));
+				win1.setFitWidth(40);
+				win1.setFitHeight(40);
+				GridPane.setConstraints(win1, col, row,1,1);
+				board.getChildren().add(win1);
+			}
+			if(i==1){
+				ImageView win2= new ImageView(new Image("/Images/plus.png"));
+				win2.setFitWidth(40);
+				win2.setFitHeight(40);
+				GridPane.setConstraints(win2, col, row,1,1);
+				board.getChildren().add(win2);
+			}
+			if(i==2){
+				ImageView win3= new ImageView(new Image("/Images/plus.png"));
+				win3.setFitWidth(40);
+				win3.setFitHeight(40);
+				GridPane.setConstraints(win3, col, row,1,1);
+				board.getChildren().add(win3);
+			}
+			
+			
+			
 			
 		}
 	}

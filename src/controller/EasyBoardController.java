@@ -168,12 +168,14 @@ public class EasyBoardController implements Initializable{
 	private ImageView player2Image = new ImageView(new Image("/Images/egyy2.png"));
 	private ImageView player3Image = new ImageView(new Image("/Images/egyy3.png"));
 	private ImageView player4Image = new ImageView(new Image("/Images/egyy4.png"));
+	private HashMap<Integer,Boolean> ocuupiedTurn = new HashMap<Integer,Boolean>();
 	static Stage window = new Stage();
 
 	//*************************************************************//
 	private void initializeOccupiedCells(int x) {
 		for (int i = 1; i <= x*x; i++) {
 			ocuupiedCells.put(i, false);
+			ocuupiedTurn.put(i, false);
 		}
 	}
 	/***************************************************************/
@@ -405,7 +407,7 @@ public class EasyBoardController implements Initializable{
 				next_pos=current_pos+diceResult;
 				num1=check_move(p,next_pos,type);
 			}
-			if(num1!=0) {disbaleButtons();}
+			if(num1!=0&&num1!=9) {disbaleButtons();}
 		}
 		else
 		{
@@ -513,7 +515,7 @@ public class EasyBoardController implements Initializable{
 				    next_player_q = current_pos_q + result_to_return;
 				    have_winner=check_move(p, next_player_q, type);
 				}
-				if(have_winner!=0) {disbaleButtons();}
+				if(have_winner!=0 && have_winner!=9) {disbaleButtons();}
 				window3.close();
 			/************************to here***********************************/
 		});
@@ -629,6 +631,7 @@ public class EasyBoardController implements Initializable{
 		int lad=check_ladder(position);// if -1 then no ladder here
 		int snake1 = check_snake(position);//-1
 		int square = check_square(position,p,type);
+		Boolean tu=ocuupiedTurn.get(position);
 		//if(square==1) return;
 		if(lad!=-1)//it means we have ladder
 		{
@@ -669,6 +672,10 @@ public class EasyBoardController implements Initializable{
 		{
 			board.getChildren().remove(player4Image);
 			setSnakeToBoardView(player4Image,75,75,row,col);
+		}
+		if(tu==true)
+		{
+			return 9;
 		}
 		if(check_winner(position,type)==0)
 		{
@@ -879,6 +886,28 @@ public class EasyBoardController implements Initializable{
 			ocuupiedQuestions.put(labelValue,question_fact);
 			
 		}
+		//set new turn
+		int labelValue = setObjCheckOcuupied();
+		while(labelValue ==x*x || labelValue==1)
+		{
+			labelValue = setObjCheckOcuupied();
+		}
+		ocuupiedCells.put(labelValue, true);
+		ocuupiedTurn.put(labelValue, true);
+		
+		map =  boardCells.get(labelValue); 
+		row = 0;
+		col = 0;
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			row = entry.getKey();
+			col = entry.getValue();
+		}
+		
+		ImageView win1 = new ImageView(new Image("/Images/plus.png"));
+		win1.setFitWidth(40);
+		win1.setFitHeight(40);
+		GridPane.setConstraints(win1, col, row,1,1);
+		board.getChildren().add(win1);
 	}
 	private int calcEnd(int labelValue,int stepsRow,int stepsCol)
 	{

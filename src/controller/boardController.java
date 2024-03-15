@@ -179,6 +179,7 @@ public class boardController implements Initializable{
 	private void initializeOccupiedCells(int x) {
 		for (int i = 1; i <= x*x; i++) {
 			ocuupiedCells.put(i, false);
+			ocuupiedTurn.put(i, false);
 		}
 	}
 	/***************************************************************/
@@ -515,7 +516,6 @@ public class boardController implements Initializable{
 			
 			/************************to here***********************************/
 		});
-		System.out.print("reached here");
 		VBox vbox = new VBox();
 
 		vbox.getChildren().addAll(question, questionText,a1, a2, a3, a4, sub);
@@ -627,11 +627,6 @@ public class boardController implements Initializable{
 		int square = check_square(position,p,type);
 		//check if we have turn square:
 		Boolean tu=ocuupiedTurn.get(position);
-		if(tu)
-		{
-			p.setPosition(position);
-			return 9;
-		}
 		//if(square==1) return;
 		if(position==levelForSurprise) {
 			if(position+10<=x*x)
@@ -683,6 +678,11 @@ public class boardController implements Initializable{
 		{
 			board.getChildren().remove(player4Image);
 			setSnakeToBoardView(player4Image,50,50,row,col);
+		}
+		
+		if(tu==true)
+		{
+			return 9;
 		}
 		if(check_winner(position,type)==0)
 		{
@@ -915,12 +915,14 @@ public class boardController implements Initializable{
 		for (int i=0;i<2;i++)
 		{
 			labelValue = setObjCheckOcuupied();
-			while(labelValue ==x*x)
+			while(labelValue ==x*x||labelValue==1)
 			{
 				labelValue = setObjCheckOcuupied();
 			}
 			ocuupiedCells.put(labelValue, true);
 			ocuupiedTurn.put(labelValue, true);
+			
+			System.out.print("label 1");
 			map =  boardCells.get(labelValue); 
 			row = 0;
 			col = 0;
@@ -929,17 +931,17 @@ public class boardController implements Initializable{
 				col = entry.getValue();
 			}
 			if(i==0) {
-				ImageView win1 = new ImageView(new Image("/Images/plus.jpg"));
+				ImageView win1 = new ImageView(new Image("/Images/plus.png"));
 				win1.setFitWidth(40);
 				win1.setFitHeight(40);
 				GridPane.setConstraints(win1, col, row,1,1);
 				board.getChildren().add(win1);
 			}
 			if(i==1){
-				ImageView win2= new ImageView(new Image("/Images/plus.jpg"));
+				ImageView win2= new ImageView(new Image("/Images/plus.png"));
 				win2.setFitWidth(40);
 				win2.setFitHeight(40);
-				GridPane.setConstraints(win2, 1, 9,1,1);
+				GridPane.setConstraints(win2, col, row,1,1);
 				board.getChildren().add(win2);
 			}
 			
